@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <title>HomePage</title>
+    <link rel="stylesheet" type="text/css" href="/OnlineTestingSystem_war_exploded/css/search-form.css"/>
+    <link rel="stylesheet" type="text/css" href="/OnlineTestingSystem_war_exploded/css/HomeRender.css"/>
+    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/search.js"></script>
 </h:head>
 <h:body>
-    
+    <div class="header">
+        <div class="header-nav">
+            <ul class="header-nav-ul">
+                <li class="header-item">
+                    <a class="header-item-link" href="">Computer</a>
+                </li>
+                <li class="header-item">
+                    <a class="header-item-link" href="">Arithmetic</a>
+                </li>
+                <li class="header-item">
+                    <a class="header-item-link" href="">Math</a>
+                </li>
+                <li class="header-item">
+                    <a class="header-item-link" href="">Economic</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <form onsubmit="submitFn(this, event);">
+        <div class="search-wrapper">
+            <div class="input-holder">
+                <input type="text" class="search-input"/>
+                <button class="search-icon" onclick="searchToggle(this, event);"><span></span>
+                </button>
+            </div>
+            <span class="close" onclick="searchToggle(this, event);"></span>
+            <div class="result-container"></div>
+        </div>
+    </form>
+
+
+
+    <div class="Coverimg">
+        <p>OnlineTestingSystem</p>
+    </div>
+
+    <div class="content">
+        <div class="content-top"></div>
+        <div class="content-mid"></div>
+        <div class="content-bot"></div>
+    </div>
+    <div class="footer"></div>
 </h:body>
 </html>
