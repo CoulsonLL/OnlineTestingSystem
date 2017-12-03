@@ -11,6 +11,15 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" value="6f0c48fc-9b3f-41fd-bfab-6215726f5937" />
+        </datasource-map>
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -22,5 +31,7 @@
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 5.0.0" level="application_server_libraries" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 5.0.0 - JSF" level="application_server_libraries" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 5.0.0 - CDI: Contexts and Dependency Injection" level="application_server_libraries" />
+    <orderEntry type="library" name="Hibernate 5.2.12-5.2.12" level="project" />
+    <orderEntry type="library" name="sqljdbc4" level="project" />
   </component>
 </module>
