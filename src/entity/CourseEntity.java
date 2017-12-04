@@ -1,4 +1,4 @@
-package com.entity;
+package entity;
 
 import java.sql.Timestamp;
 
@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Courses", schema = "dbo", catalog = "OnlineTest")
-public class CoursesEntity
+@Table(name = "Course", schema = "dbo", catalog = "OnlineTest")
+public class CourseEntity
 {
     private int cCourseId;
     private String cName;
@@ -117,13 +117,14 @@ public class CoursesEntity
         this.picture = picture;
     }
 
+
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CoursesEntity that = (CoursesEntity) o;
+        CourseEntity that = (CourseEntity) o;
 
         if (cCourseId != that.cCourseId) return false;
         if (cModule != that.cModule) return false;
@@ -160,7 +161,7 @@ public class CoursesEntity
     @Override
     public String toString()
     {
-        return "CoursesEntity{" +
+        return "CourseEntity{" +
                 "cCourseId=" + cCourseId +
                 ", cName='" + cName + '\'' +
                 ", cModule=" + cModule +

@@ -8,8 +8,10 @@
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="connection.username">david</property>
         <property name="connection.password">qaz13047409865</property>
-        <mapping class="com.entity.CoursesEntity"/>
-        <mapping resource="com/entity/CoursesEntity.hbm.xml"/>
+        <mapping class="entity.CourseEntity"/>
+        <mapping resource="entity/CourseEntity.hbm.xml"/>
+        <mapping resource="entity/CourseEntity.hbm.xml"/>
+        <mapping class="entity.CourseEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.entity.CoursesEntity" table="Courses" schema="dbo" catalog="OnlineTest">
+    <class name="entity.CourseEntity" table="Course" schema="dbo" catalog="OnlineTest">
         <id name="cCourseId">
             <column name="CCourseID" sql-type="int"/>
         </id>
