@@ -12,19 +12,42 @@ import util.HibernateUtil;
 public class CourseDAO
 {
 
-    public void addCourse(CourseEntity course)
+    public Integer addCourse(CourseEntity course)
     {
-
+        int i = 0;
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        i = (Integer) session.save(course);
+        tx.commit();
+        session.close();
+        return i;
     }
 
     public void deleteCourse(Integer courseID)
     {
-
+        int i = 0;
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        CourseEntity courseEntity = session.get(CourseEntity.class, courseID);
+        session.delete(courseEntity);
+        tx.commit();
+        session.close();
     }
 
     public void updateCourse(CourseEntity course)
     {
-
+        int i = 0;
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        session.update(course);
+        tx.commit();
+        session.close();
     }
 
     /**
@@ -41,7 +64,10 @@ public class CourseDAO
         list = session.createQuery("from CourseEntity order by viewCount desc ").list();
         tx.commit();
         session.close();
-        System.out.println(list.toString());
+        for (Object c : list)
+        {
+            System.out.println(c.toString());
+        }
         return list;
     }
 
@@ -78,7 +104,11 @@ public class CourseDAO
         list = session.createQuery("from CourseEntity").list();
         tx.commit();
         session.close();
-        System.out.println(list.toString());
+//        System.out.println(list.toString());
+        for (Object c : list)
+        {
+            System.out.println(c.toString());
+        }
         return list;
     }
 
@@ -94,17 +124,20 @@ public class CourseDAO
         List list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         tx = session.beginTransaction();
-        String hql = "from CourseEntity where cName like '" + name + "%'";
+        String hql = "from CourseEntity where cName like '%" + name + "%'";
         list = session.createQuery(hql).list();
         tx.commit();
         session.close();
-        System.out.println(list.toString());
+        for (Object c : list)
+        {
+            System.out.println(c.toString());
+        }
         return list;
     }
 
 
     public static void main(String[] args)
     {
-        new CourseDAO().queryCoursesByName("J");
+        new CourseDAO().queryAllCourses();
     }
 }

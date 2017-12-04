@@ -30,4 +30,22 @@ public class CourseService
         CourseDAO courseDAO = new CourseDAO();
         return courseDAO.queryCourseOrderByPopularity();
     }
+
+    public Integer addCourse(CourseEntity course)
+    {
+        CourseDAO courseDAO = new CourseDAO();
+        return courseDAO.addCourse(course);
+    }
+
+    public void deleteCourse(Integer courseID)
+    {
+        CourseDAO courseDAO = new CourseDAO();
+        courseDAO.deleteCourse(courseID);
+    }
+
+    public void updateCourse(CourseEntity course)
+    {
+        CourseDAO courseDAO = new CourseDAO();
+        courseDAO.updateCourse(course);
+    }
 }
