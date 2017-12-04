@@ -15,16 +15,16 @@
     <div class="header">
         <div class="header-nav">
             <ul class="header-nav-ul">
-                <li class="header-item">
+                <li>
                     <a class="header-item-link" href="">Computer</a>
                 </li>
-                <li class="header-item">
+                <li>
                     <a class="header-item-link" href="">Arithmetic</a>
                 </li>
-                <li class="header-item">
+                <li>
                     <a class="header-item-link" href="">Math</a>
                 </li>
-                <li class="header-item">
+                <li>
                     <a class="header-item-link" href="">Economic</a>
                 </li>
             </ul>
@@ -50,10 +50,102 @@
     </div>
 
     <div class="content">
-        <div class="content-top"></div>
+        <div class="content-top">
+            <div class="content-top-title">
+                <h2>Popular Today</h2>
+                <p>The most popular cources from ITest</p>
+            </div>
+            <div class="content-top-article">
+                <div class="content-top-article1">
+                    <article class="biggest">
+                        <h:form>
+                            <h:commandLink action="test">
+                                <h:graphicImage styleClass="biggest-img" value="/img/homepage/2.jpg"/>
+                            </h:commandLink>
+                            <h:commandLink styleClass="biggest-script" value="slkfjasjflsalfkajslf"/>
+                        </h:form>
+                    </article>
+                </div>
+                <!--article2中的四个组件可通过jstl的foreach标签优化-->
+                <div class="content-top-article2">
+                    <article class="small">
+                        <h:form>
+                            <h:commandLink styleClass="small-img-a" action="test">
+                                <h:graphicImage styleClass="small-img" value="/img/homepage/2.jpg"/>
+                            </h:commandLink>
+                            <div class="small-script">
+                                <div>
+                                    <p>
+                                        <h:commandLink styleClass="small-script-title" value="Computer" action="test"/>
+                                    </p>
+                                </div>
+                                <h3>
+                                    <h:commandLink styleClass="small-script-content" value="sdfasfdsdfsfdsfdsafdfsdadfdsfaf" action="test"/>
+                                </h3>
+                            </div>
+                        </h:form>
+                    </article>
+                    <article class="small">
+                        <h:form>
+                            <h:commandLink styleClass="small-img-a" action="test">
+                                <h:graphicImage styleClass="small-img" value="/img/homepage/3.jpg"/>
+                            </h:commandLink>
+                            <div class="small-script">
+                                <div>
+                                    <p>
+                                        <h:commandLink styleClass="small-script-title" value="Science" action="test"/>
+                                    </p>
+                                </div>
+                                <h3>
+                                    <h:commandLink styleClass="small-script-content" value="sfafdsadfasfsdfsfadf" action="test"/>
+                                </h3>
+                            </div>
+                        </h:form>
+                    </article>
+                    <article class="small">
+                        <h:form>
+                            <h:commandLink styleClass="small-img-a" action="test">
+                                <h:graphicImage styleClass="small-img" value="/img/homepage/4.jpg"/>
+                            </h:commandLink>
+                            <div class="small-script">
+                                <div>
+                                    <p>
+                                        <h:commandLink styleClass="small-script-title" value="Java" action="test"/>
+                                    </p>
+                                </div>
+                                <h3>
+                                    <h:commandLink styleClass="small-script-content" value="sdfsgfgfhghgjhhjkjlkj" action="test"/>
+                                </h3>
+                            </div>
+                        </h:form>
+                    </article>
+                    <article class="small">
+                        <h:form>
+                            <h:commandLink styleClass="small-img-a" action="test">
+                                <h:graphicImage styleClass="small-img" value="/img/homepage/5.jpg"/>
+                            </h:commandLink>
+                            <div class="small-script">
+                                <div>
+                                    <p>
+                                        <h:commandLink styleClass="small-script-title" value="Math" action="test"/>
+                                    </p>
+                                </div>
+                                <h3>
+                                    <h:commandLink styleClass="small-script-content" value="sfsaagfgfsafdsfdasf" action="test"/>
+                                </h3>
+                            </div>
+                        </h:form>
+                    </article>
+                </div>
+            </div>
+        </div>
         <div class="content-mid"></div>
         <div class="content-bot"></div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+        <div class="footer-top"></div>
+        <div class="footer-mid"></div>
+        <div class="footer-bot"></div>
+    </div>
 </h:body>
 </html>
