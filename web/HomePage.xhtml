@@ -59,10 +59,19 @@
                 <div class="content-top-article1">
                     <article class="biggest">
                         <h:form>
-                            <h:commandLink action="test">
+                            <h:commandLink styleClass="biggest-img-a" action="test">
                                 <h:graphicImage styleClass="biggest-img" value="/img/homepage/2.jpg"/>
                             </h:commandLink>
-                            <h:commandLink styleClass="biggest-script" value="slkfjasjflsalfkajslf"/>
+                            <div class="biggest-script">
+                                <div>
+                                    <p>
+                                        <h:commandLink styleClass="biggest-script-title" value="Hibernate" action="test"/>
+                                    </p>
+                                </div>
+                                <h3>
+                                    <h:commandLink styleClass="biggest-script-content" value="sdfasfdsdfsfdsfdsafdfsdadfdsfaf" action="test"/>
+                                </h3>
+                            </div>
                         </h:form>
                     </article>
                 </div>
@@ -80,7 +89,7 @@
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sdfasfdsdfsfdsfdsafdfsdadfdsfaf" action="test"/>
+                                    <h:commandLink styleClass="small-script-content" value="Nothing could be more insteresting" action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -137,6 +146,11 @@
                         </h:form>
                     </article>
                 </div>
+            </div>
+            <div class="content-top-button">
+                <h:form>
+                    <h:commandButton styleClass="content-top-button-script" value="More Hot Courses" action="test"/>
+                </h:form>
             </div>
         </div>
         <div class="content-mid"></div>
