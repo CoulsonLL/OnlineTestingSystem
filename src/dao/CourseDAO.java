@@ -135,9 +135,32 @@ public class CourseDAO
         return list;
     }
 
+    /**
+     * 根据模块编号查询相应课程
+     *
+     * @param moduleID
+     * @return List<CourseEntity>
+     */
+    public List<CourseEntity> queryCoursesByModuleID(int moduleID)
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        String hql = "from CourseEntity where cModule = " + moduleID;
+        list = session.createQuery(hql).list();
+        tx.commit();
+        session.close();
+        for (Object c : list)
+        {
+            System.out.println(c.toString());
+        }
+        return list;
+    }
+
 
     public static void main(String[] args)
     {
-        new CourseDAO().queryAllCourses();
+        new CourseDAO().queryCoursesByModuleID(3);
     }
 }
