@@ -25,6 +25,12 @@ public class CourseService
         return courseDAO.queryCoursesByName(name);
     }
 
+    public List<CourseEntity> getCoursesByModuleID(int moduleID)
+    {
+        CourseDAO courseDAO = new CourseDAO();
+        return courseDAO.queryCoursesByModuleID(moduleID);
+    }
+
     public List<CourseEntity> getCoursesByPopularity()
     {
         CourseDAO courseDAO = new CourseDAO();
