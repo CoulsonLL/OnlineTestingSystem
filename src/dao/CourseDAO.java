@@ -12,6 +12,12 @@ import util.HibernateUtil;
 public class CourseDAO
 {
 
+    /**
+     * 添加课程
+     *
+     * @param course
+     * @return Integer
+     */
     public Integer addCourse(CourseEntity course)
     {
         int i = 0;
@@ -25,9 +31,13 @@ public class CourseDAO
         return i;
     }
 
+    /**
+     * 删除课程
+     *
+     * @param courseID
+     */
     public void deleteCourse(Integer courseID)
     {
-        int i = 0;
         Transaction tx = null;
         List list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -38,9 +48,13 @@ public class CourseDAO
         session.close();
     }
 
+    /**
+     * 更新课程
+     *
+     * @param course
+     */
     public void updateCourse(CourseEntity course)
     {
-        int i = 0;
         Transaction tx = null;
         List list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -104,11 +118,10 @@ public class CourseDAO
         list = session.createQuery("from CourseEntity").list();
         tx.commit();
         session.close();
-//        System.out.println(list.toString());
-        for (Object c : list)
-        {
-            System.out.println(c.toString());
-        }
+//        for (Object c : list)
+//        {
+//            System.out.println(c.toString());
+//        }
         return list;
     }
 
