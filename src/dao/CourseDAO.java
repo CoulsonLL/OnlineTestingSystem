@@ -171,7 +171,6 @@ public class CourseDAO
         return list;
     }
 
-
     public static void main(String[] args)
     {
         new CourseDAO().queryCoursesByModuleID(3);

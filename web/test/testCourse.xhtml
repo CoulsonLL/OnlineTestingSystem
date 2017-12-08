@@ -10,7 +10,10 @@
     <h:form>
         <h:commandButton value="查询热门" action="#{testHomeBean.queryPopularList}"/>
         <h:commandButton value="查询全部" action="#{testHomeBean.queryAllCourses}"/>
+        <h:commandButton value="添加session" action="#{testHomeBean.addSession}"/>
     </h:form>
+
+    <h:outputText value="#{testHomeBean.getSessionString()}"/>
     <div class="container">
         <h:dataTable border="1" bgcolor="yellow" value="#{testHomeBean.list}" var="course">
             <f:facet name="header">课程信息列表</f:facet>
