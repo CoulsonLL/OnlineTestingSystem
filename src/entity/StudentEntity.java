@@ -111,4 +111,17 @@ public class StudentEntity
 
         return Objects.hash(stuId, stuName, stuPwd, stuAge, stuSex, phoneNum);
     }
+
+    @Override
+    public String toString()
+    {
+        return "StudentEntity{" +
+                "stuId=" + stuId +
+                ", stuName='" + stuName + '\'' +
+                ", stuPwd='" + stuPwd + '\'' +
+                ", stuAge=" + stuAge +
+                ", stuSex='" + stuSex + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                '}';
+    }
 }

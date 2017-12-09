@@ -80,9 +80,9 @@ public class StudentService
     /**
      * 判断是否已经登录
      *
-     * @return
+     * @return boolean
      */
-    public boolean isLogin()
+    public boolean isLoggedIn()
     {
         if (FacesUtil.getSession().getAttribute("userInfo") != null)
         {
@@ -92,5 +92,45 @@ public class StudentService
         {
             return false;
         }
+    }
+
+    /**
+     * 注册
+     * @param studentEntity
+     * @return boolean
+     */
+    public boolean register(StudentEntity studentEntity)
+    {
+        if (studentEntity != null)
+        {
+            StudentEntity entity = studentDAO.queryStudentByPhoneNum(studentEntity.getPhoneNum());
+            if (entity == null)
+            {
+                addStudent(studentEntity);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        StudentService studentService = new StudentService();
+//        StudentEntity studentEntity = new StudentEntity();
+//        studentEntity.setPhoneNum("18661661838");
+//        studentEntity.setStuAge(20);
+//        studentEntity.setStuName("david");
+//        studentEntity.setStuPwd("123123");
+//        studentEntity.setStuSex("M");
+//        studentService.addStudent(studentEntity);
+        StudentEntity studentEntity = studentService.getStudentById(3);
+        System.out.println(studentEntity);
     }
 }
