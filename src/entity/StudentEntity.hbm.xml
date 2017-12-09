@@ -20,5 +20,8 @@
         <property name="stuSex">
             <column name="StuSex" sql-type="nchar(1)" length="1"/>
         </property>
+        <property name="phoneNum">
+            <column name="PhoneNum" sql-type="nvarchar(11)" length="11" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

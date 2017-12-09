@@ -102,4 +102,23 @@ public class StudentDAO
         System.out.println(entity);
         return entity;
     }
+
+    /**
+     * 根据学生手机号码查询学生信息
+     *
+     * @param studentID
+     * @return StudentEntity
+     */
+    public StudentEntity queryStudentByPhoneNum(String PhoneNum)
+    {
+        Transaction tx = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        String hql = "from StudentEntity where stuId = " + PhoneNum;
+        StudentEntity entity = (StudentEntity) session.createQuery(hql).uniqueResult();
+        tx.commit();
+        session.close();
+        System.out.println(entity);
+        return entity;
+    }
 }
