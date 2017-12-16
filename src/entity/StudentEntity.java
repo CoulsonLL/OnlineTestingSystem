@@ -18,6 +18,7 @@ public class StudentEntity
     private int stuAge;
     private String stuSex;
     private String phoneNum;
+    private String email;
 
     @Id
     @Column(name = "StuID", nullable = false)
@@ -91,6 +92,18 @@ public class StudentEntity
         this.phoneNum = phoneNum;
     }
 
+    @Basic
+    @Column(name = "Email", nullable = true, length = 50)
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -102,26 +115,14 @@ public class StudentEntity
                 Objects.equals(stuName, that.stuName) &&
                 Objects.equals(stuPwd, that.stuPwd) &&
                 Objects.equals(stuSex, that.stuSex) &&
-                Objects.equals(phoneNum, that.phoneNum);
+                Objects.equals(phoneNum, that.phoneNum) &&
+                Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode()
     {
 
-        return Objects.hash(stuId, stuName, stuPwd, stuAge, stuSex, phoneNum);
-    }
-
-    @Override
-    public String toString()
-    {
-        return "StudentEntity{" +
-                "stuId=" + stuId +
-                ", stuName='" + stuName + '\'' +
-                ", stuPwd='" + stuPwd + '\'' +
-                ", stuAge=" + stuAge +
-                ", stuSex='" + stuSex + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                '}';
+        return Objects.hash(stuId, stuName, stuPwd, stuAge, stuSex, phoneNum, email);
     }
 }

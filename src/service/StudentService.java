@@ -15,11 +15,6 @@ public class StudentService
         return studentDAO.queryAllStudents();
     }
 
-    public StudentEntity getStudentEntity(Integer studentID)
-    {
-        return studentDAO.queryStudentById(studentID);
-    }
-
     public StudentEntity getStudentById(Integer studentID)
     {
         return studentDAO.queryStudentById(studentID);
@@ -48,8 +43,8 @@ public class StudentService
     /**
      * 登录
      *
-     * @param phoneNum
-     * @param password
+     * @param phoneNum 手机号码
+     * @param password 密码
      * @return boolean 登录成功返回true 失败返回false
      */
     public boolean login(String phoneNum, String password)
@@ -70,7 +65,7 @@ public class StudentService
     /**
      * 退出登录
      *
-     * @param phoneNum
+     * @param phoneNum 手机号码
      */
     public void logout(String phoneNum)
     {
@@ -96,7 +91,8 @@ public class StudentService
 
     /**
      * 注册
-     * @param studentEntity
+     *
+     * @param studentEntity StudentEntity对象
      * @return boolean
      */
     public boolean register(StudentEntity studentEntity)
@@ -123,14 +119,16 @@ public class StudentService
     public static void main(String[] args)
     {
         StudentService studentService = new StudentService();
-//        StudentEntity studentEntity = new StudentEntity();
-//        studentEntity.setPhoneNum("18661661838");
-//        studentEntity.setStuAge(20);
-//        studentEntity.setStuName("david");
-//        studentEntity.setStuPwd("123123");
-//        studentEntity.setStuSex("M");
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setPhoneNum("18661661839");
+        studentEntity.setStuAge(20);
+        studentEntity.setStuName("david1");
+        studentEntity.setStuPwd("1231fdg23");
+        studentEntity.setStuSex("M");
 //        studentService.addStudent(studentEntity);
-        StudentEntity studentEntity = studentService.getStudentById(3);
-        System.out.println(studentEntity);
+//        StudentEntity studentEntity = studentService.getStudentById(3);
+//        System.out.println(studentEntity);
+        boolean res = studentService.register(studentEntity);
+        System.out.println(res);
     }
 }

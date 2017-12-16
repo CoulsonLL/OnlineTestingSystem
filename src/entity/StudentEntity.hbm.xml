@@ -24,5 +24,8 @@
         <property name="phoneNum">
             <column name="PhoneNum" sql-type="nvarchar(11)" length="11" not-null="true"/>
         </property>
+        <property name="email">
+            <column name="Email" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

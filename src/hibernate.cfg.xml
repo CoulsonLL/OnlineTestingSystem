@@ -5,15 +5,14 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">jdbc:sqlserver://123.206.204.252:1433</property>
-        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver
+        </property>
         <property name="connection.username">david</property>
         <property name="connection.password">qaz13047409865</property>
         <mapping class="entity.CourseEntity"/>
-        <mapping resource="entity/CourseEntity.hbm.xml"/>
-        <mapping resource="entity/CourseEntity.hbm.xml"/>
-        <mapping class="entity.CourseEntity"/>
-        <mapping resource="entity/StudentEntity.hbm.xml"/>
         <mapping class="entity.StudentEntity"/>
+        <mapping resource="entity/CourseEntity.hbm.xml"/>
+        <mapping resource="entity/StudentEntity.hbm.xml"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
