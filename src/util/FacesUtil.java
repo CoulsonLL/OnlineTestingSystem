@@ -3,6 +3,7 @@ package util;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class FacesUtil
@@ -21,9 +22,9 @@ public class FacesUtil
         return request;
     }
 
-    public static HttpServletRequest getResponse()
+    public static HttpServletResponse getResponse()
     {
-        HttpServletRequest response = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        HttpServletResponse response = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
         return response;
     }
 }
