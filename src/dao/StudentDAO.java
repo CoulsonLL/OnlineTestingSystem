@@ -95,7 +95,7 @@ public class StudentDAO
         Transaction tx = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         tx = session.beginTransaction();
-        String hql = "from StudentEntity where stuId = " + studentID;
+        String hql = "from StudentEntity where stuId = '" + studentID + "'";
         StudentEntity entity = (StudentEntity) session.createQuery(hql).uniqueResult();
         tx.commit();
         session.close();
@@ -114,11 +114,12 @@ public class StudentDAO
         Transaction tx = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         tx = session.beginTransaction();
-        String hql = "from StudentEntity where phoneNum = " + PhoneNum;
+//        String hql = "from StudentEntity where phoneNum = " + PhoneNum;
+        String hql = "from StudentEntity where phoneNum = '" + PhoneNum + "'";
         StudentEntity entity = (StudentEntity) session.createQuery(hql).uniqueResult();
         tx.commit();
         session.close();
-//        System.out.println(entity);
+        System.out.println(entity);
         return entity;
     }
 }
