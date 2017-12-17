@@ -4,15 +4,16 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:sqlserver://123.206.204.252:1433</property>
-        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver
-        </property>
+        <property name="connection.url">jdbc:jtds:sqlserver://49.4.11.64:1433</property>
+        <property name="connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
         <property name="connection.username">david</property>
         <property name="connection.password">qaz13047409865</property>
         <mapping class="entity.CourseEntity"/>
         <mapping class="entity.StudentEntity"/>
         <mapping resource="entity/CourseEntity.hbm.xml"/>
         <mapping resource="entity/StudentEntity.hbm.xml"/>
+        <mapping class="entity.ManagerEntity"/>
+        <mapping resource="entity/ManagerEntity.hbm.xml"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

@@ -1,18 +1,20 @@
 package test;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
 
 import entity.CourseEntity;
 import service.CourseService;
 import util.FacesUtil;
 
-@Named
-@RequestScoped
-public class TestHomeBean
+@SuppressWarnings("deprecation")
+@ManagedBean
+@SessionScoped
+public class TestHomeBean implements Serializable
 {
     private List<CourseEntity> list = null;
 
@@ -44,5 +46,11 @@ public class TestHomeBean
         HttpSession session = FacesUtil.getSession();
         String s = (String) session.getAttribute("text");
         return s;
+    }
+
+    public String deleteRow(CourseEntity courseEntity)
+    {
+        System.out.println(courseEntity.toString());
+        return null;
     }
 }

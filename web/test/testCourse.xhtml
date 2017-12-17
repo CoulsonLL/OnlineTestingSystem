@@ -11,61 +11,74 @@
         <h:commandButton value="查询热门" action="#{testHomeBean.queryPopularList}"/>
         <h:commandButton value="查询全部" action="#{testHomeBean.queryAllCourses}"/>
         <h:commandButton value="添加session" action="#{testHomeBean.addSession}"/>
-    </h:form>
+        <h:commandButton value="delete" action="#{testHomeBean.deleteRow}"/>
 
-    <h:outputText value="#{testHomeBean.getSessionString()}"/>
-    <div class="container">
-        <h:dataTable border="1" bgcolor="yellow" value="#{testHomeBean.list}" var="course">
-            <f:facet name="header">课程信息列表</f:facet>
-            <h:column>
-                <f:facet name="header">
-                    ID
-                </f:facet>/
-                #{course.cCourseId}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    Name
-                </f:facet>
-                #{course.cName}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    Module
-                </f:facet>
-                #{course.cModule}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    Detail
-                </f:facet>
-                #{course.cDetail}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    MgrID
-                </f:facet>
-                #{course.mgrId}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    ModifyTime
-                </f:facet>
-                #{course.modifyTime}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    ViewCount
-                </f:facet>
-                #{course.viewCount}
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    Picture
-                </f:facet>
-                #{course.picture}
-            </h:column>
-        </h:dataTable>
-    </div>
+        <h:outputText value="#{testHomeBean.getSessionString()}"/>
+        <div class="container">
+            <h:dataTable border="1" bgcolor="yellow" value="#{testHomeBean.list}" var="course">
+                <f:facet name="header">课程信息列表</f:facet>
+                <h:column>
+                    <f:facet name="header">
+                        No
+                    </f:facet>
+                    #{rowCounter.row}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ID
+                    </f:facet>
+                    #{course.cCourseId}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Name
+                    </f:facet>
+                    #{course.cName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Module
+                    </f:facet>
+                    #{course.cModule}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Detail
+                    </f:facet>
+                    #{course.cDetail}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        MgrID
+                    </f:facet>
+                    #{course.mgrId}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ModifyTime
+                    </f:facet>
+                    #{course.modifyTime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ViewCount
+                    </f:facet>
+                    #{course.viewCount}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Picture
+                    </f:facet>
+                    #{course.picture}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Action
+                    </f:facet>
+                    <h:commandLink value="delete" action="#{testHomeBean.deleteRow(course)}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </h:form>
 </h:body>
 </html>

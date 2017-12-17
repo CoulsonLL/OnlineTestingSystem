@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@123.206.204.252" uuid="6f0c48fc-9b3f-41fd-bfab-6215726f5937">
-      <driver-ref>sqlserver.ms</driver-ref>
+    <data-source source="LOCAL" name="@49.4.11.64" uuid="9123bbc7-50ec-4fba-9802-d94d0cf31c5d">
+      <driver-ref>sqlserver.jtds</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://123.206.204.252:1433</jdbc-url>
+      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:jtds:sqlserver://49.4.11.64:1433</jdbc-url>
       <driver-properties>
-        <property name="applicationName" value="DataGrip" />
+        <property name="appName" value="DataGrip" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="35ee53b9-07f1-495c-a4f1-cc92bcdcfefd">
-      <driver-ref>sqlserver.ms</driver-ref>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="df6cf89a-592e-4d43-bd93-8f2b1f6b4ad7">
+      <driver-ref>sqlserver.jtds</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/src/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://123.206.204.252:1433;database=OnlineTest</jdbc-url>
+      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:jtds:sqlserver://49.4.11.64:1433</jdbc-url>
       <driver-properties>
-        <property name="applicationName" value="DataGrip" />
+        <property name="appName" value="DataGrip" />
       </driver-properties>
     </data-source>
   </component>
