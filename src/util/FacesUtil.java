@@ -20,4 +20,10 @@ public class FacesUtil
         HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
         return request;
     }
+
+    public static HttpServletRequest getResponse()
+    {
+        HttpServletRequest response = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        return response;
+    }
 }
