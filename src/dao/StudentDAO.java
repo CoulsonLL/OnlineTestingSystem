@@ -119,7 +119,7 @@ public class StudentDAO
         StudentEntity entity = (StudentEntity) session.createQuery(hql).uniqueResult();
         tx.commit();
         session.close();
-        System.out.println(entity);
+//        System.out.println(entity);
         return entity;
     }
 }

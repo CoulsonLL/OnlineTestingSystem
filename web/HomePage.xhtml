@@ -10,8 +10,12 @@
     <title>HomePage</title>
     <link rel="stylesheet" type="text/css" href="/OnlineTestingSystem_war_exploded/css/search-form.css"/>
     <link rel="stylesheet" type="text/css" href="/OnlineTestingSystem_war_exploded/css/HomeRender.css"/>
-    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/search.js"></script>
+    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/jquery-1.11.0.min.js"/>
+    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/search.js"/>
+
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"/>
+    <script type="text/javascript" src="js/login.js"/>
 </h:head>
 <h:body>
     <div class="header">
@@ -45,11 +49,86 @@
         </div>
     </form>
 
+    <a class="login-open" href="javascript:"/>
+    <div class="login-container">
+            <ul class="login-switcher">
+                <li class="login-li">
+                    <a class="login-a" href="#">Log In</a>
+                </li>
+                <li class="signup-li">
+                    <a class="signup-a" href="#">Sign Up</a>
+                </li>
+            </ul>
+
+            <div id="login"> <!-- 登录表单 -->
+                <h:form>
+                    <div>
+                        <h:outputLabel styleclass="login-phoneno-label" for="login-phoneno">Phone No</h:outputLabel>
+                        <h:inputText styleclass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}"/>
+                    </div><br/>
+
+                    <div>
+                        <h:outputLabel styleclass="login-password-label" for="login-password">Password</h:outputLabel>
+                        <h:inputSecret styleclass="login-password-input" id="login-password" value="#{login_Signup.password}"/>
+                    </div><br/>
+
+                    <div>
+                        <h:selectBooleanCheckbox stylestyleclass="login-remember-checkbox" id="login-remember" value="#{login_Signup.remember}"/>
+                        <h:outputLabel stylestyleclass="login-remember-label" for="login-remember">Remember me</h:outputLabel>
+                    </div><br/>
+
+
+                    <h:commandButton id="loginbutton" styleclass="button-login" value="Login" action="#{login_Signup.login}">
+                        <!--<f:ajax execute="login-phoneno login-password" render="error" event="click" />-->
+                    </h:commandButton>
+
+                </h:form>
+                <f:ajax event="click" render="nameerror">
+                    <h:outputText for="loginbutton" id="nameerror" value="#{login_Signup.error}"/>
+                </f:ajax>
+                <!--<h:message id="error" for="loginbutton" styleClass="login-error" />-->
+            </div>
+
+            <div id="signup"> <!-- 注册表单 -->
+                <h:form>
+                    <div>
+                        <h:outputLabel styleclass="signup-phoneno-lable" for="signup-phoneno">Phone No</h:outputLabel>
+                        <h:inputText styleclass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}"/>
+                    </div><br/>
+
+                    <div>
+                        <h:outputLabel styleclass="signup-email-lable" for="signup-email">E-mail</h:outputLabel>
+                        <h:inputText styleclass="signup-email-input" id="signup-email" value="#{login_Signup.email}"/>
+                    </div><br/>
+
+                    <div>
+                        <h:outputLabel styleclass="signup-password-lable" for="signup-password">Password</h:outputLabel>
+                        <h:inputSecret styleclass="signup-password-input" id="signup-password" value="#{login_Signup.password}"/>
+                    </div><br/>
+
+                    <div>
+                        <h:selectBooleanCheckbox id="user-protocol"/>
+                        <h:outputLabel for="user-protocol">I agree <a href="#">User protocol</a> </h:outputLabel>
+                    </div><br/>
+
+
+                        <h:commandButton styleclass="button-register" value="Register"/>
+
+                </h:form>
+                <h:outputText styleClass="signup-error" value="#{login_Signup.error}"/>
+            </div>
+    </div>
+
+
+
+
+    <div class="login-mask"/>
 
 
     <div class="Coverimg">
         <p>OnlineTestingSystem</p>
     </div>
+
 
     <div class="content">
         <div class="content-top">
@@ -67,11 +146,13 @@
                             <div class="biggest-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="biggest-script-title" value="Hibernate" action="test"/>
+                                        <h:commandLink styleClass="biggest-script-title" value="Hibernate"
+                                                       action="test"/>
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="biggest-script-content" value="sdfasfdsdfsfdsfdsafdfsdadfdsfaf" action="test"/>
+                                    <h:commandLink styleClass="biggest-script-content"
+                                                   value="sdfasfdsdfsfdsfdsafdfsdadfdsfaf" action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -91,7 +172,8 @@
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="Nothing could be more insteresting" action="test"/>
+                                    <h:commandLink styleClass="small-script-content"
+                                                   value="Nothing could be more insteresting" action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -108,7 +190,8 @@
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sfafdsadfasfsdfsfadf" action="test"/>
+                                    <h:commandLink styleClass="small-script-content" value="sfafdsadfasfsdfsfadf"
+                                                   action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -125,7 +208,8 @@
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sdfsgfgfhghgjhhjkjlkj" action="test"/>
+                                    <h:commandLink styleClass="small-script-content" value="sdfsgfgfhghgjhhjkjlkj"
+                                                   action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -142,7 +226,8 @@
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sfsaagfgfsafdsfdasf" action="test"/>
+                                    <h:commandLink styleClass="small-script-content" value="sfsaagfgfsafdsfdasf"
+                                                   action="test"/>
                                 </h3>
                             </div>
                         </h:form>

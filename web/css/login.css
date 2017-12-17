@@ -1,0 +1,88 @@
+.login-open {
+	background-image: url("../img/homepage/2.jpg");
+	width: 30px;
+    height: 30px;
+	position: absolute;
+	top: 20px;
+	right: 10px;
+}
+.login-mask {
+	z-index: 9998;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:0.7;
+	/*filter:alpha(opacity=40);*/
+	display:none
+}
+.login-container {
+    z-index:9999;
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:600px;
+    height:360px;
+    margin:-180px 0 0 -300px;
+    border-radius:50px;
+    border:solid 2px #666;
+    background-color:#f9f6ef;
+    display:none;
+    box-shadow: 0 0 10px #666;
+}
+
+.login-switcher {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+.login-switcher li {
+	display: inline-block;
+	text-align: center;
+	width: 50%;
+	padding:20px;
+	background-color: #f9f6ef;
+}
+.login-a {
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+	color: #2f2424;
+}
+.signup-a {
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+	color: #2f2424;
+}
+
+.login-li.selected {
+
+}
+
+#login, #signup {
+	display: none;
+}
+
+#login.is-selected, #signup.is-selected {
+	display: block;
+}
+
+
+
+
+
+/*.login-close {*/
+	/*float:right;*/
+	/*color:#999;*/
+	/*padding:5px;*/
+	/*margin:-2px -5px -5px;*/
+	/*font:bold 14px/14px simsun;*/
+	/*text-shadow:0 1px 0 #ddd*/
+/*}*/
+/*.login-close:hover {*/
+	/*color:#444;*/
+/*}*/
