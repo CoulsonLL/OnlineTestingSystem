@@ -116,6 +116,20 @@ public class StudentService
         }
     }
 
+    /**
+     * <h1>修改学生信息</h1>
+     * <p>先使用StudentEntity se = FacesUtil.getSession().setAttribute("userInfo", studentEntity);获取当前学生信息<br/>
+     * 然后调用se.setXXX();设定相关属性<br/>
+     * 设定完成后调用本函数 传入修改过的StudentEntity对象即可</p>
+     *
+     * @param studentEntity 修改过的StudentEntity对象
+     */
+    public void updateStudentProfile(StudentEntity studentEntity)
+    {
+        StudentService studentService = new StudentService();
+        studentService.updateStudent(studentEntity);
+    }
+
     public static void main(String[] args)
     {
         StudentService studentService = new StudentService();

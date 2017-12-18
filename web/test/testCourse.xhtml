@@ -5,8 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>$Title$</title>
+    <script type="text/javascript" src="../js/jquery.min.js"/>
+    <script type="text/javascript" src="../js/test.js"/>
 </h:head>
 <h:body>
+    <button id="test">Test</button>
+    <h:outputText value="#{testHomeBean.username}"/>
+    <h:outputText value="#{testHomeBean.password}"/>
+    <h:outputText value="" styleClass="errorMessage"/>
+    <h:inputText styleClass="username" value=""/>
+    <h:inputSecret styleClass="password" value=""/>
     <h:form>
         <h:commandButton value="查询热门" action="#{testHomeBean.queryPopularList}"/>
         <h:commandButton value="查询全部" action="#{testHomeBean.queryAllCourses}"/>
