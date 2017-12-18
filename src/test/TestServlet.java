@@ -16,6 +16,11 @@ public class TestServlet extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        doGet(request, response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         PrintWriter out = response.getWriter();
         String type = request.getParameter("type");
         if (type.equals("login"))
@@ -25,10 +30,12 @@ public class TestServlet extends HttpServlet
             StudentService studentService = new StudentService();
             if (studentService.login(username, password))
             {
+                request.getSession().setAttribute("userInfo", studentService.getStudentByPhoneNum(username));
                 out.print("OK");
             }
             else
             {
+                request.getSession().invalidate();
                 out.print("WRONG");
             }
         }
@@ -36,11 +43,6 @@ public class TestServlet extends HttpServlet
         {
             //获取注册相关表单的信息然后判断并向用户返回结果
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-
     }
 }
 //请不要修改此处

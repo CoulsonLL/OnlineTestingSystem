@@ -52,12 +52,16 @@ public class StudentService
         StudentEntity studentEntity = studentDAO.queryStudentByPhoneNum(phoneNum);
         if (studentEntity != null && password != null && password.equals(studentEntity.getStuPwd()))
         {
-            FacesUtil.getSession().setAttribute("userInfo", studentEntity);
             return true;
         }
         else
         {
-            FacesUtil.getSession().invalidate();
+//            HttpSession session = FacesUtil.getSession();
+//            if (session != null)
+//            {
+//                FacesUtil.getSession().invalidate();
+//
+//            }
             return false;
         }
     }
@@ -102,8 +106,15 @@ public class StudentService
             StudentEntity entity = studentDAO.queryStudentByPhoneNum(studentEntity.getPhoneNum());
             if (entity == null)
             {
-                addStudent(studentEntity);
-                return true;
+                try
+                {
+                    addStudent(studentEntity);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
             }
             else
             {
