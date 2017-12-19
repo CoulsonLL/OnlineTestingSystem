@@ -45,7 +45,6 @@ public class TestHomeBean implements Serializable
     public TestHomeBean()
     {
         session.setAttribute("testHomeBean", this);
-        System.out.println(session.getId());
     }
 
     public void queryAllCourses()
