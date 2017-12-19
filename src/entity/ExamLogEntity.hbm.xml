@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.ExamLogEntity" table="ExamLog" schema="dbo" catalog="OnlineTest">
+        <id name="examLogsId">
+            <column name="ExamLogsID" sql-type="int"/>
+            <generator class="native"/>
+        </id>
+        <property name="examId">
+            <column name="ExamID" sql-type="int"/>
+        </property>
+        <property name="stuId">
+            <column name="StuID" sql-type="int"/>
+        </property>
+        <property name="email">
+            <column name="Email" sql-type="nvarchar(20)" length="20"/>
+        </property>
+        <property name="applyTime">
+            <column name="ApplyTime" sql-type="datetime"/>
+        </property>
+        <property name="mgrId">
+            <column name="MgrID" sql-type="int" not-null="true"/>
+        </property>
+        <property name="approvalResult">
+            <column name="ApprovalResult" sql-type="int" not-null="true"/>
+        </property>
+        <property name="examStartTime">
+            <column name="ExamStartTime" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="examEndTime">
+            <column name="ExamEndTime" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="score">
+            <column name="Score" sql-type="decimal(10,2)" precision="10" scale="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

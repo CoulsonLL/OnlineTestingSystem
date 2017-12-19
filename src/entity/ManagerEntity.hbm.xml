@@ -7,7 +7,7 @@
     <class name="entity.ManagerEntity" table="Manager" schema="dbo" catalog="OnlineTest">
         <id name="mgrId">
             <column name="MgrID" sql-type="int"/>
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
         <property name="mgrName">
             <column name="MgrName" sql-type="nvarchar(20)" length="20"/>

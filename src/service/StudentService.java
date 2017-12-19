@@ -95,20 +95,30 @@ public class StudentService
      * @param studentEntity StudentEntity对象
      * @return boolean
      */
-    public boolean register(StudentEntity studentEntity) {
-        if (studentEntity != null) {
+    public boolean register(StudentEntity studentEntity)
+    {
+        if (studentEntity != null)
+        {
             StudentEntity entity = studentDAO.queryStudentByPhoneNum(studentEntity.getPhoneNum());
-            if (entity == null) {
-                try {
+            if (entity == null)
+            {
+                try
+                {
                     addStudent(studentEntity);
                     return true;
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     return false;
                 }
-            } else {
+            }
+            else
+            {
                 return false;
             }
-        } else {
+        }
+        else
+        {
             return false;
         }
     }

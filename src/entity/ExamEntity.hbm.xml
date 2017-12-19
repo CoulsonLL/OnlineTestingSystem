@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.ExamEntity" table="Exam" schema="dbo" catalog="OnlineTest">
+        <id name="examId">
+            <column name="ExamID" sql-type="int"/>
+            <generator class="native"/>
+        </id>
+        <property name="examName">
+            <column name="ExamName" sql-type="nvarchar(20)" length="20"/>
+        </property>
+        <property name="duration">
+            <column name="Duration" sql-type="int"/>
+        </property>
+        <property name="pid">
+            <column name="PID" sql-type="int"/>
+        </property>
+        <property name="examState">
+            <column name="ExamState" sql-type="int"/>
+        </property>
+    </class>
+</hibernate-mapping>

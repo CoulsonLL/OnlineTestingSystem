@@ -14,6 +14,20 @@
         <mapping resource="entity/StudentEntity.hbm.xml"/>
         <mapping class="entity.ManagerEntity"/>
         <mapping resource="entity/ManagerEntity.hbm.xml"/>
+        <mapping resource="entity/ScEntity.hbm.xml"/>
+        <mapping class="entity.ScEntity"/>
+        <mapping resource="entity/ExamEntity.hbm.xml"/>
+        <mapping class="entity.ExamEntity"/>
+        <mapping resource="entity/ExamLogEntity.hbm.xml"/>
+        <mapping class="entity.ExamLogEntity"/>
+        <mapping resource="entity/ModuleEntity.hbm.xml"/>
+        <mapping class="entity.ModuleEntity"/>
+        <mapping resource="entity/PaperEntity.hbm.xml"/>
+        <mapping class="entity.PaperEntity"/>
+        <mapping resource="entity/QuestionEntity.hbm.xml"/>
+        <mapping class="entity.QuestionEntity"/>
+        <mapping resource="entity/UserAnswerEntity.hbm.xml"/>
+        <mapping class="entity.UserAnswerEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
