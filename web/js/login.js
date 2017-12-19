@@ -10,9 +10,17 @@ jQuery(document).ready(function () {
     var $login_a = $login_tab.children('a');
     var $signup_tab = $switcher.children('li').eq(1);
     var $signup_a = $signup_tab.children('a');
-
+    //获取登陆和注册失败的信息
+    var null_error1 = document.getElementById("login_null_error").innerHTML;
     var error1 = document.getElementById("login_error").innerHTML;
+    var null_error2 = document.getElementById("signup_null_error").innerHTML;
     var error2 = document.getElementById("signup_error").innerHTML;
+    //获取注册成功的信息
+    var signup_success = document.getElementById("signup_success").innerHTML;
+    //获取弹出框需要autofocus的inputText
+    var login_input = document.getElementById('#login-phoneno');
+    var signup_input = document.getElementById('#signup-phoneno');
+
 
     //弹出窗口
     $login_open.click(function () {
@@ -21,6 +29,7 @@ jQuery(document).ready(function () {
         $login_div.addClass('is-selected');
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
+        login_input.focus();
     });
 
     //点击非对话框区域关闭弹出窗口
@@ -54,7 +63,16 @@ jQuery(document).ready(function () {
         signup_selected();
     });
 
-    //判断登陆成功与否，若登陆失败，则提示重新输入
+    //若登陆输入框有内容为空，显示notnull信息,并重新登陆
+    if(null_error1!==""){
+        alert(null_error1);
+        $login_mask.fadeIn(400);
+        $login_container.slideDown(400);
+        $login_div.addClass('is-selected');
+        $login_tab.addClass('selected');
+        $login_a.addClass('text-selected');
+    }
+    //若登陆失败，显示错误信息，并重新弹出登陆框
     if(error1!==""){
         alert(error1);
         $login_mask.fadeIn(400);
@@ -63,7 +81,20 @@ jQuery(document).ready(function () {
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
     }
-    //判断注册成功与否，若登陆失败，则提示重新输入
+
+    //若注册输入框有内容为空，显示notnull信息,并重新登陆
+    if(null_error2!==""){
+        $signup_div.removeClass('is-selected');
+        $signup_tab.removeClass('selected');
+        $signup_a.removeClass('text-selected');
+        alert(null_error2);
+        $login_mask.fadeIn(400);
+        $login_container.slideDown(400);
+        $signup_div.addClass('is-selected');
+        $signup_tab.addClass('selected');
+        $signup_a.addClass('text-selected');
+    }
+    //若注册失败，显示错误信息，并重新弹出注册框
     if(error2!==""){
         $signup_div.removeClass('is-selected');
         $signup_tab.removeClass('selected');
@@ -75,7 +106,15 @@ jQuery(document).ready(function () {
         $signup_tab.addClass('selected');
         $signup_a.addClass('text-selected');
     }
-
+    //若注册成功，则弹出登陆框
+    if(signup_success!==""){
+        alert(signup_success);
+        $login_mask.fadeIn(400);
+        $login_container.slideDown(400);
+        $login_div.addClass('is-selected');
+        $login_tab.addClass('selected');
+        $login_a.addClass('text-selected');
+    }
 
     function login_selected() {
         $login_div.addClass('is-selected');

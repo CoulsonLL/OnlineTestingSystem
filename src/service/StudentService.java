@@ -57,7 +57,7 @@ public class StudentService
         }
         else
         {
-            FacesUtil.getSession().invalidate();
+//            FacesUtil.getSession().invalidate();
             return false;
         }
     }
