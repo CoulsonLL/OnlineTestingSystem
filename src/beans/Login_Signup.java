@@ -1,5 +1,6 @@
 package beans;
 
+import entity.StudentEntity;
 import service.StudentService;
 import util.FacesUtil;
 
@@ -13,6 +14,8 @@ import javax.inject.Named;
 import java.io.IOException;
 import java.io.Serializable;
 
+import static java.lang.System.out;
+
 @Named
 @RequestScoped
 public class Login_Signup {
@@ -20,28 +23,41 @@ public class Login_Signup {
     private String password;
     private String email;
     private boolean remember;
-    private String error;
+    private String error1;
+    private String error2;
+    private String userinfo;
 
-    public void login(){
+    public void login() {
         StudentService stuService = new StudentService();
         boolean sign = stuService.login(phoneno, password);
-        if(sign){
+        if (sign) {
+            FacesUtil.getRequest().getRequestDispatcher("HomePage.xhtml");
+            userinfo = phoneno;
+            System.out.println(userinfo);
+        } else {
+            error1 = "Invalid PhoneNo or Password, check and enter it again";
+            out.println("login failed");
+        }
+    }
+
+    public void signup() {
+        StudentService stuService = new StudentService();
+        StudentEntity student = new StudentEntity();
+        student.setPhoneNum(phoneno);
+        student.setEmail(email);
+        student.setStuPwd(password);
+        boolean sign = stuService.register(student);
+        if (sign) {
             try {
                 FacesUtil.getResponse().sendRedirect("HomePage.xhtml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
-            error = "Invalid PhoneNo or Password, check and enter it again";
-            System.out.println("login failed");
+        } else {
+            error2 = "Check your format of phone number and email address, please enter it again";
+            out.println("Signup failed");
         }
     }
-
-//    public void validatename(FacesContext context, UIComponent component, Object value){
-//        if(error!=null){
-//            throw new ValidatorException(new FacesMessage(error));
-//        }
-//    }
 
     public String getPhoneno() {
         return phoneno;
@@ -75,11 +91,27 @@ public class Login_Signup {
         this.remember = remember;
     }
 
-    public String getError() {
-        return error;
+    public String getError1() {
+        return error1;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setError1(String error1) {
+        this.error1 = error1;
+    }
+
+    public String getError2() {
+        return error2;
+    }
+
+    public void setError2(String error2) {
+        this.error2 = error2;
+    }
+
+    public String getUserinfo() {
+        return userinfo;
+    }
+
+    public void setUserinfo(String userinfo) {
+        this.userinfo = userinfo;
     }
 }

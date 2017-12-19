@@ -1,3 +1,12 @@
+.UserInfo {
+	text-decoration: none;
+	position: absolute;
+	top: 30px;
+	right: 300px;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+}
 .login-open {
 	background-image: url("../img/homepage/2.jpg");
 	width: 30px;
@@ -26,14 +35,18 @@
     width:600px;
     height:360px;
     margin:-180px 0 0 -300px;
-    border-radius:50px;
-    border:solid 2px #666;
-    background-color:#f9f6ef;
+    border-radius:30px;
+    /*border:solid 2px #666;*/
+	background-color: #5C5C5C;
     display:none;
     box-shadow: 0 0 10px #666;
 }
 
 .login-switcher {
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -44,24 +57,141 @@
 	text-align: center;
 	width: 50%;
 	padding:20px;
-	background-color: #f9f6ef;
 }
-.login-a {
+.login-li {
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 20px;
+	background-color: wheat;
+	cursor: pointer;
+}
+.signup-li {
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 20px;
+	background-color: wheat;
+	cursor: pointer;
+}
+.login-li.selected, .signup-li.selected {
+	background-color: #b1040e;
+}
+.login-a, .signup-a {
 	text-decoration: none;
 	font-size: 30px;
 	font-weight: bold;
-	color: #2f2424;
+	color: #b1040e;
+	opacity: 0.5;
 }
-.signup-a {
-	text-decoration: none;
-	font-size: 30px;
+.login-a.text-selected, .signup-a.text-selected {
+	color: #f9f6ef;
+	opacity: 1;
+}
+
+#login {
+	padding-top: 20px;
+}
+#login div {
+	padding-top: 20px;
+	padding-left: 13%;
+}
+.login-phoneno-label, .login-password-label {
+	font-size: 25px;
 	font-weight: bold;
-	color: #2f2424;
+	color: #f9f6ef;
+}
+.login-phoneno-input {
+	outline: none;
+	border: 0;
+	width: 50%;
+	height: 35px;
+	border-radius: 8px;
+	margin-left: 60px;
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.login-password-input {
+	outline: none;
+	border: 0;
+	width: 50%;
+	height: 35px;
+	border-radius: 8px;
+	margin-left: 65px;
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.login-remember-label {
+	font-size: 20px;
+	color: #f9f6ef;
+	cursor: pointer;
+}
+.button-login {
+	cursor: pointer;
+	padding: 0;
+	margin-left: 13%;
+	border: 0;
+	width: 215px;
+	height: 40px;
+	outline: none;
+
+	font-size: 20px;
+	font-weight: bold;
+	color: #f9f6ef;
+	background-color: #b1040e;
+	transition: background-color .25s ease-in-out;
+}
+.button-login:hover {
+	background-color: #771319;
 }
 
-.login-li.selected {
 
+
+.signup-form {
+	padding-left: 13%;
 }
+/*#signup div {*/
+	/*padding-top: 15px;*/
+	/*padding-left: 13%;*/
+/*}*/
+.signup-phoneno-label, .signup-email-label, .signup-password-label {
+	font-size: 25px;
+	font-weight: bold;
+	color: #f9f6ef;
+}
+.signup-phoneno-input, .signup-email-input, .signup-password-input {
+	outline: none;
+	border: 0;
+	width: 100%;
+	height: 35px;
+	margin-left: 30px;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.protocol-div {
+	padding-left: 15%;
+	margin-top: -10px;
+}
+.signup-protocol-label {
+	cursor: pointer;
+	font-size: 20px;
+	color: #f9f6ef;
+}
+.button-signup {
+	cursor: pointer;
+	padding: 0;
+	margin-left: 13%;
+	border: 0;
+	width: 120px;
+	height: 40px;
+	outline: none;
+
+	font-size: 20px;
+	font-weight: bold;
+	color: #f9f6ef;
+	background-color: #b1040e;
+	transition: background-color .25s ease-in-out;
+}
+.button-signup:hover {
+	background-color: #771319;
+}
+
+
+
 
 #login, #signup {
 	display: none;

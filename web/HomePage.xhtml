@@ -49,6 +49,7 @@
         </div>
     </form>
 
+    <h:commandLink id="user_info" styleClass="UserInfo" value="#{login_Signup.userinfo}"/>
     <a class="login-open" href="javascript:"/>
     <div class="login-container">
             <ul class="login-switcher">
@@ -63,59 +64,51 @@
             <div id="login"> <!-- 登录表单 -->
                 <h:form>
                     <div>
-                        <h:outputLabel styleclass="login-phoneno-label" for="login-phoneno">Phone No</h:outputLabel>
-                        <h:inputText styleclass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}"/>
+                        <h:outputLabel styleClass="login-phoneno-label" for="login-phoneno">Phone No</h:outputLabel>
+                        <h:inputText styleClass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}"/>
                     </div><br/>
 
                     <div>
-                        <h:outputLabel styleclass="login-password-label" for="login-password">Password</h:outputLabel>
-                        <h:inputSecret styleclass="login-password-input" id="login-password" value="#{login_Signup.password}"/>
+                        <h:outputLabel styleClass="login-password-label" for="login-password">Password</h:outputLabel>
+                        <h:inputSecret styleClass="login-password-input" id="login-password" value="#{login_Signup.password}"/>
                     </div><br/>
 
                     <div>
-                        <h:selectBooleanCheckbox stylestyleclass="login-remember-checkbox" id="login-remember" value="#{login_Signup.remember}"/>
-                        <h:outputLabel stylestyleclass="login-remember-label" for="login-remember">Remember me</h:outputLabel>
+                        <h:selectBooleanCheckbox styleClass="login-remember-checkbox" id="login-remember" value="#{login_Signup.remember}"/>
+                        <h:outputLabel styleClass="login-remember-label" for="login-remember">Remember me</h:outputLabel>
+                        <h:commandButton id="loginbutton" styleClass="button-login" value="Login" action="#{login_Signup.login}" />
                     </div><br/>
-
-
-                    <h:commandButton id="loginbutton" styleclass="button-login" value="Login" action="#{login_Signup.login}">
-                        <!--<f:ajax execute="login-phoneno login-password" render="error" event="click" />-->
-                    </h:commandButton>
 
                 </h:form>
-                <f:ajax event="click" render="nameerror">
-                    <h:outputText for="loginbutton" id="nameerror" value="#{login_Signup.error}" styleClass="errorMessage"/>
-                </f:ajax>
-                <!--<h:message id="error" for="loginbutton" styleClass="login-error" />-->
+                <h:outputText style="display: none" id="login_error" value="#{login_Signup.error1}"/>
             </div>
 
             <div id="signup"> <!-- 注册表单 -->
                 <h:form>
-                    <div>
-                        <h:outputLabel styleclass="signup-phoneno-lable" for="signup-phoneno">Phone No</h:outputLabel>
-                        <h:inputText styleclass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}"/>
-                    </div><br/>
+                    <h:panelGrid columns="2" cellspacing="30px" styleClass="signup-form">
 
-                    <div>
-                        <h:outputLabel styleclass="signup-email-lable" for="signup-email">E-mail</h:outputLabel>
-                        <h:inputText styleclass="signup-email-input" id="signup-email" value="#{login_Signup.email}"/>
-                    </div><br/>
+                            <h:outputLabel styleClass="signup-phoneno-label" for="signup-phoneno">Phone No</h:outputLabel>
+                            <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}"/>
 
-                    <div>
-                        <h:outputLabel styleclass="signup-password-lable" for="signup-password">Password</h:outputLabel>
-                        <h:inputSecret styleclass="signup-password-input" id="signup-password" value="#{login_Signup.password}"/>
-                    </div><br/>
 
-                    <div>
+                            <h:outputLabel styleClass="signup-email-label" for="signup-email">E-mail</h:outputLabel>
+                            <h:inputText styleClass="signup-email-input" id="signup-email" value="#{login_Signup.email}"/>
+
+
+                            <h:outputLabel styleClass="signup-password-label" for="signup-password">Password</h:outputLabel>
+                            <h:inputSecret styleClass="signup-password-input" id="signup-password" value="#{login_Signup.password}"/>
+
+                    </h:panelGrid>
+
+                    <div class="protocol-div">
                         <h:selectBooleanCheckbox id="user-protocol"/>
-                        <h:outputLabel for="user-protocol">I agree <a href="#">User protocol</a> </h:outputLabel>
+                        <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a href="#" style="color: white">User protocol</a> </h:outputLabel>
+                        <h:commandButton styleClass="button-signup" value="Register" action="#{login_Signup.signup}"/>
                     </div><br/>
 
-
-                        <h:commandButton styleclass="button-register" value="Register"/>
 
                 </h:form>
-                <h:outputText styleClass="signup-error" value="#{login_Signup.error}"/>
+                <h:outputText style="display: none" id="signup_error" value="#{login_Signup.error2}"/>
             </div>
     </div>
 
