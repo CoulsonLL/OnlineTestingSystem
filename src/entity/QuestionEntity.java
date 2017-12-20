@@ -13,8 +13,7 @@ import javax.persistence.Table;
 public class QuestionEntity
 {
     private int questionId;
-    private int qid;
-    private int pid;
+    private int courseId;
     private String a;
     private String b;
     private String c;
@@ -35,27 +34,15 @@ public class QuestionEntity
     }
 
     @Basic
-    @Column(name = "QID", nullable = false)
-    public int getQid()
+    @Column(name = "CourseID", nullable = false)
+    public int getCourseId()
     {
-        return qid;
+        return courseId;
     }
 
-    public void setQid(int qid)
+    public void setCourseId(int courseId)
     {
-        this.qid = qid;
-    }
-
-    @Basic
-    @Column(name = "PID", nullable = false)
-    public int getPid()
-    {
-        return pid;
-    }
-
-    public void setPid(int pid)
-    {
-        this.pid = pid;
+        this.courseId = courseId;
     }
 
     @Basic
@@ -139,8 +126,7 @@ public class QuestionEntity
         QuestionEntity that = (QuestionEntity) o;
 
         if (questionId != that.questionId) return false;
-        if (qid != that.qid) return false;
-        if (pid != that.pid) return false;
+        if (courseId != that.courseId) return false;
         if (a != null ? !a.equals(that.a) : that.a != null) return false;
         if (b != null ? !b.equals(that.b) : that.b != null) return false;
         if (c != null ? !c.equals(that.c) : that.c != null) return false;
@@ -155,8 +141,7 @@ public class QuestionEntity
     public int hashCode()
     {
         int result = questionId;
-        result = 31 * result + qid;
-        result = 31 * result + pid;
+        result = 31 * result + courseId;
         result = 31 * result + (a != null ? a.hashCode() : 0);
         result = 31 * result + (b != null ? b.hashCode() : 0);
         result = 31 * result + (c != null ? c.hashCode() : 0);

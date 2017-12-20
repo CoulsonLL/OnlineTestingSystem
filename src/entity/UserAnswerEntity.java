@@ -12,7 +12,7 @@ public class UserAnswerEntity
 {
     private int examLogsId;
     private int stuId;
-    private int qid;
+    private int questionId;
     private String userAnswer;
 
     @Id
@@ -40,15 +40,15 @@ public class UserAnswerEntity
     }
 
     @Basic
-    @Column(name = "QID", nullable = false)
-    public int getQid()
+    @Column(name = "QuestionID", nullable = false)
+    public int getQuestionId()
     {
-        return qid;
+        return questionId;
     }
 
-    public void setQid(int qid)
+    public void setQuestionId(int questionId)
     {
-        this.qid = qid;
+        this.questionId = questionId;
     }
 
     @Basic
@@ -73,7 +73,7 @@ public class UserAnswerEntity
 
         if (examLogsId != that.examLogsId) return false;
         if (stuId != that.stuId) return false;
-        if (qid != that.qid) return false;
+        if (questionId != that.questionId) return false;
         if (userAnswer != null ? !userAnswer.equals(that.userAnswer) : that.userAnswer != null)
         {
             return false;
@@ -87,7 +87,7 @@ public class UserAnswerEntity
     {
         int result = examLogsId;
         result = 31 * result + stuId;
-        result = 31 * result + qid;
+        result = 31 * result + questionId;
         result = 31 * result + (userAnswer != null ? userAnswer.hashCode() : 0);
         return result;
     }

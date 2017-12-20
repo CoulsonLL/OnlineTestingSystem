@@ -7,13 +7,9 @@
     <class name="entity.QuestionEntity" table="Question" schema="dbo" catalog="OnlineTest">
         <id name="questionId">
             <column name="QuestionID" sql-type="int"/>
-            <generator class="native"/>
         </id>
-        <property name="qid">
-            <column name="QID" sql-type="int"/>
-        </property>
-        <property name="pid">
-            <column name="PID" sql-type="int"/>
+        <property name="courseId">
+            <column name="CourseID" sql-type="int"/>
         </property>
         <property name="a">
             <column name="A" sql-type="nvarchar(200)" length="200"/>

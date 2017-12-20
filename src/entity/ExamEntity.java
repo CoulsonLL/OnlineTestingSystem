@@ -13,8 +13,9 @@ public class ExamEntity
     private int examId;
     private String examName;
     private int duration;
-    private int pid;
+    private int courseId;
     private int examState;
+    private Integer questionNum;
 
     @Id
     @Column(name = "ExamID", nullable = false)
@@ -53,15 +54,15 @@ public class ExamEntity
     }
 
     @Basic
-    @Column(name = "PID", nullable = false)
-    public int getPid()
+    @Column(name = "CourseID", nullable = false)
+    public int getCourseId()
     {
-        return pid;
+        return courseId;
     }
 
-    public void setPid(int pid)
+    public void setCourseId(int courseId)
     {
-        this.pid = pid;
+        this.courseId = courseId;
     }
 
     @Basic
@@ -76,6 +77,18 @@ public class ExamEntity
         this.examState = examState;
     }
 
+    @Basic
+    @Column(name = "QuestionNum", nullable = true)
+    public Integer getQuestionNum()
+    {
+        return questionNum;
+    }
+
+    public void setQuestionNum(Integer questionNum)
+    {
+        this.questionNum = questionNum;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -86,10 +99,14 @@ public class ExamEntity
 
         if (examId != that.examId) return false;
         if (duration != that.duration) return false;
-        if (pid != that.pid) return false;
+        if (courseId != that.courseId) return false;
         if (examState != that.examState) return false;
         if (examName != null ? !examName.equals(that.examName) : that.examName != null)
             return false;
+        if (questionNum != null ? !questionNum.equals(that.questionNum) : that.questionNum != null)
+        {
+            return false;
+        }
 
         return true;
     }
@@ -100,8 +117,9 @@ public class ExamEntity
         int result = examId;
         result = 31 * result + (examName != null ? examName.hashCode() : 0);
         result = 31 * result + duration;
-        result = 31 * result + pid;
+        result = 31 * result + courseId;
         result = 31 * result + examState;
+        result = 31 * result + (questionNum != null ? questionNum.hashCode() : 0);
         return result;
     }
 }

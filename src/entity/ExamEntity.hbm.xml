@@ -7,7 +7,6 @@
     <class name="entity.ExamEntity" table="Exam" schema="dbo" catalog="OnlineTest">
         <id name="examId">
             <column name="ExamID" sql-type="int"/>
-            <generator class="native"/>
         </id>
         <property name="examName">
             <column name="ExamName" sql-type="nvarchar(20)" length="20"/>
@@ -15,11 +14,14 @@
         <property name="duration">
             <column name="Duration" sql-type="int"/>
         </property>
-        <property name="pid">
-            <column name="PID" sql-type="int"/>
+        <property name="courseId">
+            <column name="CourseID" sql-type="int"/>
         </property>
         <property name="examState">
             <column name="ExamState" sql-type="int"/>
+        </property>
+        <property name="questionNum">
+            <column name="QuestionNum" sql-type="int" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

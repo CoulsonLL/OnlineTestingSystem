@@ -22,8 +22,6 @@
         <mapping class="entity.ExamLogEntity"/>
         <mapping resource="entity/ModuleEntity.hbm.xml"/>
         <mapping class="entity.ModuleEntity"/>
-        <mapping resource="entity/PaperEntity.hbm.xml"/>
-        <mapping class="entity.PaperEntity"/>
         <mapping resource="entity/QuestionEntity.hbm.xml"/>
         <mapping class="entity.QuestionEntity"/>
         <mapping resource="entity/UserAnswerEntity.hbm.xml"/>
