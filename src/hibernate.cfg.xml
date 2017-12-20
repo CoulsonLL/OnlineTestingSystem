@@ -28,6 +28,8 @@
         <mapping class="entity.QuestionEntity"/>
         <mapping resource="entity/UserAnswerEntity.hbm.xml"/>
         <mapping class="entity.UserAnswerEntity"/>
+        <mapping resource="entity/WebsiteInfoEntity.hbm.xml"/>
+        <mapping class="entity.WebsiteInfoEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

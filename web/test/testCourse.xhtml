@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
 <h:head>
     <title>$Title$</title>
     <script type="text/javascript" src="../js/jquery.min.js"/>
@@ -12,6 +13,7 @@
     <button id="test">Test</button>
     <h:outputText value="#{testHomeBean.username}"/>
     <h:outputText value="#{testHomeBean.password}"/>
+
     <h:outputText value="" styleClass="errorMessage"/>
     <h:inputText styleClass="username" value=""/>
     <h:inputSecret styleClass="password" value=""/>
@@ -51,7 +53,7 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Detail
+                        Detai
                     </f:facet>
                     #{course.cDetail}
                 </h:column>

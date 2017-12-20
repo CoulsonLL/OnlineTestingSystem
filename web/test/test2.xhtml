@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+>
+<h:head>
+    <title>$Title$</title>
+</h:head>
+<!--<h:inputText value="#{testHomeBean.inputs[loop.index]}"/>-->
+<!--<f:selectItem itemValue="A" itemLabel="A"/>-->
+<!--<f:selectItem itemValue="B" itemLabel="B"/>-->
+<h:body>
+    <h:form>
+        <ui:repeat value="#{testHomeBean.inputs}" var="v" varStatus="loop"><!--inputs是结果数组-->
+            <h:selectOneRadio value="#{testHomeBean.inputs[loop.index]}">
+                <c:forEach items="${testHomeBean.options}" var="option"><!--items是选项的集合-->
+                    <f:selectItem itemValue="${option}" itemLabel="${option}"/>
+                </c:forEach>
+            </h:selectOneRadio>
+        </ui:repeat>
+        <h:commandButton value="#{testHomeBean.showinputs()}"/>
+    </h:form>
+</h:body>
+</html>

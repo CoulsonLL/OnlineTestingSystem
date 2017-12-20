@@ -1,6 +1,7 @@
 package test;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -17,7 +18,45 @@ import util.FacesUtil;
 public class TestHomeBean implements Serializable
 {
     private String username;
+
+    public String[] getOptions()
+    {
+        return options;
+    }
+
+    public void setOptions(String[] options)
+    {
+        this.options = options;
+    }
+
+    public void setList(List<CourseEntity> list)
+    {
+        this.list = list;
+    }
+
+    public HttpSession getSession()
+    {
+        return session;
+    }
+
+    public void setSession(HttpSession session)
+    {
+        this.session = session;
+    }
+
     private String password;
+    private String[] inputs = new String[10];
+    private String[] options = {"A", "B", "C", "D"};
+
+    public String[] getInputs()
+    {
+        return inputs;
+    }
+
+    public void setInputs(String[] inputs)
+    {
+        this.inputs = inputs;
+    }
 
     public String getUsername()
     {
@@ -41,6 +80,11 @@ public class TestHomeBean implements Serializable
 
     private List<CourseEntity> list = null;
     private HttpSession session = FacesUtil.getSession();
+
+    public void showinputs()
+    {
+        System.out.println(Arrays.toString(inputs));
+    }
 
     public TestHomeBean()
     {

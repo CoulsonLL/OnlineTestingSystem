@@ -156,4 +156,19 @@ public class CourseEntity
         result = 31 * result + (picture != null ? picture.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString()
+    {
+        return "CourseEntity{" +
+                "cCourseId=" + cCourseId +
+                ", cName='" + cName + '\'' +
+                ", cModule=" + cModule +
+                ", cDetail='" + cDetail + '\'' +
+                ", mgrId=" + mgrId +
+                ", modifyTime=" + modifyTime +
+                ", viewCount=" + viewCount +
+                ", picture='" + picture + '\'' +
+                '}';
+    }
 }

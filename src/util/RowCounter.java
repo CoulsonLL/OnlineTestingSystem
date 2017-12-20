@@ -16,5 +16,4 @@ public class RowCounter implements Serializable
     {
         return ++row;
     }
-
 }
