@@ -38,10 +38,10 @@ public class Login_Signup {
                 userinfo = phoneno;
                 System.out.println(userinfo+remember);
                 //若选择记住账号密码
-                if(remember){
 
-                }
-            } else {
+            }
+            //若登陆失败
+            else {
                 error1 = "Invalid PhoneNo or Password, check and enter it again";
                 out.println("login failed");
             }
@@ -59,10 +59,13 @@ public class Login_Signup {
             student.setEmail(email);
             student.setStuPwd(password);
             boolean sign = stuService.register(student);
+            //若注册成功
             if (sign) {
                 signup_success = "Sign up success";
                 System.out.println(signup_success);
-            } else {
+            }
+            //若注册失败
+            else {
                 error2 = "Sign up failed #_# The phone number you entered has been signed up!";
                 out.println("Signup failed");
             }

@@ -105,7 +105,7 @@
 	height: 35px;
 	border-radius: 8px;
 	margin-left: 60px;
-	-webkit-box-shadow: 0 0 0px 1000px white inset;
+	-webkit-box-shadow: 0 0 0 1000px white inset;
 }
 .login-password-input {
 	font-size: 20px;
@@ -115,7 +115,7 @@
 	height: 35px;
 	border-radius: 8px;
 	margin-left: 65px;
-	-webkit-box-shadow: 0 0 0px 1000px white inset;
+	-webkit-box-shadow: 0 0 0 1000px white inset;
 }
 .login-remember-label {
 	font-size: 20px;
@@ -163,7 +163,7 @@
 	height: 35px;
 	margin-left: 30px;
 	border-radius: 8px;
-	-webkit-box-shadow: 0 0 0px 1000px white inset;
+	-webkit-box-shadow: 0 0 0 1000px white inset;
 }
 .protocol-div {
 	padding-left: 17%;
@@ -175,6 +175,7 @@
 	color: #f9f6ef;
 }
 .button-signup {
+	/*display: none;*/
 	cursor: pointer;
 	padding: 0;
 	margin-left: 13%;
@@ -186,13 +187,17 @@
 	font-size: 20px;
 	font-weight: bold;
 	color: #f9f6ef;
-	/*background-color: #b1040e;*/
-	/*transition: background-color .25s ease-in-out;*/
-}
-#signup-button.button-signup-selected {
 	background-color: #b1040e;
+	transition: background-color .25s ease-in-out;
 }
-#signup-button.button-signup-selected:hover {
+.button-signup:hover {
+	background-color: #771319;
+}
+.button-signup.button-signup-selected {
+	background-color: gold;
+	/*background-color: #b1040e;*/
+}
+.button-signup.button-signup-selected:hover {
 	background-color: #771319;
 }
 

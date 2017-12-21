@@ -103,12 +103,28 @@
 
                     </h:panelGrid>
 
+                    <!--<script type="text/javascript">-->
+                        <!--var $login_container = $('.login-container');-->
+                        <!--var $div = $('.protocol-div');-->
+                        <!--function selected() {-->
+<!--//                            $login_container.slideUp(200);-->
+                            <!--var $signup_button = $('.button-signup');-->
+                            <!--var text = $('#agree-text').innerHTML;-->
+                            <!--if(text.equals("true")){-->
+                                <!--$signup_button.remove();-->
+                            <!--}-->
+<!--//                            $('.signup-protocol-label').click(function () {-->
+<!--//                                $signup_button.hide();-->
+<!--//                            });-->
+                        <!--}-->
+                    <!--</script>-->
                     <div class="protocol-div">
                         <h:selectBooleanCheckbox styleClass="protocol-checkbox" id="user-protocol" value="#{ajaxBean.agree}">
-                            <f:ajax execute="user-protocol" render="signup-button" event="change"/>
+                            <f:ajax execute="user-protocol" render="signup-button agree-text" event="change" listener="#{ajaxBean.buttonvalue}"/>
                         </h:selectBooleanCheckbox>
                         <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a href="#" style="color: white">User protocol</a> </h:outputLabel>
-                        <h:commandButton id="signup-button" styleClass="button-signup" value="Register" action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
+                        <h:commandButton id="signup-button" styleClass="button-signup" value="#{ajaxBean.buttonval}" action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
+                        <h:outputText style="display: none" id="agree-text" value="#{ajaxBean.agree}"/>
                     </div><br/>
 
 
