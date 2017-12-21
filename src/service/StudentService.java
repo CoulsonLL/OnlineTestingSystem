@@ -64,12 +64,10 @@ public class StudentService
 
     /**
      * 退出登录
-     *
-     * @param phoneNum 手机号码
      */
-    public void logout(String phoneNum)
+    public void logout()
     {
-        FacesUtil.getSession().invalidate();
+        FacesUtil.getSession().removeAttribute("userInfo");
     }
 
     /**

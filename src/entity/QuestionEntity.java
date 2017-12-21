@@ -20,6 +20,7 @@ public class QuestionEntity
     private String d;
     private String answer;
     private BigDecimal score;
+    private String stem;
 
     @Id
     @Column(name = "QuestionID", nullable = false)
@@ -117,6 +118,18 @@ public class QuestionEntity
         this.score = score;
     }
 
+    @Basic
+    @Column(name = "Stem", nullable = false, length = 200)
+    public String getStem()
+    {
+        return stem;
+    }
+
+    public void setStem(String stem)
+    {
+        this.stem = stem;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -133,6 +146,7 @@ public class QuestionEntity
         if (d != null ? !d.equals(that.d) : that.d != null) return false;
         if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
         if (score != null ? !score.equals(that.score) : that.score != null) return false;
+        if (stem != null ? !stem.equals(that.stem) : that.stem != null) return false;
 
         return true;
     }
@@ -148,6 +162,7 @@ public class QuestionEntity
         result = 31 * result + (d != null ? d.hashCode() : 0);
         result = 31 * result + (answer != null ? answer.hashCode() : 0);
         result = 31 * result + (score != null ? score.hashCode() : 0);
+        result = 31 * result + (stem != null ? stem.hashCode() : 0);
         return result;
     }
 }

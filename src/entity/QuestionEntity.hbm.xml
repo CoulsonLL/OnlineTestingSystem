@@ -7,6 +7,7 @@
     <class name="entity.QuestionEntity" table="Question" schema="dbo" catalog="OnlineTest">
         <id name="questionId">
             <column name="QuestionID" sql-type="int"/>
+            <generator class="native"/>
         </id>
         <property name="courseId">
             <column name="CourseID" sql-type="int"/>
@@ -28,6 +29,9 @@
         </property>
         <property name="score">
             <column name="Score" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+        <property name="stem">
+            <column name="Stem" sql-type="varchar(200)" length="200"/>
         </property>
     </class>
 </hibernate-mapping>

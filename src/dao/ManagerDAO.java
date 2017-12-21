@@ -30,4 +30,22 @@ public class ManagerDAO
             return false;
         }
     }
+
+    /**
+     * 根据管理员ID查询管理员信息
+     *
+     * @param managerID
+     * @return ManagerEntity
+     */
+    public ManagerEntity queryManagerById(Integer managerID)
+    {
+        Transaction tx = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        String hql = "from ManagerEntity where mgrId = '" + managerID + "'";
+        ManagerEntity entity = (ManagerEntity) session.createQuery(hql).uniqueResult();
+        tx.commit();
+        session.close();
+        return entity;
+    }
 }

@@ -7,6 +7,7 @@
     <class name="entity.ExamEntity" table="Exam" schema="dbo" catalog="OnlineTest">
         <id name="examId">
             <column name="ExamID" sql-type="int"/>
+            <generator class="native"/>
         </id>
         <property name="examName">
             <column name="ExamName" sql-type="nvarchar(20)" length="20"/>

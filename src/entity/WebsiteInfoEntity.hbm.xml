@@ -7,6 +7,7 @@
     <class name="entity.WebsiteInfoEntity" table="WebsiteInfo" schema="dbo" catalog="OnlineTest">
         <id name="id">
             <column name="ID" sql-type="int"/>
+            <generator class="native"/>
         </id>
         <property name="viewCount">
             <column name="ViewCount" sql-type="bigint" not-null="true"/>
