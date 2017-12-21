@@ -70,8 +70,8 @@ jQuery(document).ready(function () {
     //若登陆输入框有内容为空，显示notnull信息,并重新登陆
     if(null_error1!==""){
         alert(null_error1);
-        $login_mask.fadeIn(400);
-        $login_container.slideDown(400);
+        $login_mask.fadeIn(700);
+        $login_container.fadeIn(1000);
         $login_div.addClass('is-selected');
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
@@ -79,8 +79,8 @@ jQuery(document).ready(function () {
     //若登陆失败，显示错误信息，并重新弹出登陆框
     if(error1!==""){
         alert(error1);
-        $login_mask.fadeIn(400);
-        $login_container.slideDown(400);
+        $login_mask.fadeIn(700);
+        $login_container.fadeIn(1000);
         $login_div.addClass('is-selected');
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
@@ -98,8 +98,8 @@ jQuery(document).ready(function () {
         $signup_tab.removeClass('selected');
         $signup_a.removeClass('text-selected');
         alert(null_error2);
-        $login_mask.fadeIn(400);
-        $login_container.slideDown(400);
+        $login_mask.fadeIn(700);
+        $login_container.fadeIn(1000);
         $signup_div.addClass('is-selected');
         $signup_tab.addClass('selected');
         $signup_a.addClass('text-selected');
@@ -110,8 +110,8 @@ jQuery(document).ready(function () {
         $signup_tab.removeClass('selected');
         $signup_a.removeClass('text-selected');
         alert(error2);
-        $login_mask.fadeIn(400);
-        $login_container.slideDown(400);
+        $login_mask.fadeIn(700);
+        $login_container.fadeIn(1000);
         $signup_div.addClass('is-selected');
         $signup_tab.addClass('selected');
         $signup_a.addClass('text-selected');
@@ -119,8 +119,8 @@ jQuery(document).ready(function () {
     //若注册成功，则弹出登陆框
     if(signup_success!==""){
         alert(signup_success);
-        $login_mask.fadeIn(400);
-        $login_container.slideDown(400);
+        $login_mask.fadeIn(700);
+        $login_container.fadeIn(1000);
         $login_div.addClass('is-selected');
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
