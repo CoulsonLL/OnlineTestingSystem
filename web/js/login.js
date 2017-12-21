@@ -20,10 +20,10 @@ jQuery(document).ready(function () {
     //获取弹出框需要autofocus的inputText
     var login_input = document.getElementById('login-phoneno');
     var signup_input = document.getElementById('signup-phoneno');
-    //获取protocolcheckbox对象
-    var $protocol_check = $login_container.find('#user-protocol');
+    //获取隐藏的agree-protocol信息
+    // var agree_text = document.getElementById('agree-text').innerHTML;
     //获取注册按钮对象
-    var $signup_button = $('#signup-button');
+    var $signup_button = $('.button-signup');
 
 
     //弹出窗口
@@ -88,10 +88,10 @@ jQuery(document).ready(function () {
 
 
     //若不同意user protocol，无法点击注册按钮
-    $protocol_check.click(function () {
-        alert(323);
-        $signup_button.addClass('button-signup-selected');
-    });
+    // if(agree_text.equals("true")){
+    //     alert($signup_button.css("width"));
+    //     // $signup_button.addClass('button-signup-selected');
+    // }
     //若注册输入框有内容为空，显示notnull信息,并重新登陆
     if(null_error2!==""){
         $signup_div.removeClass('is-selected');

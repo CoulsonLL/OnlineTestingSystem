@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>ManagerLogin</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        #image1{
+            background-image: url(img/ManagerLogin/enrollment1.jpg);
+        }
+        #image2{
+            background-image: url(img/ManagerLogin/enrollment2.jpg);
+        }
+        #image3{
+            background-image: url(img/ManagerLogin/enrollment3.jpg);
+        }
+        #image4{
+            background-image: url(img/ManagerLogin/enrollment4.jpg);
+        }
+        #image5{
+            background-image: url(img/ManagerLogin/enrollment5.jpg);
+        }
+        #image6{
+            background-image: url(img/ManagerLogin/enrollment6.jpg);
+        }
+        #background {
+            background-image: url(img/ManagerLogin/enrollment1.jpg);
+            background-size: 100%;
+            -webkit-animation-name: bgimg;
+            -webkit-animation-duration: 60s;
+            /*-webkit-animation-delay: 0s;*/
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: alternate;
+        }
+        @-webkit-keyframes bgimg{
+            0%{
+                background-image: url(img/ManagerLogin/enrollment1.jpg);
+            }
+            20%{
+                background-image: url(img/ManagerLogin/enrollment2.jpg);
+            }
+            40%{
+                background-image: url(img/ManagerLogin/enrollment3.jpg);
+            }
+            60%{
+                background-image: url(img/ManagerLogin/enrollment4.jpg);
+            }
+            80%{
+                background-image: url(img/ManagerLogin/enrollment5.jpg);
+            }
+            100%{
+                background-image: url(img/ManagerLogin/enrollment6.jpg);
+            }
+        }
+
+        .label {
+            height: 676px;
+        }
+
+        #cloudimg{
+            position: absolute;
+            top: 140px;
+            left: 45%;
+        }
+
+        .userid {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+            position: absolute;
+            top: 45%;
+            left: 38%;
+            width: 23%;
+            height: 7%;
+            font-size: 17px;
+
+            border: 0px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            outline: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            color: #333333;
+            opacity: 1;
+        }
+
+        .password {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+            position: absolute;
+            top: 54%;
+            left: 38%;
+            width: 23%;
+            height: 7%;
+            font-size: 17px;
+
+            border: 0px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            outline: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            color: #333333;
+            opacity: 1;
+        }
+        /*#register{*/
+            /*position: absolute;*/
+            /*top: 64%;*/
+            /*left: 38%;*/
+            /*width: 11%;*/
+            /*height: 5%;*/
+            /*opacity: 0.7;*/
+            /*font-size: 17px;*/
+            /*text-align: center;*/
+            /*font-weight: bold;*/
+            /*color: lightslategray;*/
+
+            /*border: 0px;*/
+            /*padding: 10px 12px;*/
+            /*outline: none;*/
+            /*border-radius: 6px;*/
+            /*transition: opacity 0.5s, height 0.5s, color 0.5s;*/
+        /*}*/
+        /*#register:hover{*/
+            /*opacity: 1;*/
+            /*height: 6%;*/
+            /*color: black;*/
+        /*}*/
+        .login-button{
+            position: absolute;
+            top: 64%;
+            left: 38%;
+            width: 23%;
+            height: 5%;
+            opacity: 0.7;
+            font-size: 17px;
+            text-align: center;
+            font-weight: bold;
+            color: lightslategray;
+
+            border: 0px;
+            padding: 10px 12px;
+            outline: none;
+            border-radius: 6px;
+            transition: opacity 0.5s, height 0.5s, color 0.5s;
+        }
+        .login-button:hover{
+            opacity: 1;
+            height: 6%;
+            color: black;
+        }
+        .error {
+            font-size: 30px;
+            color: white;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div id="image1" style="visibility: hidden;"/>
+    <div id="image2" style="visibility: hidden;"/>
+    <div id="image3" style="visibility: hidden;"/>
+    <div id="image4" style="visibility: hidden;"/>
+    <div id="image5" style="visibility: hidden;"/>
+    <div id="image6" style="visibility: hidden;"/>
+    <div id="background">
+        <div class="label">
+            <img id="cloudimg" src="img/ManagerLogin/cloud.png" alt="Error"/>
+            <h:form>
+                <table>
+                    <tr>
+                        <td><h:inputText styleClass="userid" value="#{managerBean.id}" pt:placeholder="User ID"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:inputSecret styleClass="password" value="#{managerBean.password}" pt:placeholder="Password"/></td>
+                    </tr>
+                </table>
+                <h:commandButton styleClass="login-button" value="Login" action="#{managerBean.login}"/>
+                <h:outputText styleClass="error" value="#{managerBean.error}"/>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>
