@@ -18,8 +18,12 @@ jQuery(document).ready(function () {
     //获取注册成功的信息
     var signup_success = document.getElementById("signup_success").innerHTML;
     //获取弹出框需要autofocus的inputText
-    var login_input = document.getElementById('#login-phoneno');
-    var signup_input = document.getElementById('#signup-phoneno');
+    var login_input = document.getElementById('login-phoneno');
+    var signup_input = document.getElementById('signup-phoneno');
+    //获取protocolcheckbox对象
+    var $protocol_check = $login_container.find('#user-protocol');
+    //获取注册按钮对象
+    var $signup_button = $('#signup-button');
 
 
     //弹出窗口
@@ -29,7 +33,7 @@ jQuery(document).ready(function () {
         $login_div.addClass('is-selected');
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
-        login_input.focus();
+        // login_input.focus();
     });
 
     //点击非对话框区域关闭弹出窗口
@@ -82,6 +86,12 @@ jQuery(document).ready(function () {
         $login_a.addClass('text-selected');
     }
 
+
+    //若不同意user protocol，无法点击注册按钮
+    $protocol_check.click(function () {
+        alert(323);
+        $signup_button.addClass('button-signup-selected');
+    });
     //若注册输入框有内容为空，显示notnull信息,并重新登陆
     if(null_error2!==""){
         $signup_div.removeClass('is-selected');
@@ -115,6 +125,7 @@ jQuery(document).ready(function () {
         $login_tab.addClass('selected');
         $login_a.addClass('text-selected');
     }
+
 
     function login_selected() {
         $login_div.addClass('is-selected');

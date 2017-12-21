@@ -104,9 +104,11 @@
                     </h:panelGrid>
 
                     <div class="protocol-div">
-                        <h:selectBooleanCheckbox id="user-protocol"/>
+                        <h:selectBooleanCheckbox styleClass="protocol-checkbox" id="user-protocol" value="#{ajaxBean.agree}">
+                            <f:ajax execute="user-protocol" render="signup-button" event="change"/>
+                        </h:selectBooleanCheckbox>
                         <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a href="#" style="color: white">User protocol</a> </h:outputLabel>
-                        <h:commandButton styleClass="button-signup" value="Register" action="#{login_Signup.signup}"/>
+                        <h:commandButton id="signup-button" styleClass="button-signup" value="Register" action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
                     </div><br/>
 
 
