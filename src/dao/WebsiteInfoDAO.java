@@ -8,9 +8,10 @@ import util.HibernateUtil;
 
 public class WebsiteInfoDAO
 {
-    public long getViewCount()
+    private static long viewCount;
+
+    public void updateViewCount()
     {
-        long viewCount;
         Transaction tx = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         tx = session.beginTransaction();
@@ -21,6 +22,11 @@ public class WebsiteInfoDAO
         session.update(websiteInfoEntity);
         tx.commit();
         session.close();
+    }
+
+    public long getViewCount()
+    {
+        new Thread(this::updateViewCount).start();
         return viewCount;
     }
 

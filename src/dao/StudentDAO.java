@@ -12,6 +12,8 @@ import util.HibernateUtil;
 @SuppressWarnings("ALL")
 public class StudentDAO
 {
+    private static long stuNum;
+
     /**
      * 添加学生
      *
@@ -124,7 +126,7 @@ public class StudentDAO
         return entity;
     }
 
-    public int getStudentNum()
+    public static void updateStudentNum()
     {
         Transaction tx = null;
         List list = null;
@@ -132,6 +134,11 @@ public class StudentDAO
         tx = session.beginTransaction();
         SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Student");
         list = query.list();
-        return (int) list.get(0);
+        stuNum = (int) list.get(0);
+    }
+
+    public int getStudentNum()
+    {
+        return (int) stuNum;
     }
 }

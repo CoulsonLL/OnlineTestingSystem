@@ -12,6 +12,8 @@ import util.HibernateUtil;
 @SuppressWarnings("ALL")
 public class ManagerDAO
 {
+    private static long MgrNum;
+
     public boolean updateManager(ManagerEntity managerEntity)
     {
         try
@@ -62,7 +64,7 @@ public class ManagerDAO
         return list;
     }
 
-    public int getManagerNum()
+    public static void updateManagerNum()
     {
         Transaction tx = null;
         List list = null;
@@ -70,7 +72,12 @@ public class ManagerDAO
         tx = session.beginTransaction();
         SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Manager");
         list = query.list();
-        return (int) list.get(0);
+        MgrNum = (int) list.get(0);
+    }
+
+    public int getManagerNum()
+    {
+        return (int) MgrNum;
     }
 
     public static void main(String[] args)
