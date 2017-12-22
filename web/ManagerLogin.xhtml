@@ -59,9 +59,9 @@
             }
         }
 
-        .label {
-            height: 676px;
-        }
+        /*.label {*/
+
+        /*}*/
 
         #cloudimg{
             position: absolute;
@@ -170,7 +170,7 @@
     <div id="image5" style="visibility: hidden;"/>
     <div id="image6" style="visibility: hidden;"/>
     <div id="background">
-        <div class="label">
+        <div id="labeldiv" class="label">
             <img id="cloudimg" src="img/ManagerLogin/cloud.png" alt="Error"/>
             <h:form>
                 <table>
@@ -186,5 +186,10 @@
             </h:form>
         </div>
     </div>
+    <script>
+            var imageheight = window.innerHeight;
+            var label = document.getElementById("labeldiv");
+            label.style.height = imageheight+"px";
+    </script>
 </h:body>
 </html>
