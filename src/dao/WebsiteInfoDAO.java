@@ -8,7 +8,7 @@ import util.HibernateUtil;
 
 public class WebsiteInfoDAO
 {
-    public static long getViewCount()
+    public long getViewCount()
     {
         long viewCount;
         Transaction tx = null;
@@ -22,5 +22,10 @@ public class WebsiteInfoDAO
         tx.commit();
         session.close();
         return viewCount;
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println(new WebsiteInfoDAO().getViewCount());
     }
 }

@@ -151,4 +151,13 @@ public class ManagerService
     {
         return examLogDAO.queryExamLogsWithDate(startDate, endDate);
     }
+
+    /**
+     * 查询所有管路员
+     * @return List<ManagerEntity>
+     */
+    public List<ManagerEntity> queryAllManagers()
+    {
+        return managerDAO.queryAllManagers();
+    }
 }

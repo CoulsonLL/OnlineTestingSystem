@@ -48,4 +48,16 @@ public class ManagerDAO
         session.close();
         return entity;
     }
+
+    public List<ManagerEntity> queryAllManagers()
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        list = session.createQuery("from ManagerEntity").list();
+        tx.commit();
+        session.close();
+        return list;
+    }
 }
