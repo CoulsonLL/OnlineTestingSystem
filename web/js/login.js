@@ -4,7 +4,7 @@ jQuery(document).ready(function () {
     var $login_container = $('.login-container');
     var $login_div = $login_container.find('#login');
     var $signup_div = $login_container.find('#signup');
-
+    //获取登录注册框顶部的切换tab组件
     var $switcher = $('.login-switcher');
     var $login_tab = $switcher.children('li').eq(0);
     var $login_a = $login_tab.children('a');
@@ -15,15 +15,16 @@ jQuery(document).ready(function () {
     var error1 = document.getElementById("login_error").innerHTML;
     var null_error2 = document.getElementById("signup_null_error").innerHTML;
     var error2 = document.getElementById("signup_error").innerHTML;
+    //获取login按钮对象
+    var $login_button = $('#login-button');
+    //获取是否勾选rememberme的信息
+    var remember = document.getElementById("login_remember_text").innerHTML;
     //获取注册成功的信息
     var signup_success = document.getElementById("signup_success").innerHTML;
-    //获取弹出框需要autofocus的inputText
-    var login_input = document.getElementById('login-phoneno');
-    var signup_input = document.getElementById('signup-phoneno');
     //获取隐藏的agree-protocol信息
-    // var agree_text = document.getElementById('agree-text').innerHTML;
+    var agree_text = document.getElementById('agree-text').innerHTML;
     //获取注册按钮对象
-    var $signup_button = $('.button-signup');
+    var $signup_button = $('#signup-button');
 
 
     //弹出窗口
@@ -86,12 +87,13 @@ jQuery(document).ready(function () {
         $login_a.addClass('text-selected');
     }
 
-
-    //若不同意user protocol，无法点击注册按钮
-    // if(agree_text.equals("true")){
-    //     alert($signup_button.css("width"));
-    //     // $signup_button.addClass('button-signup-selected');
-    // }
+    // //若不同意user protocol，无法点击注册按钮
+    // $agree_checkbox.click(function () {
+    //     if(agree_text==="true"){
+    //         alert($signup_button.css("width"));
+    //         $signup_button.addClass('button-signup-selected');
+    //     }
+    // });
     //若注册输入框有内容为空，显示notnull信息,并重新登陆
     if(null_error2!==""){
         $signup_div.removeClass('is-selected');
