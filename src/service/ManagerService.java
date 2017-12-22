@@ -153,11 +153,23 @@ public class ManagerService
     }
 
     /**
-     * 查询所有管路员
+     * 查询所有管理员
+     *
      * @return List<ManagerEntity>
      */
     public List<ManagerEntity> queryAllManagers()
     {
         return managerDAO.queryAllManagers();
     }
+
+    /**
+     * 获取管理员数量
+     *
+     * @return int 管理员数量
+     */
+    public int getManagerNum()
+    {
+        return managerDAO.getManagerNum();
+    }
+
 }

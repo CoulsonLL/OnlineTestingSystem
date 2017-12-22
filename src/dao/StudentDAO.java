@@ -1,5 +1,6 @@
 package dao;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -121,5 +122,16 @@ public class StudentDAO
         session.close();
 //        System.out.println(entity);
         return entity;
+    }
+
+    public int getStudentNum()
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Student");
+        list = query.list();
+        return (int) list.get(0);
     }
 }

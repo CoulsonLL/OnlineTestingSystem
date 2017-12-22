@@ -1,5 +1,6 @@
 package dao;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -59,5 +60,21 @@ public class ManagerDAO
         tx.commit();
         session.close();
         return list;
+    }
+
+    public int getManagerNum()
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Manager");
+        list = query.list();
+        return (int) list.get(0);
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println(new ManagerDAO().getManagerNum());
     }
 }

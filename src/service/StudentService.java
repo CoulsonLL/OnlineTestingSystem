@@ -136,8 +136,7 @@ public class StudentService
      */
     public void updateStudentProfile(StudentEntity studentEntity)
     {
-        StudentService studentService = new StudentService();
-        studentService.updateStudent(studentEntity);
+        studentDAO.updateStudent(studentEntity);
     }
 
     /**
@@ -189,6 +188,16 @@ public class StudentService
     {
         ExamLogDAO examLogDAO = new ExamLogDAO();
         return examLogDAO.applyForExam(examLogEntity);
+    }
+
+    /**
+     * 获取学生数量
+     *
+     * @return int 学生数量
+     */
+    public int getStudentNum()
+    {
+        return studentDAO.getStudentNum();
     }
 
     public static void main(String[] args)
