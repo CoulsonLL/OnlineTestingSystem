@@ -23,6 +23,7 @@ public class ExamLogEntity
     private Timestamp examStartTime;
     private Timestamp examEndTime;
     private BigDecimal score;
+    private ExamEntity examEntity;
 
     @Id
     @Column(name = "ExamLogsID", nullable = false)
@@ -144,6 +145,16 @@ public class ExamLogEntity
         this.score = score;
     }
 
+    public ExamEntity getExamEntity()
+    {
+        return examEntity;
+    }
+
+    public void setExamEntity(ExamEntity examEntity)
+    {
+        this.examEntity = examEntity;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -192,5 +203,23 @@ public class ExamLogEntity
         result = 31 * result + (examEndTime != null ? examEndTime.hashCode() : 0);
         result = 31 * result + (score != null ? score.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ExamLogEntity{" +
+                "examLogsId=" + examLogsId +
+                ", examId=" + examId +
+                ", stuId=" + stuId +
+                ", email='" + email + '\'' +
+                ", applyTime=" + applyTime +
+                ", mgrId=" + mgrId +
+                ", approvalResult=" + approvalResult +
+                ", examStartTime=" + examStartTime +
+                ", examEndTime=" + examEndTime +
+                ", score=" + score +
+                ", examEntity=" + examEntity +
+                '}';
     }
 }

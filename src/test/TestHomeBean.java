@@ -100,7 +100,7 @@ public class TestHomeBean implements Serializable
     public void queryPopularList()
     {
         CourseService courseService = new CourseService();
-        list = courseService.getCoursesByPopularity();
+        list = courseService.getCoursesOrderedByPopularity();
     }
 
     public List<CourseEntity> getList()

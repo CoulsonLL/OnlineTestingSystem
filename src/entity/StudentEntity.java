@@ -18,6 +18,22 @@ public class StudentEntity
     private String phoneNum;
     private String email;
 
+    public StudentEntity()
+    {
+
+    }
+
+    public StudentEntity(int stuId, String stuName, String stuPwd, int stuAge, String stuSex, String phoneNum, String email)
+    {
+        this.stuId = stuId;
+        this.stuName = stuName;
+        this.stuPwd = stuPwd;
+        this.stuAge = stuAge;
+        this.stuSex = stuSex;
+        this.phoneNum = phoneNum;
+        this.email = email;
+    }
+
     @Id
     @Column(name = "StuID", nullable = false)
     public int getStuId()
@@ -116,7 +132,9 @@ public class StudentEntity
         if (stuPwd != null ? !stuPwd.equals(that.stuPwd) : that.stuPwd != null) return false;
         if (stuSex != null ? !stuSex.equals(that.stuSex) : that.stuSex != null) return false;
         if (phoneNum != null ? !phoneNum.equals(that.phoneNum) : that.phoneNum != null)
+        {
             return false;
+        }
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
 
         return true;
@@ -133,5 +151,19 @@ public class StudentEntity
         result = 31 * result + (phoneNum != null ? phoneNum.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "StudentEntity{" +
+                "stuId=" + stuId +
+                ", stuName='" + stuName + '\'' +
+                ", stuPwd='" + stuPwd + '\'' +
+                ", stuAge=" + stuAge +
+                ", stuSex='" + stuSex + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

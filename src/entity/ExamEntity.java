@@ -102,7 +102,9 @@ public class ExamEntity
         if (courseId != that.courseId) return false;
         if (examState != that.examState) return false;
         if (examName != null ? !examName.equals(that.examName) : that.examName != null)
+        {
             return false;
+        }
         if (questionNum != null ? !questionNum.equals(that.questionNum) : that.questionNum != null)
         {
             return false;
@@ -121,5 +123,18 @@ public class ExamEntity
         result = 31 * result + examState;
         result = 31 * result + (questionNum != null ? questionNum.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ExamEntity{" +
+                "examId=" + examId +
+                ", examName='" + examName + '\'' +
+                ", duration=" + duration +
+                ", courseId=" + courseId +
+                ", examState=" + examState +
+                ", questionNum=" + questionNum +
+                '}';
     }
 }

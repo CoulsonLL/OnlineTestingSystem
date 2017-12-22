@@ -29,9 +29,9 @@ public class CourseService
         return courseDAO.queryCoursesByModuleID(moduleID);
     }
 
-    public List<CourseEntity> getCoursesByPopularity()
+    public List<CourseEntity> getCoursesOrderedByPopularity()
     {
-        return courseDAO.queryCourseOrderByPopularity();
+        return courseDAO.queryCourseOrderedByPopularity();
     }
 
     public Integer addCourse(CourseEntity course)

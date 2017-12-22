@@ -15,6 +15,18 @@ public class ScEntity
     private int cCourseState;
     private int scid;
 
+    public ScEntity()
+    {
+
+    }
+
+    public ScEntity(int stuId, int cCourseId, int cCourseState)
+    {
+        this.stuId = stuId;
+        this.cCourseId = cCourseId;
+        this.cCourseState = cCourseState;
+    }
+
     @Basic
     @Column(name = "StuID", nullable = false)
     public int getStuId()
@@ -87,5 +99,16 @@ public class ScEntity
         result = 31 * result + cCourseState;
         result = 31 * result + scid;
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ScEntity{" +
+                "stuId=" + stuId +
+                ", cCourseId=" + cCourseId +
+                ", cCourseState=" + cCourseState +
+                ", scid=" + scid +
+                '}';
     }
 }

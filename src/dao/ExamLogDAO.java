@@ -106,4 +106,45 @@ public class ExamLogDAO
             return false;
         }
     }
+
+    /**
+     * 查询考试列表
+     *
+     * @return List<ExamLogEntity>
+     */
+    public List<ExamLogEntity> queryExamLogs()
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        list = session.createQuery("from ExamLogEntity").list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
+    /**
+     * 根据时间查询考试列表
+     * @param startDate 开始时间 yyyy-MM-dd HH:mm:ss
+     * @param endDate   结束时间 yyyy-MM-dd HH:mm:ss
+     * @return List<ExamLogEntity>
+     */
+    public List<ExamLogEntity> queryExamLogsWithDate(String startDate, String endDate)
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        list = session.createQuery("from ExamLogEntity where examStartTime between '" + startDate + "' and '" + endDate + "'").list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
+    public static void main(String[] args)
+    {
+//        System.out.println(new ExamLogDAO().queryExamLogs());
+        System.out.println(new ExamLogDAO().queryExamLogsWithDate("2017-12-22 10:30","2017-12-22 19:00"));
+    }
 }

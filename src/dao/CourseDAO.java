@@ -65,11 +65,11 @@ public class CourseDAO
     }
 
     /**
-     * 根据热度查询课程列表
+     * 根据热度排序查询课程列表
      *
      * @return List<CourseEntity>
      */
-    public List<CourseEntity> queryCourseOrderByPopularity()
+    public List<CourseEntity> queryCourseOrderedByPopularity()
     {
         Transaction tx = null;
         List list = null;
@@ -82,6 +82,26 @@ public class CourseDAO
         {
             System.out.println(c.toString());
         }
+        return list;
+    }
+    /**
+     * 根据模块排序查询课程列表
+     *
+     * @return List<CourseEntity>
+     */
+    public List<CourseEntity> queryCourseOrderedByModule()
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        list = session.createQuery("from CourseEntity order by cModule").list();
+        tx.commit();
+        session.close();
+//        for (Object c : list)
+//        {
+//            System.out.println(c.toString());
+//        }
         return list;
     }
 

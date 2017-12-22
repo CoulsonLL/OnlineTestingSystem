@@ -36,5 +36,6 @@
         <property name="score">
             <column name="Score" sql-type="decimal(10,2)" precision="10" scale="2" not-null="true"/>
         </property>
+        <many-to-one name="examEntity" class="entity.ExamEntity" cascade="none" access="property" column="ExamID" insert="false" update="false" lazy="false"/>
     </class>
 </hibernate-mapping>

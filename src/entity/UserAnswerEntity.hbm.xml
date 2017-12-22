@@ -7,10 +7,12 @@
     <class name="entity.UserAnswerEntity" table="UserAnswer" schema="dbo" catalog="OnlineTest">
         <id name="examLogsId">
             <column name="ExamLogsID" sql-type="int"/>
-            <generator class="native"/>
         </id>
         <property name="stuId">
             <column name="StuID" sql-type="int"/>
+        </property>
+        <property name="examId">
+            <column name="ExamID" sql-type="int"/>
         </property>
         <property name="questionId">
             <column name="QuestionID" sql-type="int"/>

@@ -2,7 +2,12 @@ package service;
 
 import java.util.List;
 
+import dao.ExamLogDAO;
+import dao.ScDAO;
 import dao.StudentDAO;
+import entity.CourseEntity;
+import entity.ExamLogEntity;
+import entity.ScEntity;
 import entity.StudentEntity;
 import util.FacesUtil;
 
@@ -41,7 +46,7 @@ public class StudentService
     }
 
     /**
-     * 登录
+     * <h1>登录</h1>
      *
      * @param phoneNum 手机号码
      * @param password 密码
@@ -63,7 +68,7 @@ public class StudentService
     }
 
     /**
-     * 退出登录
+     * <h1>退出登录</h1>
      */
     public void logout()
     {
@@ -71,7 +76,7 @@ public class StudentService
     }
 
     /**
-     * 判断是否已经登录
+     * <h1>判断是否已经登录</h1>
      *
      * @return boolean
      */
@@ -88,7 +93,7 @@ public class StudentService
     }
 
     /**
-     * 注册
+     * <h1>注册</h1>
      *
      * @param studentEntity StudentEntity对象
      * @return boolean
@@ -133,6 +138,57 @@ public class StudentService
     {
         StudentService studentService = new StudentService();
         studentService.updateStudent(studentEntity);
+    }
+
+    /**
+     * <h1>学生选课</h1>
+     *
+     * @param studentEntity 学生实体
+     * @param courseEntity  课程实体
+     * @return boolean true-选课成功 false-课程已选择
+     */
+    public boolean selectCourse(StudentEntity studentEntity, CourseEntity courseEntity)
+    {
+        ScDAO scDAO = new ScDAO();
+        //判断是否选课
+        ScEntity scEntity = scDAO.queryScByStuIDAndCourseID(studentEntity.getStuId(), courseEntity.getcCourseId());
+        if (scEntity == null)
+        {
+            scEntity = new ScEntity(scEntity.getStuId(), courseEntity.getcCourseId(), 0);//0代表刚刚选课
+            try
+            {
+                scDAO.addSC(scEntity);
+                return true;
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * 申请考试
+     *
+     * @param examLogEntity 考试记录实体对象
+     *                      <p>
+     *                      <p>
+     *                      需要设置的参数有
+     *                      ExamID<br/>
+     *                      StuID<br/>
+     *                      Email<br/>
+     *                      ExamStartTime(考试开始时间)</p>
+     * @return boolean
+     */
+    public boolean applyForExam(ExamLogEntity examLogEntity)
+    {
+        ExamLogDAO examLogDAO = new ExamLogDAO();
+        return examLogDAO.applyForExam(examLogEntity);
     }
 
     public static void main(String[] args)
