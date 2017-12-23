@@ -8,10 +8,10 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <title>HomePage</title>
-    <link rel="stylesheet" type="text/css" href="/OnlineTestingSystem_war_exploded/css/search-form.css"/>
-    <link rel="stylesheet" type="text/css" href="/OnlineTestingSystem_war_exploded/css/HomeRender.css"/>
-    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/jquery-1.11.0.min.js"/>
-    <script type="text/javascript" src="/OnlineTestingSystem_war_exploded/js/search.js"/>
+    <link rel="stylesheet" type="text/css" href="css/search-form.css"/>
+    <link rel="stylesheet" type="text/css" href="css/HomeRender.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"/>
+    <script type="text/javascript" src="js/search.js"/>
 
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <script type="text/javascript" src="js/jquery.min.js"/>
@@ -190,18 +190,18 @@
                     <article class="biggest">
                         <h:form>
                             <h:commandLink styleClass="biggest-img-a" action="test">
-                                <h:graphicImage styleClass="biggest-img" value="/img/homepage/2.jpg"/>
+                                <h:graphicImage styleClass="biggest-img" value="#{popularCourseBean.image1}"/>
                             </h:commandLink>
                             <div class="biggest-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="biggest-script-title" value="Hibernate"
+                                        <h:commandLink styleClass="biggest-script-title" value="#{popularCourseBean.title1}"
                                                        action="test"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="biggest-script-content"
-                                                   value="sdfasfdsdfsfdsfdsafdfsdadfdsfaf" action="test"/>
+                                                   value="#{popularCourseBean.description1}" action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -212,17 +212,17 @@
                     <article class="small">
                         <h:form>
                             <h:commandLink styleClass="small-img-a" action="test">
-                                <h:graphicImage styleClass="small-img" value="/img/homepage/2.jpg"/>
+                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image2}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="Computer" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title2}" action="test"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="small-script-content"
-                                                   value="Nothing could be more insteresting" action="test"/>
+                                                   value="#{popularCourseBean.description2}" action="test"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -230,16 +230,16 @@
                     <article class="small">
                         <h:form>
                             <h:commandLink styleClass="small-img-a" action="test">
-                                <h:graphicImage styleClass="small-img" value="/img/homepage/3.jpg"/>
+                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image3}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="Science" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title3}" action="test"/>
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sfafdsadfasfsdfsfadf"
+                                    <h:commandLink styleClass="small-script-content" value="#{popularCourseBean.description3}"
                                                    action="test"/>
                                 </h3>
                             </div>
@@ -248,16 +248,16 @@
                     <article class="small">
                         <h:form>
                             <h:commandLink styleClass="small-img-a" action="test">
-                                <h:graphicImage styleClass="small-img" value="/img/homepage/4.jpg"/>
+                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image4}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="Java" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title4}" action="test"/>
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sdfsgfgfhghgjhhjkjlkj"
+                                    <h:commandLink styleClass="small-script-content" value="#{popularCourseBean.description4}"
                                                    action="test"/>
                                 </h3>
                             </div>
@@ -266,16 +266,16 @@
                     <article class="small">
                         <h:form>
                             <h:commandLink styleClass="small-img-a" action="test">
-                                <h:graphicImage styleClass="small-img" value="/img/homepage/5.jpg"/>
+                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image5}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="Math" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title5}" action="test"/>
                                     </p>
                                 </div>
                                 <h3>
-                                    <h:commandLink styleClass="small-script-content" value="sfsaagfgfsafdsfdasf"
+                                    <h:commandLink styleClass="small-script-content" value="#{popularCourseBean.description5}"
                                                    action="test"/>
                                 </h3>
                             </div>

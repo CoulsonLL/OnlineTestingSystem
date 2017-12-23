@@ -11,20 +11,20 @@ public class Servlet extends HttpServlet
     @Override
     public void init() throws ServletException
     {
-        new Thread(() -> {
-            for (; ; )
-            {
-                StudentDAO.updateStudentNum();
-                ManagerDAO.updateManagerNum();
-                try
-                {
-                    Thread.sleep(1000);
-                }
-                catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+//        new Thread(() -> {
+//            for (; ; )
+//            {
+//                StudentDAO.updateStudentNum();
+//                ManagerDAO.updateManagerNum();
+//                try
+//                {
+//                    Thread.sleep(1000);
+//                }
+//                catch (InterruptedException e)
+//                {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
     }
 }
