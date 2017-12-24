@@ -4,11 +4,11 @@ body {
 
 
 .header {
-    height: 90px;
+    height: 80px;
     background-color: #b1040e;
 }
 .header-nav {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 .header-nav-ul {
     list-style: none;
@@ -103,14 +103,21 @@ body {
     padding-top: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    height: 150px;
+    height: 125px;
     background-color: white;
 }
+.biggest-script p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .biggest-script-title {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     color: darkred;
     cursor: none;
+}
+.biggest-script h3 {
+    line-height: 30px;
 }
 .biggest-script-content {
     color: black;
@@ -123,6 +130,7 @@ body {
     text-decoration: none;
 }
 .biggest-script h3 {
+    margin-top: 0;
     word-break: break-all;
     text-align: justify;
 }
@@ -156,9 +164,13 @@ body {
      padding-top: 5px;
      padding-left: 15px;
      padding-right: 15px;
-     height: 150px;
+     height: 140px;
      background-color: white;
  }
+.small-script p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .small-script-title {
     font-size: 20px;
     font-weight: bold;
@@ -176,6 +188,7 @@ body {
     text-decoration: none;
 }
 .small-script h3 {
+    margin-top: 0;
     word-break: break-all;
     text-align: justify;
 }
