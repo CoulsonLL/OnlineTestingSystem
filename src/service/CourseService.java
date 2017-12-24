@@ -48,4 +48,14 @@ public class CourseService
     {
         courseDAO.updateCourse(course);
     }
+
+    /**
+     * 更新viewCount
+     *
+     * @param courseEntity
+     */
+    public void updateViewCount(CourseEntity courseEntity)
+    {
+        courseDAO.updateViewCount(courseEntity);
+    }
 }

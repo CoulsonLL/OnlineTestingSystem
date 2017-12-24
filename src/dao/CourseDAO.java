@@ -84,6 +84,7 @@ public class CourseDAO
         }
         return list;
     }
+
     /**
      * 根据模块排序查询课程列表
      *
@@ -189,6 +190,24 @@ public class CourseDAO
             System.out.println(c.toString());
         }
         return list;
+    }
+
+    /**
+     * 更新viewCount
+     * @param courseEntity
+     */
+    public void updateViewCount(CourseEntity courseEntity)
+    {
+        Transaction tx = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        tx = session.beginTransaction();
+        String hql = "from CourseEntity where cCourseId = " + courseEntity.getcCourseId();
+        CourseEntity newCourseEntity = (CourseEntity) session.createQuery(hql).uniqueResult();
+        int viewCount = newCourseEntity.getViewCount();
+        newCourseEntity.setViewCount(viewCount + 1);
+        session.update(newCourseEntity);
+        tx.commit();
+        session.close();
     }
 
     public static void main(String[] args)
