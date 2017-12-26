@@ -5,12 +5,14 @@ import javax.servlet.http.HttpServlet;
 
 import dao.ManagerDAO;
 import dao.StudentDAO;
+import util.HibernateUtil;
 
 public class Servlet extends HttpServlet
 {
     @Override
     public void init() throws ServletException
     {
+        HibernateUtil.getSessionFactory();
 //        new Thread(() -> {
 //            for (; ; )
 //            {

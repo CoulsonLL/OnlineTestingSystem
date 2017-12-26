@@ -23,7 +23,7 @@ public class CourseDAO
         int i = 0;
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         i = (Integer) session.save(course);
         tx.commit();
@@ -40,7 +40,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         CourseEntity courseEntity = session.get(CourseEntity.class, courseID);
         session.delete(courseEntity);
@@ -57,7 +57,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         session.update(course);
         tx.commit();
@@ -73,7 +73,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from CourseEntity order by viewCount desc ").list();
         tx.commit();
@@ -94,7 +94,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from CourseEntity order by cModule").list();
         tx.commit();
@@ -115,7 +115,7 @@ public class CourseDAO
     public CourseEntity queryCourseById(Integer courseID)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from CourseEntity where cCourseId = " + courseID;
         CourseEntity entity = (CourseEntity) session.createQuery(hql).uniqueResult();
@@ -123,6 +123,24 @@ public class CourseDAO
         session.close();
         System.out.println(entity);
         return entity;
+    }
+
+    /**
+     * 根据ID查询课程名称
+     *
+     * @param courseID
+     * @return CourseEntity
+     */
+    public String queryCourseNameById(Integer courseID)
+    {
+        Transaction tx = null;
+        Session session = HibernateUtil.getSession();
+        tx = session.beginTransaction();
+        String hql = "select new CourseEntity (cCourseId,cName)from CourseEntity where cCourseId = " + courseID;
+        CourseEntity entity = (CourseEntity) session.createQuery(hql).uniqueResult();
+        tx.commit();
+        session.close();
+        return entity.getcName();
     }
 
     /**
@@ -134,7 +152,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from CourseEntity").list();
         tx.commit();
@@ -143,6 +161,23 @@ public class CourseDAO
 //        {
 //            System.out.println(c.toString());
 //        }
+        return list;
+    }
+
+    /**
+     * 查询所有课程ID和Name
+     *
+     * @return List<CourseEntity>
+     */
+    public List<CourseEntity> queryAllIDsAndNames()
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSession();
+        tx = session.beginTransaction();
+        list = session.createQuery("select new CourseEntity(cCourseId,cName) from CourseEntity").list();
+        tx.commit();
+        session.close();
         return list;
     }
 
@@ -156,7 +191,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from CourseEntity where cName like '%" + name + "%'";
         list = session.createQuery(hql).list();
@@ -179,7 +214,7 @@ public class CourseDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from CourseEntity where cModule = " + moduleID;
         list = session.createQuery(hql).list();
@@ -194,12 +229,13 @@ public class CourseDAO
 
     /**
      * 更新viewCount
+     *
      * @param courseEntity
      */
     public void updateViewCount(CourseEntity courseEntity)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from CourseEntity where cCourseId = " + courseEntity.getcCourseId();
         CourseEntity newCourseEntity = (CourseEntity) session.createQuery(hql).uniqueResult();

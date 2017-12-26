@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <title>ManageExamPage</title>
+</h:head>
+<h:body>
+    <h1>ManageExamPage</h1>
+    #{examBean.updateExamEntityList()}
+    <br/><br/>
+    <h:form>
+        <h:outputText value="Exam List"/>
+        <h:dataTable border="1" value="#{examBean.examEntityList}" var="exam">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="No"/>
+                </f:facet>
+                <h:outputText value="#{rowCounter.row}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ExamName"/>
+                </f:facet>
+                <h:outputText value="#{exam.examName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Duration"/>
+                </f:facet>
+                <h:outputText value="#{exam.duration}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Course Name"/>
+                </f:facet>
+                <h:outputText value="#{examBean.getCourseNameByID(exam.courseId)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ExamState"/>
+                </f:facet>
+                <h:outputText value="#{examBean.convertExamStateToString(exam.examState)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Question Num"/>
+                </f:facet>
+                <h:outputText value="#{exam.questionNum}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Modify"/>
+                </f:facet>
+                <h:commandButton value="Modify" action="#{examBean.handleModifyExamButton(exam)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Delete"/>
+                </f:facet>
+                <h:commandButton value="Delete" action="#{examBean.deleteExam(exam)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputText value="ExamName"/>
+            <h:inputTextarea value="#{examBean.newExamEntity.examName}"/>
+            <h:outputText value="Duration"/>
+            <h:inputTextarea value="#{examBean.newExamEntity.duration}"/>
+            <h:outputText value="Course Name"/>
+            <h:selectOneMenu value="#{examBean.newExamEntity.courseId}">
+                <f:selectItems value="#{examBean.selectItemList}"/>
+            </h:selectOneMenu>
+            <h:outputText value="Exam State"/>
+            <h:selectOneMenu value="#{examBean.newExamEntity.examState}">
+                <f:selectItem itemLabel="Available" itemValue="0"/>
+                <f:selectItem itemLabel="Not Available" itemValue="1"/>
+            </h:selectOneMenu>
+            <h:commandButton action="#{examBean.modifyExam}" value="Confirm Modify"/>
+            <h:commandButton action="#{examBean.addAsNew}" value="Add as New"/>
+        </h:panelGrid>
+    </h:form>
+    <br/><br/>
+</h:body>
+</html>

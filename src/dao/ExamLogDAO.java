@@ -35,7 +35,7 @@ public class ExamLogDAO
             examLogEntity.setApplyTime(new Timestamp(new Date().getTime()));
             Transaction tx = null;
             List list = null;
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSession();
             tx = session.beginTransaction();
             session.save(examLogEntity);
             tx.commit();
@@ -64,7 +64,7 @@ public class ExamLogDAO
             examLogEntity.setMgrId(managerEntity.getMgrId());
             Transaction tx = null;
             List list = null;
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSession();
             tx = session.beginTransaction();
             session.save(examLogEntity);
             tx.commit();
@@ -93,7 +93,7 @@ public class ExamLogDAO
             examLogEntity.setMgrId(managerEntity.getMgrId());
             Transaction tx = null;
             List list = null;
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSession();
             tx = session.beginTransaction();
             session.save(examLogEntity);
             tx.commit();
@@ -116,7 +116,7 @@ public class ExamLogDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from ExamLogEntity").list();
         tx.commit();
@@ -134,7 +134,7 @@ public class ExamLogDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from ExamLogEntity where examStartTime between '" + startDate + "' and '" + endDate + "'").list();
         tx.commit();

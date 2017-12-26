@@ -16,7 +16,7 @@ public class QuestionDAO
         int i = 0;
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         i = (Integer) session.save(questionEntity);
         tx.commit();
@@ -28,7 +28,7 @@ public class QuestionDAO
         int i = 0;
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         session.delete(questionEntity);
         tx.commit();
@@ -40,7 +40,7 @@ public class QuestionDAO
         int i = 0;
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         session.update(questionEntity);
         tx.commit();
@@ -51,7 +51,7 @@ public class QuestionDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from QuestionEntity where courseId = '" + courseID + "'";
         list = session.createQuery(hql).list();
@@ -63,7 +63,7 @@ public class QuestionDAO
     public QuestionEntity queryQuesitonByID(Integer questionID)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from QuestionEntity where questionId = '" + questionID + "'";
         QuestionEntity entity = (QuestionEntity) session.createQuery(hql).uniqueResult();
