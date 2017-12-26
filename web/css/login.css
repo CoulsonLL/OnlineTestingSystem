@@ -1,19 +1,40 @@
 .UserInfo {
+	background-color: royalblue;
 	text-decoration: none;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 6px;
 	position: absolute;
-	top: 30px;
-	right: 300px;
-	font-size: 25px;
-	font-weight: bold;
+	top: 2.9%;
+	right: 1%;
+	width: 83px;
+	height: 40px;
+
 	color: white;
+	font-size: 27px;
+	font-weight: bold;
 }
 .login-open {
-	background-image: url("../img/homepage/2.jpg");
-	width: 30px;
-    height: 30px;
+	/*background-image: url("../img/homepage/login.png");*/
+	/*background-size: 100%;*/
+	background-color: white;
+	text-decoration: none;
+	text-align: center;
+	line-height: 40px;
+	width: 83px;
+	height: 40px;
+	border-radius: 6px;
 	position: absolute;
-	top: 20px;
-	right: 10px;
+	top: 2.9%;
+	right: 1%;
+
+	color: black;
+	font-size: 22px;
+	font-weight: bold;
+
+}
+.login-open.removed {
+	display: none;
 }
 .login-mask {
 	z-index: 9998;

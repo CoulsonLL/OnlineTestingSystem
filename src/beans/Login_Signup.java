@@ -19,11 +19,13 @@ public class Login_Signup {
     private String email;
     private boolean remember;
 
-    private String error1;//登陆错误
-    private String error2;//注册错误
-    private String userinfo;//登陆成功显示在主页的用户手机号
     private String login_null_error;//登陆时有输入框为空错误
+    private String error1;//登陆时手机号密码错误
+    private String login_success;//登陆成功信息
+    private String userinfo;//登陆成功显示在主页的用户手机号
+
     private String signup_null_error;//注册时有输入框为空错误
+    private String error2;//注册时手机号已注册错误
     private String signup_success;//注册成功信息
 
     public void login() {
@@ -35,10 +37,11 @@ public class Login_Signup {
             boolean sign = stuService.login(phoneno, password);
             //若登陆成功
             if (sign) {
-                userinfo = phoneno;
+                userinfo = phoneno.substring(7);
                 System.out.println(userinfo+remember);
-                //若选择记住账号密码
-
+                //获取session，将是否登陆的值存入session，这样所有的bean都能获取到这个值
+                login_success = "success";
+                FacesUtil.getSession().setAttribute("islogin",login_success);
             }
             //若登陆失败
             else {
@@ -150,5 +153,13 @@ public class Login_Signup {
 
     public void setSignup_success(String signup_success) {
         this.signup_success = signup_success;
+    }
+
+    public String getLogin_success() {
+        return login_success;
+    }
+
+    public void setLogin_success(String login_success) {
+        this.login_success = login_success;
     }
 }
