@@ -25,7 +25,7 @@ public class StudentDAO
         int i = 0;
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         i = (Integer) session.save(student);
         tx.commit();
@@ -42,7 +42,7 @@ public class StudentDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         StudentEntity studentEntity = session.get(StudentEntity.class, studentID);
         session.delete(studentEntity);
@@ -59,7 +59,7 @@ public class StudentDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         session.update(student);
         tx.commit();
@@ -75,7 +75,7 @@ public class StudentDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from StudentEntity").list();
         tx.commit();
@@ -96,7 +96,7 @@ public class StudentDAO
     public StudentEntity queryStudentById(Integer studentID)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from StudentEntity where stuId = '" + studentID + "'";
         StudentEntity entity = (StudentEntity) session.createQuery(hql).uniqueResult();
@@ -115,7 +115,7 @@ public class StudentDAO
     public StudentEntity queryStudentByPhoneNum(String PhoneNum)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
 //        String hql = "from StudentEntity where phoneNum = " + PhoneNum;
         String hql = "from StudentEntity where phoneNum = '" + PhoneNum + "'";
@@ -130,7 +130,7 @@ public class StudentDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Student");
         list = query.list();

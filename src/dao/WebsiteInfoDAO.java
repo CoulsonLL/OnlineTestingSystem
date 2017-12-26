@@ -13,7 +13,7 @@ public class WebsiteInfoDAO
     public void updateViewCount()
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from WebsiteInfoEntity";
         WebsiteInfoEntity websiteInfoEntity = (WebsiteInfoEntity) session.createQuery(hql).uniqueResult();

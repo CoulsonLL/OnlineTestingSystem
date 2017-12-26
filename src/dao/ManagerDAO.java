@@ -20,7 +20,7 @@ public class ManagerDAO
         {
             Transaction tx = null;
             List list = null;
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSession();
             tx = session.beginTransaction();
             session.update(managerEntity);
             tx.commit();
@@ -43,7 +43,7 @@ public class ManagerDAO
     public ManagerEntity queryManagerById(Integer managerID)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from ManagerEntity where mgrId = '" + managerID + "'";
         ManagerEntity entity = (ManagerEntity) session.createQuery(hql).uniqueResult();
@@ -56,7 +56,7 @@ public class ManagerDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from ManagerEntity").list();
         tx.commit();
@@ -68,7 +68,7 @@ public class ManagerDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Manager");
         list = query.list();

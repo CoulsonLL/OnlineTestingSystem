@@ -21,6 +21,16 @@ public class CourseEntity
     private Integer viewCount;
     private String picture;
 
+    public CourseEntity(int cCourseId, String cName)
+    {
+        this.cCourseId = cCourseId;
+        this.cName = cName;
+    }
+
+    public CourseEntity()
+    {
+    }
+
     @Id
     @Column(name = "CCourseID", nullable = false)
     public int getcCourseId()

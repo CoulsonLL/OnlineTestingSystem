@@ -19,6 +19,11 @@ public class CourseService
         return courseDAO.queryCourseById(courseID);
     }
 
+    public String queryCourseNameById(Integer courseID)
+    {
+        return courseDAO.queryCourseNameById(courseID);
+    }
+
     public List<CourseEntity> getCoursesByName(String name)
     {
         return courseDAO.queryCoursesByName(name);
@@ -57,5 +62,15 @@ public class CourseService
     public void updateViewCount(CourseEntity courseEntity)
     {
         courseDAO.updateViewCount(courseEntity);
+    }
+
+    /**
+     * 查询所有课程ID和Name
+     *
+     * @return List<CourseEntity>
+     */
+    public List<CourseEntity> queryAllIDsAndNames()
+    {
+        return courseDAO.queryAllIDsAndNames();
     }
 }

@@ -15,7 +15,7 @@ public class ScDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         session.save(scEntity);
         tx.commit();
@@ -26,7 +26,7 @@ public class ScDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         session.delete(scEntity);
         tx.commit();
@@ -36,7 +36,7 @@ public class ScDAO
     public ScEntity queryScByStuIDAndCourseID(Integer stuID, Integer courseID)
     {
         Transaction tx = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from ScEntity where cCourseId = " + courseID + " and stuId = " + stuID;
         ScEntity entity = (ScEntity) session.createQuery(hql).uniqueResult();
@@ -49,7 +49,7 @@ public class ScDAO
     {
         Transaction tx = null;
         List list = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("SELECT new StudentEntity(s.stuId,s.stuName,s.stuPwd,s.stuAge,s.stuSex,s.phoneNum,s.email) from StudentEntity s,ScEntity sc where s.stuId=sc.stuId and sc.cCourseId = " + courseID).list();
         tx.commit();
