@@ -135,6 +135,7 @@ public class StudentDAO
         SQLQuery query = session.createSQLQuery("select count(*) from [OnlineTest].[dbo].Student");
         list = query.list();
         stuNum = (int) list.get(0);
+        session.close();
     }
 
     public int getStudentNum()

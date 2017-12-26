@@ -1,13 +1,5 @@
 package entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "UserAnswer", schema = "dbo", catalog = "OnlineTest")
 public class UserAnswerEntity
 {
     private int examLogsId;
@@ -15,9 +7,8 @@ public class UserAnswerEntity
     private int examId;
     private int questionId;
     private String userAnswer;
+    private int userAnswerId;
 
-    @Id
-    @Column(name = "ExamLogsID", nullable = false)
     public int getExamLogsId()
     {
         return examLogsId;
@@ -28,8 +19,6 @@ public class UserAnswerEntity
         this.examLogsId = examLogsId;
     }
 
-    @Basic
-    @Column(name = "StuID", nullable = false)
     public int getStuId()
     {
         return stuId;
@@ -40,8 +29,6 @@ public class UserAnswerEntity
         this.stuId = stuId;
     }
 
-    @Basic
-    @Column(name = "ExamID", nullable = false)
     public int getExamId()
     {
         return examId;
@@ -52,8 +39,6 @@ public class UserAnswerEntity
         this.examId = examId;
     }
 
-    @Basic
-    @Column(name = "QuestionID", nullable = false)
     public int getQuestionId()
     {
         return questionId;
@@ -64,8 +49,6 @@ public class UserAnswerEntity
         this.questionId = questionId;
     }
 
-    @Basic
-    @Column(name = "UserAnswer", nullable = false, length = 1)
     public String getUserAnswer()
     {
         return userAnswer;
@@ -74,6 +57,16 @@ public class UserAnswerEntity
     public void setUserAnswer(String userAnswer)
     {
         this.userAnswer = userAnswer;
+    }
+
+    public int getUserAnswerId()
+    {
+        return userAnswerId;
+    }
+
+    public void setUserAnswerId(int userAnswerId)
+    {
+        this.userAnswerId = userAnswerId;
     }
 
     @Override
@@ -88,6 +81,7 @@ public class UserAnswerEntity
         if (stuId != that.stuId) return false;
         if (examId != that.examId) return false;
         if (questionId != that.questionId) return false;
+        if (userAnswerId != that.userAnswerId) return false;
         if (userAnswer != null ? !userAnswer.equals(that.userAnswer) : that.userAnswer != null)
         {
             return false;
@@ -104,6 +98,7 @@ public class UserAnswerEntity
         result = 31 * result + examId;
         result = 31 * result + questionId;
         result = 31 * result + (userAnswer != null ? userAnswer.hashCode() : 0);
+        result = 31 * result + userAnswerId;
         return result;
     }
 }

@@ -5,9 +5,13 @@
 <hibernate-mapping>
 
     <class name="entity.UserAnswerEntity" table="UserAnswer" schema="dbo" catalog="OnlineTest">
-        <id name="examLogsId">
-            <column name="ExamLogsID" sql-type="int"/>
+        <id name="userAnswerId">
+            <column name="UserAnswerID" sql-type="int"/>
+            <generator class="native"/>
         </id>
+        <property name="examLogsId">
+            <column name="ExamLogsID" sql-type="int"/>
+        </property>
         <property name="stuId">
             <column name="StuID" sql-type="int"/>
         </property>

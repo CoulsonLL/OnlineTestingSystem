@@ -16,14 +16,13 @@ public class ExamDAO
     /**
      * 添加考试
      *
-     * @param examEntity
+     * @param examEntity 考试实体
      * @return Integer
      */
     public Integer addExam(ExamEntity examEntity)
     {
-        int i = 0;
-        Transaction tx = null;
-        List list = null;
+        int i;
+        Transaction tx;
         Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         i = (Integer) session.save(examEntity);
@@ -35,14 +34,13 @@ public class ExamDAO
     /**
      * 删除考试
      *
-     * @param examEntity
+     * @param examEntity 考试实体
      */
     public boolean deleteExam(ExamEntity examEntity)
     {
         try
         {
-            Transaction tx = null;
-            List list = null;
+            Transaction tx;
             Session session = HibernateUtil.getSession();
             tx = session.beginTransaction();
             session.delete(examEntity);
@@ -59,14 +57,13 @@ public class ExamDAO
     /**
      * 修改考试
      *
-     * @param examEntity
+     * @param examEntity 考试实体
      */
     public boolean modifyExam(ExamEntity examEntity)
     {
         try
         {
-            Transaction tx = null;
-            List list = null;
+            Transaction tx;
             Session session = HibernateUtil.getSession();
             tx = session.beginTransaction();
             session.update(examEntity);
@@ -83,12 +80,12 @@ public class ExamDAO
     /**
      * 查询所有考试
      *
-     * @return List<ExamEntity>
+     * @return List<ExamEntity> 考试实体
      */
     public List<ExamEntity> queryAllExams()
     {
-        Transaction tx = null;
-        List list = null;
+        Transaction tx;
+        List list;
         Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         list = session.createQuery("from ExamEntity").list();
@@ -100,13 +97,13 @@ public class ExamDAO
     /**
      * 根据名称查询考试列表
      *
-     * @param courseEntity
+     * @param courseEntity 考试实体
      * @return List<ExamEntity>
      */
     public List<ExamEntity> queryExamsByCourse(CourseEntity courseEntity)
     {
-        Transaction tx = null;
-        List list = null;
+        Transaction tx;
+        List list;
         Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         String hql = "from ExamEntity where courseId = " + courseEntity.getcCourseId();
