@@ -46,6 +46,26 @@ public class PopularCourseBean {
         course4 = (CourseEntity) courses.get(3);
         course5 = (CourseEntity) courses.get(4);
     }
+    public String course1(){
+        title1 = course1.getcName();
+        return title1;
+    }
+    public String course2(){
+        title2 = course2.getcName();
+        return title2;
+    }
+    public String course3(){
+        title3 = course3.getcName();
+        return title3;
+    }
+    public String course4(){
+        title4 = course4.getcName();
+        return title4;
+    }
+    public String course5(){
+        title5 = course5.getcName();
+        return title5;
+    }
 
     public String getImage1() {
         image1 = course1.getPicture();
