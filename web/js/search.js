@@ -1,10 +1,12 @@
 function searchToggle(obj, evt)
 {
     var container = $(obj).closest('.search-wrapper');
+    var input = $(".search-input");
 
     if (!container.hasClass('active'))
     {
         container.addClass('active');
+        input.focus();
         evt.preventDefault();
     }
     else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0)
