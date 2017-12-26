@@ -18,6 +18,7 @@
     <script type="text/javascript" src="js/login.js"/>
     <script>
         //页面加载是从localstorage查看之前有无记住账号密码，若有则自动填充登陆输入框
+        //登陆成功后remove掉登陆按钮
         function loading() {
             var storage = window.localStorage;
             var success_info = document.getElementById("login_success").innerHTML;

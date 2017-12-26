@@ -23,6 +23,10 @@ public class Authentication {
             phoneno = stu.getPhoneNum().substring(7);
             hiddeninput = (String) FacesUtil.getSession().getAttribute("islogin");
         }
+        //若用户未登录，也需在session中设置islogin的属性值，以防止后续页面空指针异常
+        else{
+            FacesUtil.getSession().setAttribute("islogin", "fail");
+        }
     }
 
     public String getPhoneno() {

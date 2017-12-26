@@ -1,0 +1,33 @@
+.course-content {
+    width: 100%;
+    height: 800px;
+    background-color: #f3f3f3;
+}
+.button-div {
+    padding-top: 50px;
+}
+/*.participate-button {*/
+    /*padding: 20px 20px 80px 20px;*/
+    /*text-align: center;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+
+/*}*/
+.participate-button {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 50px 10px 50px;
+    margin: 100px;
+    background-image: linear-gradient(to bottom,#6F9593 0%,#376372 50%,#194a63 50%,#204f65 100%);
+
+    color: #f9f6ef;
+    box-shadow: inset 0 1px 0 0 #94b29f;
+    text-shadow: 0 -1px 1px #000821;
+    font: normal 1.2rem/1.6rem "Source Sans Pro","Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+}
+.participate-button:focus {
+    box-shadow: inset 0 0 30px 5px #003655;
+}
+
