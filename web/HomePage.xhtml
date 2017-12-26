@@ -20,11 +20,16 @@
         //页面加载是从localstorage查看之前有无记住账号密码，若有则自动填充登陆输入框
         function loading() {
             var storage = window.localStorage;
+            var success_info = document.getElementById("login_success").innerHTML;
+            var $login_button = $('.login-open');
             if(storage.getItem("isremembered")==="true"){
                 var $login_input1 = $('#login-phoneno');
                 var $login_input2 = $('#login-password');
                 $login_input1.val(storage.getItem("phoneno"));
                 $login_input2.val(storage.getItem("password"));
+            }
+            if(success_info === "success"){
+                $login_button.remove();
             }
         }
         //若登陆成功并选择remember me，则存储到localstorage
@@ -46,25 +51,31 @@
     </script>
 </h:head>
 <h:body onload="loading()">
-
-    <div class="header">
-        <div class="header-nav">
-            <ul class="header-nav-ul">
-                <li>
-                    <a class="header-item-link" href="">Computer</a>
-                </li>
-                <li>
-                    <a class="header-item-link" href="">Arithmetic</a>
-                </li>
-                <li>
-                    <a class="header-item-link" href="">Math</a>
-                </li>
-                <li>
-                    <a class="header-item-link" href="">Economic</a>
-                </li>
-            </ul>
+    #{authentication.checkLogin()}
+    <h:form>
+        <div class="header">
+            <h:commandLink styleClass="header-logo" action="HomePage">
+                <h:graphicImage styleClass="logo-img" value="img/homepage/logo.png"/>
+            </h:commandLink>
+            <div class="header-nav">
+                <ul class="header-nav-ul">
+                    <li>
+                        <a class="header-item-link" href="">Computer</a>
+                    </li>
+                    <li>
+                        <a class="header-item-link" href="">Arithmetic</a>
+                    </li>
+                    <li>
+                        <a class="header-item-link" href="">Math</a>
+                    </li>
+                    <li>
+                        <a class="header-item-link" href="">Economic</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}"/>
+    </h:form>
 
     <form onsubmit="submitFn(this, event);">
         <div class="search-wrapper">
@@ -78,8 +89,7 @@
         </div>
     </form>
 
-    <h:commandLink id="user_info" styleClass="UserInfo" value="#{login_Signup.userinfo}"/>
-    <a class="login-open" href="javascript:"/>
+    <a class="login-open" href="javascript:">Sign in</a>
     <div class="login-container">
             <ul class="login-switcher">
                 <li class="login-li">
@@ -116,6 +126,7 @@
                 <h:outputText style="display: none" id="login_error" value="#{login_Signup.error1}"/>
                 <h:outputText style="display: none" id="login_null_error" value="#{login_Signup.login_null_error}"/>
                 <h:outputText style="display: none" id="login_remember_text" value="#{login_Signup.remember}"/>
+                <h:outputText style="display: none" id="login_success" value="#{authentication.hiddeninput}"/>
             </div>
 
             <div id="signup"> <!-- 注册表单 -->
@@ -189,19 +200,19 @@
                 <div class="content-top-article1">
                     <article class="biggest">
                         <h:form>
-                            <h:commandLink styleClass="biggest-img-a" action="test">
+                            <h:commandLink styleClass="biggest-img-a" action="#{popularCourseBean.course1}">
                                 <h:graphicImage styleClass="biggest-img" value="#{popularCourseBean.image1}"/>
                             </h:commandLink>
                             <div class="biggest-script">
                                 <div>
                                     <p>
                                         <h:commandLink styleClass="biggest-script-title" value="#{popularCourseBean.title1}"
-                                                       action="test"/>
+                                                       action="#{popularCourseBean.course1}"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="biggest-script-content"
-                                                   value="#{popularCourseBean.description1}" action="test"/>
+                                                   value="#{popularCourseBean.description1}" action="#{popularCourseBean.course1}"/>
                                 </h3>
                             </div>
                         </h:form>
@@ -211,72 +222,72 @@
                 <div class="content-top-article2">
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="test">
+                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course2}">
                                 <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image2}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title2}" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title2}" action="#{popularCourseBean.course2}"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="small-script-content"
-                                                   value="#{popularCourseBean.description2}" action="test"/>
+                                                   value="#{popularCourseBean.description2}" action="#{popularCourseBean.course2}"/>
                                 </h3>
                             </div>
                         </h:form>
                     </article>
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="test">
+                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course3}">
                                 <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image3}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title3}" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title3}" action="#{popularCourseBean.course3}"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="small-script-content" value="#{popularCourseBean.description3}"
-                                                   action="test"/>
+                                                   action="#{popularCourseBean.course3}"/>
                                 </h3>
                             </div>
                         </h:form>
                     </article>
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="test">
+                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course4}">
                                 <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image4}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title4}" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title4}" action="#{popularCourseBean.course4}"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="small-script-content" value="#{popularCourseBean.description4}"
-                                                   action="test"/>
+                                                   action="#{popularCourseBean.course4}"/>
                                 </h3>
                             </div>
                         </h:form>
                     </article>
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="test">
+                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course5}">
                                 <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image5}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
                                     <p>
-                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title5}" action="test"/>
+                                        <h:commandLink styleClass="small-script-title" value="#{popularCourseBean.title5}" action="#{popularCourseBean.course5}"/>
                                     </p>
                                 </div>
                                 <h3>
                                     <h:commandLink styleClass="small-script-content" value="#{popularCourseBean.description5}"
-                                                   action="test"/>
+                                                   action="#{popularCourseBean.course5}"/>
                                 </h3>
                             </div>
                         </h:form>
