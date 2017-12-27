@@ -2,11 +2,13 @@ package dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
 import entity.CourseEntity;
 import entity.ExamEntity;
+import entity.StudentEntity;
 import util.HibernateUtil;
 
 @SuppressWarnings("Duplicates")
@@ -95,9 +97,9 @@ public class ExamDAO
     }
 
     /**
-     * 根据名称查询考试列表
+     * 根据课程查询考试列表
      *
-     * @param courseEntity 考试实体
+     * @param courseEntity 课程实体
      * @return List<ExamEntity>
      */
     public List<ExamEntity> queryExamsByCourse(CourseEntity courseEntity)
@@ -111,5 +113,36 @@ public class ExamDAO
         tx.commit();
         session.close();
         return list;
+    }
+
+    /**
+     * 根据学生查询可考列表
+     *
+     * @param studentEntity 学生实体
+     * @return List<ExamEntity>
+     */
+    public List<ExamEntity> queryExamsByStudent(StudentEntity studentEntity)
+    {
+        Transaction tx;
+        List list;
+        Session session = HibernateUtil.getSession();
+        tx = session.beginTransaction();
+        System.out.println(session);
+        Query query = session.createQuery("select new ExamEntity (e.examId,e.examName,e.duration,e.courseId,e.examState,e.questionNum) from ExamEntity e,ScEntity sc where sc.cCourseId = e.courseId and e.examState = 1 and sc.stuId = ?");
+        query.setParameter(0,studentEntity.getStuId());
+        System.out.println(query);
+        list = query.list();
+//        list = session.createQuery(hql).list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
+    public static void main(String[] args)
+    {
+        HibernateUtil.getSessionFactory();
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setStuId(4);
+        System.out.println(new ExamDAO().queryExamsByStudent(studentEntity));
     }
 }
