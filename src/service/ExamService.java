@@ -9,6 +9,7 @@ import dao.UserAnswerDAO;
 import entity.CourseEntity;
 import entity.ExamEntity;
 import entity.QuestionEntity;
+import entity.StudentEntity;
 import entity.UserAnswerEntity;
 import util.Algorithm;
 
@@ -68,6 +69,17 @@ public class ExamService
     public List<ExamEntity> queryExamsByCourse(CourseEntity courseEntity)
     {
         return examDAO.queryExamsByCourse(courseEntity);
+    }
+
+    /**
+     * 根据学生查询可考列表
+     *
+     * @param studentEntity 学生实体
+     * @return List<ExamEntity>
+     */
+    public List<ExamEntity> queryExamsByStudent(StudentEntity studentEntity)
+    {
+        return examDAO.queryExamsByStudent(studentEntity);
     }
 
     /**

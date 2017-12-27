@@ -17,6 +17,20 @@ public class ExamEntity
     private int examState;
     private Integer questionNum;
 
+    public ExamEntity(int examId, String examName, int duration, int courseId, int examState, Integer questionNum)
+    {
+        this.examId = examId;
+        this.examName = examName;
+        this.duration = duration;
+        this.courseId = courseId;
+        this.examState = examState;
+        this.questionNum = questionNum;
+    }
+
+    public ExamEntity()
+    {
+    }
+
     @Id
     @Column(name = "ExamID", nullable = false)
     public int getExamId()

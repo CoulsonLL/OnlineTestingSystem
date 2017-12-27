@@ -3,11 +3,14 @@ package service;
 import java.util.List;
 
 import dao.CourseDAO;
+import dao.ScDAO;
 import entity.CourseEntity;
+import entity.StudentEntity;
 
 public class CourseService
 {
     CourseDAO courseDAO = new CourseDAO();
+    ScDAO scDAO = new ScDAO();
 
     public List<CourseEntity> getAllCourses()
     {
@@ -72,5 +75,16 @@ public class CourseService
     public List<CourseEntity> queryAllIDsAndNames()
     {
         return courseDAO.queryAllIDsAndNames();
+    }
+
+    /**
+     * 根据学生查询所有已选课程
+     *
+     * @param studentEntity 学生实体
+     * @return List<CourseEntity>
+     */
+    public List<CourseEntity> queryCoursesByStudent(StudentEntity studentEntity)
+    {
+        return scDAO.queryCoursesByStudent(studentEntity);
     }
 }

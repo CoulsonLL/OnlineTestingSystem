@@ -84,4 +84,10 @@ public class QuestionDAO
         session.close();
         return (int) list.get(0);
     }
+
+    public static void main(String[] args)
+    {
+        HibernateUtil.getSessionFactory();
+        System.out.println(new QuestionDAO().queryQuestionsByCourseID(2));
+    }
 }

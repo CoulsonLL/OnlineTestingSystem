@@ -1,6 +1,7 @@
 package entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,6 +21,17 @@ public class CourseEntity
     private Timestamp modifyTime;
     private Integer viewCount;
     private String picture;
+
+    public CourseEntity(int cCourseId, String cName, int cModule, String cDetail, int mgrId, Date modifyTime, Integer viewCount)
+    {
+        this.cCourseId = cCourseId;
+        this.cName = cName;
+        this.cModule = cModule;
+        this.cDetail = cDetail;
+        this.mgrId = mgrId;
+        this.modifyTime = new Timestamp(modifyTime.getTime());
+        this.viewCount = viewCount;
+    }
 
     public CourseEntity(int cCourseId, String cName)
     {
