@@ -1,10 +1,15 @@
 package beans;
 
 import entity.CourseEntity;
+import entity.StudentEntity;
 import service.CourseService;
+import service.StudentService;
+import util.FacesUtil;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
 @Named
@@ -47,22 +52,27 @@ public class PopularCourseBean {
         course5 = (CourseEntity) courses.get(4);
     }
     public String course1(){
+        FacesUtil.getSession().setAttribute("selectedcourse", course1);
         title1 = course1.getcName();
         return title1;
     }
     public String course2(){
+        FacesUtil.getSession().setAttribute("selectedcourse", course2);
         title2 = course2.getcName();
         return title2;
     }
     public String course3(){
+        FacesUtil.getSession().setAttribute("selectedcourse", course3);
         title3 = course3.getcName();
         return title3;
     }
     public String course4(){
+        FacesUtil.getSession().setAttribute("selectedcourse", course4);
         title4 = course4.getcName();
         return title4;
     }
     public String course5(){
+        FacesUtil.getSession().setAttribute("selectedcourse", course5);
         title5 = course5.getcName();
         return title5;
     }

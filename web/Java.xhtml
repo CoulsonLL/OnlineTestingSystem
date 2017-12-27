@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/course.css"/>
     <script type="text/javascript" src="js/jquery.min.js"/>
     <script type="text/javascript" src="js/login.js"/>
-    <script type="text/javascript" src="js/courselogin.js"/>
+    <!--<script type="text/javascript" src="js/courselogin.js"/>-->
     <script type="text/javascript">
         //页面加载是从localstorage查看之前有无记住账号密码，若有则自动填充登陆输入框
         //登陆成功后remove掉登陆按钮
@@ -47,7 +47,7 @@
                 storage.setItem("isremembered", remember);
             }
         }
-        //点击参加课程后判断是否已登录
+        //点击参加课程后判断是否已登录，若未登录，弹出登陆框
         function open() {
             var $login_mask = $('.login-mask');
             var $login_container = $('.login-container');
@@ -57,6 +57,12 @@
             var $switcher = $('.login-switcher');
             var $login_tab = $switcher.children('li').eq(0);
             var $login_a = $login_tab.children('a');
+            //用户已登录，点击参加课程按钮后弹出‘participate success’
+            if(text === "isLoged"){
+                $login_container.fadeOut(500);
+                $login_mask.fadeIn(800);
+                $login_mask.fadeOut(1800);
+            }
             //用户未登录，点击参加课程按钮后弹出登陆框
             if(text === "notLoged"){
                 $login_mask.fadeIn(400);
@@ -152,21 +158,6 @@
 
                 </h:panelGrid>
 
-                <!--<script type="text/javascript">-->
-                <!--var $login_container = $('.login-container');-->
-                <!--var $div = $('.protocol-div');-->
-                <!--function selected() {-->
-                <!--//                            $login_container.slideUp(200);-->
-                <!--var $signup_button = $('.button-signup');-->
-                <!--var text = $('#agree-text').innerHTML;-->
-                <!--if(text.equals("true")){-->
-                <!--$signup_button.remove();-->
-                <!--}-->
-                <!--//                            $('.signup-protocol-label').click(function () {-->
-                <!--//                                $signup_button.hide();-->
-                <!--//                            });-->
-                <!--}-->
-                <!--</script>-->
                 <div class="protocol-div">
                     <h:selectBooleanCheckbox styleClass="protocol-checkbox" id="user-protocol" value="#{ajaxBean.agree}">
                         <f:ajax execute="user-protocol" render="signup-button agree-text" event="change" listener="#{ajaxBean.buttonvalue}"/>
@@ -189,9 +180,9 @@
     <div class="course-content">
         <div class="button-div">
             <h:form>
-                <h:commandButton styleClass="participate-button" action="#{javaCourseBean.click}" value="PARTICIPATE IN"/>
+                <h:commandButton styleClass="participate-button" action="#{coursePageBean.ParticipateClick}" value="PARTICIPATE IN"/>
             </h:form>
-            <h:outputText id="click-flag" value="#{javaCourseBean.click_flag}"/>
+            <h:outputText id="click-flag" value="#{coursePageBean.click_flag}"/>
         </div>
     </div>
 </h:body>

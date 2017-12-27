@@ -153,7 +153,7 @@ public class StudentService
         ScEntity scEntity = scDAO.queryScByStuIDAndCourseID(studentEntity.getStuId(), courseEntity.getcCourseId());
         if (scEntity == null)
         {
-            scEntity = new ScEntity(scEntity.getStuId(), courseEntity.getcCourseId(), 0);//0代表刚刚选课
+            scEntity = new ScEntity(studentEntity.getStuId(), courseEntity.getcCourseId(), 0);//0代表刚刚选课
             try
             {
                 scDAO.addSC(scEntity);
