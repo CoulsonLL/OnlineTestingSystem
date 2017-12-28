@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-    <title>HTML</title>
+    <title>SearchResult</title>
     <link rel="stylesheet" type="text/css" href="css/HomeRender.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <link rel="stylesheet" type="text/css" href="css/course.css"/>
@@ -45,31 +45,6 @@
                 storage.setItem("phoneno", local_phoneno);
                 storage.setItem("password", local_password);
                 storage.setItem("isremembered", remember);
-            }
-        }
-        //点击参加课程后判断是否登录
-        function open() {
-            var $login_mask = $('.login-mask');
-            var $login_container = $('.login-container');
-            var $login_div = $login_container.find('#login');
-            var text = document.getElementById("click-flag").innerHTML;
-            //获取登录注册框顶部的切换tab组件
-            var $switcher = $('.login-switcher');
-            var $login_tab = $switcher.children('li').eq(0);
-            var $login_a = $login_tab.children('a');
-            //用户已登录，点击参加课程按钮后弹出‘participate success’
-            if(text === "isLoged"){
-                $('.participate-tip').addClass('.selected');
-                $('.participate-tip').fadeIn(800);
-                $('.participate-tip').fadeOut(1200);
-            }
-            //用户未登录，点击参加课程按钮后弹出登陆框
-            if(text === "notLoged"){
-                $login_mask.fadeIn(400);
-                $login_container.slideDown(400);
-                $login_div.addClass('is-selected');
-                $login_tab.addClass('selected');
-                $login_a.addClass('text-selected');
             }
         }
     </script>
@@ -177,15 +152,13 @@
 
     <div class="login-mask"/>
 
-    <div class="course-content">
-        <div class="button-div">
-            <h:form>
-                <h:commandButton styleClass="participate-button" action="#{coursePageBean.ParticipateClick}" value="PARTICIPATE IN"/>
-            </h:form>
-            <h:outputText id="click-flag" value="#{coursePageBean.click_flag}"/>
-        </div>
-    </div>
+    <h:outputText styleClass="search" value="#{searchResultBean.test}"/>
 
-    <h:outputText styleClass="participate-tip" value="participate success ^_^"/>
+    <h:dataTable value="#{searchResultBean.list}" var="course">
+        <h:column>
+            #{course.cName}
+            <h:graphicImage value="#{course.picture}"/>
+        </h:column>
+    </h:dataTable>
 </h:body>
 </html>

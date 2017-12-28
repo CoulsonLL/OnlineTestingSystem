@@ -47,7 +47,7 @@
                 storage.setItem("isremembered", remember);
             }
         }
-        //点击参加课程后判断是否已登录，若未登录，弹出登陆框
+        //点击参加课程后判断是否登录
         function open() {
             var $login_mask = $('.login-mask');
             var $login_container = $('.login-container');
@@ -59,9 +59,14 @@
             var $login_a = $login_tab.children('a');
             //用户已登录，点击参加课程按钮后弹出‘participate success’
             if(text === "isLoged"){
-                $login_container.fadeOut(500);
-                $login_mask.fadeIn(800);
-                $login_mask.fadeOut(1800);
+//                $login_container.fadeOut(500);
+//                $login_mask.fadeIn(800);
+//                $login_mask.fadeOut(1800);
+                $('.participate-tip').addClass('.selected');
+                $('.participate-tip').fadeIn(800);
+                $('.participate-tip').fadeOut(1200);
+//                $login_mask.fadeIn(800);
+//                $login_mask.fadeOut(1800);
             }
             //用户未登录，点击参加课程按钮后弹出登陆框
             if(text === "notLoged"){
@@ -185,5 +190,7 @@
             <h:outputText id="click-flag" value="#{coursePageBean.click_flag}"/>
         </div>
     </div>
+
+    <h:outputText styleClass="participate-tip" value="participate success ^_^"/>
 </h:body>
 </html>
