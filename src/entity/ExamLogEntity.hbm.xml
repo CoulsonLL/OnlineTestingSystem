@@ -22,7 +22,7 @@
             <column name="ApplyTime" sql-type="datetime"/>
         </property>
         <property name="mgrId">
-            <column name="MgrID" sql-type="int" not-null="true"/>
+            <column name="MgrID" sql-type="int"/>
         </property>
         <property name="approvalResult">
             <column name="ApprovalResult" sql-type="int" not-null="true"/>
@@ -31,10 +31,10 @@
             <column name="ExamStartTime" sql-type="datetime" not-null="true"/>
         </property>
         <property name="examEndTime">
-            <column name="ExamEndTime" sql-type="datetime" not-null="true"/>
+            <column name="ExamEndTime" sql-type="datetime"/>
         </property>
         <property name="score">
-            <column name="Score" sql-type="decimal(10,2)" precision="10" scale="2" not-null="true"/>
+            <column name="Score" sql-type="decimal(10,2)" precision="10" scale="2"/>
         </property>
         <many-to-one name="examEntity" class="entity.ExamEntity" cascade="none" access="property" column="ExamID" insert="false" update="false" lazy="false"/>
     </class>

@@ -22,6 +22,35 @@ public class QuestionEntity
     private BigDecimal score;
     private String stem;
 
+    public QuestionEntity(int courseId, String a, String b, String c, String d, String answer, BigDecimal score, String stem)
+    {
+        this.courseId = courseId;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.answer = answer;
+        this.score = score;
+        this.stem = stem;
+    }
+
+    public QuestionEntity(int questionId, int courseId, String a, String b, String c, String d, String answer, BigDecimal score, String stem)
+    {
+        this.questionId = questionId;
+        this.courseId = courseId;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.answer = answer;
+        this.score = score;
+        this.stem = stem;
+    }
+
+    public QuestionEntity()
+    {
+    }
+
     @Id
     @Column(name = "QuestionID", nullable = false)
     public int getQuestionId()
@@ -164,5 +193,21 @@ public class QuestionEntity
         result = 31 * result + (score != null ? score.hashCode() : 0);
         result = 31 * result + (stem != null ? stem.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "QuestionEntity{" +
+                "questionId=" + questionId +
+                ", courseId=" + courseId +
+                ", stem='" + stem + '\'' +
+                ", a='" + a + '\'' +
+                ", b='" + b + '\'' +
+                ", c='" + c + '\'' +
+                ", d='" + d + '\'' +
+                ", answer='" + answer + '\'' +
+                ", score=" + score +
+                '}';
     }
 }

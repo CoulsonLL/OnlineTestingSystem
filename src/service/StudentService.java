@@ -1,5 +1,7 @@
 package service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import dao.ExamLogDAO;
@@ -10,6 +12,7 @@ import entity.ExamLogEntity;
 import entity.ScEntity;
 import entity.StudentEntity;
 import util.FacesUtil;
+import util.HibernateUtil;
 
 public class StudentService
 {
@@ -202,17 +205,24 @@ public class StudentService
 
     public static void main(String[] args)
     {
-        StudentService studentService = new StudentService();
-        StudentEntity studentEntity = new StudentEntity();
-        studentEntity.setPhoneNum("18661661839");
-        studentEntity.setStuAge(20);
-        studentEntity.setStuName("david1");
-        studentEntity.setStuPwd("1231fdg23");
-        studentEntity.setStuSex("M");
-//        studentService.addStudent(studentEntity);
-//        StudentEntity studentEntity = studentService.getStudentById(3);
-//        System.out.println(studentEntity);
-        boolean res = studentService.register(studentEntity);
-        System.out.println(res);
+//        StudentService studentService = new StudentService();
+//        StudentEntity studentEntity = new StudentEntity();
+//        studentEntity.setPhoneNum("18661661839");
+//        studentEntity.setStuAge(20);
+//        studentEntity.setStuName("david1");
+//        studentEntity.setStuPwd("1231fdg23");
+//        studentEntity.setStuSex("M");
+////        studentService.addStudent(studentEntity);
+////        StudentEntity studentEntity = studentService.getStudentById(3);
+////        System.out.println(studentEntity);
+//        boolean res = studentService.register(studentEntity);
+//        System.out.println(res);
+        HibernateUtil.getSessionFactory();
+        ExamLogEntity examLogEntity = new ExamLogEntity();
+        examLogEntity.setExamId(1);
+        examLogEntity.setStuId(2);
+        examLogEntity.setExamStartTime(new Timestamp(new Date().getTime()));
+        examLogEntity.setEmail("550361254@qqqq.com");
+        new StudentService().applyForExam(examLogEntity);
     }
 }
