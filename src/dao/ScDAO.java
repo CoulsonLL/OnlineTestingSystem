@@ -48,6 +48,18 @@ public class ScDAO
         return entity;
     }
 
+    public List<ScEntity> queryScByStudent(StudentEntity studentEntity)
+    {
+        Transaction tx = null;
+        Session session = HibernateUtil.getSession();
+        tx = session.beginTransaction();
+        String hql = "from ScEntity where stuId = " + studentEntity.getStuId();
+        List<ScEntity> list = session.createQuery(hql).list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
     public List<StudentEntity> queryStudentsByCourseID(Integer courseID)
     {
         Transaction tx;

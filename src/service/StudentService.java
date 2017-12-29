@@ -18,6 +18,7 @@ public class StudentService
 {
     StudentDAO studentDAO = new StudentDAO();
     ExamLogDAO examLogDAO = new ExamLogDAO();
+    ScDAO scDAO = new ScDAO();
 
     public List<StudentEntity> getAllStudents()
     {
@@ -209,9 +210,14 @@ public class StudentService
      *
      * @return List<ExamLogEntity>
      */
-    public List<ExamLogEntity> queryExamLogsByStudent(ExamLogEntity examLogEntity)
+    public List<ExamLogEntity> queryExamLogsByStudent(StudentEntity studentEntity)
     {
-        return examLogDAO.queryExamLogsByStudent(examLogEntity);
+        return examLogDAO.queryExamLogsByStudent(studentEntity);
+    }
+
+    public List<ScEntity> queryScByStudent(StudentEntity studentEntity)
+    {
+        return scDAO.queryScByStudent(studentEntity);
     }
 
     public static void main(String[] args)

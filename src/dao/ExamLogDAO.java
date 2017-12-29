@@ -10,6 +10,7 @@ import java.util.List;
 
 import entity.ExamLogEntity;
 import entity.ManagerEntity;
+import entity.StudentEntity;
 import util.HibernateUtil;
 
 @SuppressWarnings("ALL")
@@ -130,14 +131,14 @@ public class ExamLogDAO
      *
      * @return List<ExamLogEntity>
      */
-    public List<ExamLogEntity> queryExamLogsByStudent(ExamLogEntity examLogEntity)
+    public List<ExamLogEntity> queryExamLogsByStudent(StudentEntity studentEntity)
     {
         Transaction tx = null;
         List list = null;
         Session session = HibernateUtil.getSession();
         tx = session.beginTransaction();
         Query query = session.createQuery("from ExamLogEntity where stuId = ?");
-        query.setParameter(0, examLogEntity.getStuId());
+        query.setParameter(0, studentEntity.getStuId());
         list = query.list();
         tx.commit();
         session.close();
@@ -166,6 +167,10 @@ public class ExamLogDAO
     public static void main(String[] args)
     {
 //        System.out.println(new ExamLogDAO().queryExamLogs());
-        System.out.println(new ExamLogDAO().queryExamLogsWithDate("2017-12-22 10:30", "2017-12-22 19:00"));
+//        System.out.println(new ExamLogDAO().queryExamLogsWithDate("2017-12-22 10:30", "2017-12-22 19:00"));
+        HibernateUtil.getSessionFactory();
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setStuId(1002);
+        System.out.println(new ExamLogDAO().queryExamLogsByStudent(studentEntity));
     }
 }

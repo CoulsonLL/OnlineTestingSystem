@@ -142,7 +142,7 @@ public class ExamDAO
     {
         HibernateUtil.getSessionFactory();
         StudentEntity studentEntity = new StudentEntity();
-        studentEntity.setStuId(4);
+        studentEntity.setStuId(1002);
         System.out.println(new ExamDAO().queryExamsByStudent(studentEntity));
     }
 }

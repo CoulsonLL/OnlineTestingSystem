@@ -46,7 +46,7 @@ public class UserAnswerDAO
         }
     }
 
-    public boolean isOptionAlreadyExist(int examLogsID, int questionID)
+    public int getAnswerIDAlreadyExist(int examLogsID, int questionID)
     {
         Transaction tx;
         Session session = HibernateUtil.getSession();
@@ -57,6 +57,13 @@ public class UserAnswerDAO
         UserAnswerEntity entity = (UserAnswerEntity) query.uniqueResult();
         tx.commit();
         session.close();
-        return entity != null;
+        if (entity == null)
+        {
+            return -1;
+        }
+        else
+        {
+            return entity.getUserAnswerId();
+        }
     }
 }
