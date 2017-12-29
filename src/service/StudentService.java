@@ -17,6 +17,7 @@ import util.HibernateUtil;
 public class StudentService
 {
     StudentDAO studentDAO = new StudentDAO();
+    ExamLogDAO examLogDAO = new ExamLogDAO();
 
     public List<StudentEntity> getAllStudents()
     {
@@ -201,6 +202,16 @@ public class StudentService
     public int getStudentNum()
     {
         return studentDAO.getStudentNum();
+    }
+
+    /**
+     * 根据学生查询申请的考试列表
+     *
+     * @return List<ExamLogEntity>
+     */
+    public List<ExamLogEntity> queryExamLogsByStudent(ExamLogEntity examLogEntity)
+    {
+        return examLogDAO.queryExamLogsByStudent(examLogEntity);
     }
 
     public static void main(String[] args)

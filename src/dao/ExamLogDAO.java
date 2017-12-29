@@ -2,6 +2,7 @@ package dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -125,7 +126,27 @@ public class ExamLogDAO
     }
 
     /**
+     * 根据学生查询申请的考试列表
+     *
+     * @return List<ExamLogEntity>
+     */
+    public List<ExamLogEntity> queryExamLogsByStudent(ExamLogEntity examLogEntity)
+    {
+        Transaction tx = null;
+        List list = null;
+        Session session = HibernateUtil.getSession();
+        tx = session.beginTransaction();
+        Query query = session.createQuery("from ExamLogEntity where stuId = ?");
+        query.setParameter(0, examLogEntity.getStuId());
+        list = query.list();
+        tx.commit();
+        session.close();
+        return list;
+    }
+
+    /**
      * 根据时间查询考试列表
+     *
      * @param startDate 开始时间 yyyy-MM-dd HH:mm:ss
      * @param endDate   结束时间 yyyy-MM-dd HH:mm:ss
      * @return List<ExamLogEntity>
@@ -145,6 +166,6 @@ public class ExamLogDAO
     public static void main(String[] args)
     {
 //        System.out.println(new ExamLogDAO().queryExamLogs());
-        System.out.println(new ExamLogDAO().queryExamLogsWithDate("2017-12-22 10:30","2017-12-22 19:00"));
+        System.out.println(new ExamLogDAO().queryExamLogsWithDate("2017-12-22 10:30", "2017-12-22 19:00"));
     }
 }

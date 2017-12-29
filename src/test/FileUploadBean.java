@@ -78,7 +78,6 @@ public class FileUploadBean
 
     }
 
-
     //取得上传文件名
     private String getFileName(Part part)
     {
