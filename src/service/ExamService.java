@@ -92,9 +92,10 @@ public class ExamService
     {
         try
         {
-            boolean updateFlag = userAnswerDAO.isOptionAlreadyExist(userAnswerEntity.getExamLogsId(), userAnswerEntity.getQuestionId());
-            if (updateFlag)
+            int userAnswerID = userAnswerDAO.getAnswerIDAlreadyExist(userAnswerEntity.getExamLogsId(), userAnswerEntity.getQuestionId());
+            if (userAnswerID != -1)
             {
+                userAnswerEntity.setUserAnswerId(userAnswerID);
                 userAnswerDAO.updateUserAnswer(userAnswerEntity);
             }
             else
@@ -105,6 +106,7 @@ public class ExamService
         }
         catch (Exception e)
         {
+            e.printStackTrace();
             return false;
         }
     }
@@ -119,9 +121,9 @@ public class ExamService
     {
         int questionNum = examEntity.getQuestionNum();
         List<QuestionEntity> questions = questionDAO.queryQuestionsByCourseID(examEntity.getCourseId());
-        int[] questionIndexes = Algorithm.buildRandomSequence(questions.size() - 1);
+        int[] questionIndexes = Algorithm.buildRandomSequence(questions.size());
         List<QuestionEntity> list = new ArrayList<>();
-        for (int i = 0; i < questionNum; i++)
+        for (int i = 0; i < questionNum - 1; i++)
         {
             list.add(questions.get(questionIndexes[i]));
         }
