@@ -30,16 +30,20 @@ function submitFn(obj, evt)
     if (!value.length)
     {
         _html = "Yup yup! Add some text friend :D";
+        $(obj).find('.result-container').html('<span>' + _html + '</span>');
+        $(obj).find('.result-container').fadeIn(800);
+        $(obj).find('.result-container').fadeOut(800);
     }
+
     else
     {
-        _html += "<b>" + value + "</b>";
+        // _html += "<b>" + value + "</b>";
 
         $.ajax({
             url: "/OnlineTestingSystem_war_exploded/SearchServlet",
             timeout:1000,
             data: {
-                "user-input": $(".search-input").val(),
+                "user-input": $(".search-input").val()
             },
             type: "POST",
             dataType: "text",
@@ -59,10 +63,6 @@ function submitFn(obj, evt)
         // xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         // xmlHttp.send("user-input=" + input.val());
     }
-
-    $(obj).find('.result-container').html('<span>' + _html + '</span>');
-    $(obj).find('.result-container').fadeIn(800);
-    $(obj).find('.result-container').fadeOut(800);
 
     evt.preventDefault();
 }

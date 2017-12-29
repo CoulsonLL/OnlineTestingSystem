@@ -22,6 +22,11 @@ public class CourseEntity
     private Integer viewCount;
     private String picture;
 
+    //SearchResult页调用
+    public String title(){
+        return cName;
+    }
+
     public CourseEntity(int cCourseId, String cName, int cModule, String cDetail, int mgrId, Date modifyTime, Integer viewCount)
     {
         this.cCourseId = cCourseId;

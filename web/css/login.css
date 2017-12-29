@@ -125,6 +125,7 @@
 	width: 50%;
 	height: 35px;
 	border-radius: 8px;
+	padding: 3px;
 	margin-left: 60px;
 	-webkit-box-shadow: 0 0 0 1000px white inset;
 }
@@ -135,6 +136,7 @@
 	width: 50%;
 	height: 35px;
 	border-radius: 8px;
+	padding: 3px;
 	margin-left: 65px;
 	-webkit-box-shadow: 0 0 0 1000px white inset;
 }
@@ -182,6 +184,8 @@
 	border: 0;
 	width: 80%;
 	height: 35px;
+	padding-left: 3px;
+	padding-right: 3px;
 	margin-left: 30px;
 	border-radius: 8px;
 	-webkit-box-shadow: 0 0 0 1000px white inset;

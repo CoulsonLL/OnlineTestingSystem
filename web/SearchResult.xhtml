@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -8,9 +7,15 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <title>SearchResult</title>
+    <link rel="shortcut icon" href="img/homepage/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/search-form.css"/>
     <link rel="stylesheet" type="text/css" href="css/HomeRender.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
-    <link rel="stylesheet" type="text/css" href="css/course.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="css/course.css"/>-->
+    <link rel="stylesheet" type="text/css" href="css/SearchResult.css"/>
+
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"/>
+    <script type="text/javascript" src="js/search.js"/>
     <script type="text/javascript" src="js/jquery.min.js"/>
     <script type="text/javascript" src="js/login.js"/>
     <!--<script type="text/javascript" src="js/courselogin.js"/>-->
@@ -21,16 +26,17 @@
             var storage = window.localStorage;
             var success_info = document.getElementById("login_success").innerHTML;
             var $login_button = $('.login-open');
-            if(storage.getItem("isremembered")==="true"){
+            if (storage.getItem("isremembered") === "true") {
                 var $login_input1 = $('#login-phoneno');
                 var $login_input2 = $('#login-password');
                 $login_input1.val(storage.getItem("phoneno"));
                 $login_input2.val(storage.getItem("password"));
             }
-            if(success_info === "success"){
+            if (success_info === "success") {
                 $login_button.remove();
             }
         }
+
         //若登陆成功并选择remember me，则存储到localstorage
         function remember() {
 //            var null_error1 = document.getElementById("login_null_error").innerHTML;
@@ -41,7 +47,7 @@
             var local_phoneno = $login_input1.val();
             var local_password = $login_input2.val();
             var storage = window.localStorage;
-            if(remember==="true"){
+            if (remember === "true") {
                 storage.setItem("phoneno", local_phoneno);
                 storage.setItem("password", local_password);
                 storage.setItem("isremembered", remember);
@@ -55,7 +61,7 @@
         <h:graphicImage styleClass="logo-img" value="img/homepage/logo.png"/>
     </a>
     <h:form>
-        <div class="header">
+        <div style="background-color: #8c1515" class="header">
             <div class="header-nav">
                 <ul class="header-nav-ul">
                     <li>
@@ -73,8 +79,21 @@
                 </ul>
             </div>
         </div>
-        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}"/>
+        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}" action="PersonalCenter"/>
     </h:form>
+
+    <form onsubmit="submitFn(this, event);">
+        <div class="search-wrapper">
+            <div class="input-holder">
+                <input type="text" name="user-input" class="search-input"/>
+                <button class="search-icon" onclick="searchToggle(this, event);">
+                    <span></span>
+                </button>
+            </div>
+            <span class="close" onclick="searchToggle(this, event);"></span>
+            <div class="result-container"></div>
+        </div>
+    </form>
 
     <a class="login-open" href="javascript:">Sign in</a>
     <div class="login-container">
@@ -91,23 +110,30 @@
             <h:form prependId="false">
                 <div>
                     <h:outputLabel styleClass="login-phoneno-label" for="login-phoneno">Phone No</h:outputLabel>
-                    <h:inputText styleClass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}" pt:autofocus="true"/>
+                    <h:inputText styleClass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}"
+                                 pt:autofocus="true"/>
                     <h:message id="login-message1" for="login-phoneno"/>
-                </div><br/>
+                </div>
+                <br/>
 
                 <div>
                     <h:outputLabel styleClass="login-password-label" for="login-password">Password</h:outputLabel>
-                    <h:inputSecret styleClass="login-password-input" id="login-password" value="#{login_Signup.password}"/>
+                    <h:inputSecret styleClass="login-password-input" id="login-password"
+                                   value="#{login_Signup.password}"/>
                     <h:message id="login-message2" for="login-password"/>
-                </div><br/>
+                </div>
+                <br/>
 
                 <div>
-                    <h:selectBooleanCheckbox styleClass="login-remember-checkbox" id="login-remember" value="#{login_Signup.remember}">
+                    <h:selectBooleanCheckbox styleClass="login-remember-checkbox" id="login-remember"
+                                             value="#{login_Signup.remember}">
                         <f:ajax execute="login-remember" render="login_remember_text" event="change"/>
                     </h:selectBooleanCheckbox>
                     <h:outputLabel styleClass="login-remember-label" for="login-remember">Remember me</h:outputLabel>
-                    <h:commandButton id="login-button" styleClass="button-login" value="Login" action="#{login_Signup.login}" onclick="remember()"/>
-                </div><br/>
+                    <h:commandButton id="login-button" styleClass="button-login" value="Login"
+                                     action="#{login_Signup.login}" onclick="remember()"/>
+                </div>
+                <br/>
 
             </h:form>
             <h:outputText style="display: none" id="login_error" value="#{login_Signup.error1}"/>
@@ -121,7 +147,8 @@
                 <h:panelGrid columns="2" cellspacing="30px" styleClass="signup-form">
 
                     <h:outputLabel styleClass="signup-phoneno-label" for="signup-phoneno">Phone No</h:outputLabel>
-                    <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}" pt:autofocus="true"/>
+                    <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}"
+                                 pt:autofocus="true"/>
 
 
                     <h:outputLabel styleClass="signup-email-label" for="signup-email">E-mail</h:outputLabel>
@@ -129,17 +156,24 @@
 
 
                     <h:outputLabel styleClass="signup-password-label" for="signup-password">Password</h:outputLabel>
-                    <h:inputSecret styleClass="signup-password-input" id="signup-password" value="#{login_Signup.password}"/>
+                    <h:inputSecret styleClass="signup-password-input" id="signup-password"
+                                   value="#{login_Signup.password}"/>
 
                 </h:panelGrid>
 
                 <div class="protocol-div">
-                    <h:selectBooleanCheckbox styleClass="protocol-checkbox" id="user-protocol" value="#{ajaxBean.agree}">
-                        <f:ajax execute="user-protocol" render="signup-button agree-text" event="change" listener="#{ajaxBean.buttonvalue}"/>
+                    <h:selectBooleanCheckbox styleClass="protocol-checkbox" id="user-protocol"
+                                             value="#{ajaxBean.agree}">
+                        <f:ajax execute="user-protocol" render="signup-button agree-text" event="change"
+                                listener="#{ajaxBean.buttonvalue}"/>
                     </h:selectBooleanCheckbox>
-                    <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a href="#" style="color: white">User protocol</a> </h:outputLabel>
-                    <h:commandButton id="signup-button" styleClass="button-signup" value="#{ajaxBean.buttonval}" action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
-                </div><br/>
+                    <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a href="#"
+                                                                                                     style="color: white">User protocol</a>
+                    </h:outputLabel>
+                    <h:commandButton id="signup-button" styleClass="button-signup" value="#{ajaxBean.buttonval}"
+                                     action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
+                </div>
+                <br/>
 
 
             </h:form>
@@ -152,13 +186,42 @@
 
     <div class="login-mask"/>
 
-    <h:outputText styleClass="search" value="#{searchResultBean.test}"/>
+    <!--<h:outputText styleClass="search" value="#{searchResultBean.test}"/>-->
 
-    <h:dataTable value="#{searchResultBean.list}" var="course">
-        <h:column>
-            #{course.cName}
-            <h:graphicImage value="#{course.picture}"/>
-        </h:column>
-    </h:dataTable>
+    <div class="search-title">
+        <div class="iTest-div">
+            <span>iTest</span>
+        </div>
+        <div>
+            <p>SEARCH RESULT</p>
+        </div>
+    </div>
+
+    <div class="search-content">
+        <center>
+            <h:dataTable value="#{searchResultBean.list}" var="course" cellpadding="20px">
+                <h:column>
+                    <h:form styleClass="searchResult-form">
+                        <h:commandLink styleClass="small-img-a" action="#{course.title}">
+                            <h:graphicImage width="500px" height="225px" value="#{course.picture}"/>
+                        </h:commandLink>
+                        <div style="height: 220px; width: 320px" class="small-script">
+                            <div>
+                                <p>
+                                    <h:commandLink styleClass="small-script-title" value="#{course.cName}"
+                                                   action="#{course.title}"/>
+                                </p>
+                            </div>
+                            <h3>
+                                <h:commandLink styleClass="small-script-content"
+                                               value="#{course.cDetail}" action="#{course.title}"/>
+                            </h3>
+                        </div>
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+        </center>
+    </div>
+
 </h:body>
 </html>
