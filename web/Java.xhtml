@@ -12,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="css/HomeRender.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <link rel="stylesheet" type="text/css" href="css/course.css"/>
+    <link rel="stylesheet" type="text/css" href="css/SearchResult.css"/>
+
     <script type="text/javascript" src="js/jquery.min.js"/>
     <script type="text/javascript" src="js/login.js"/>
     <!--<script type="text/javascript" src="js/courselogin.js"/>-->
@@ -86,7 +88,7 @@
         <h:graphicImage styleClass="logo-img" value="img/homepage/logo.png"/>
     </a>
     <h:form>
-        <div class="header">
+        <div style="background-color: #8c1515" class="header">
             <div class="header-nav">
                 <ul class="header-nav-ul">
                     <li>
@@ -104,7 +106,7 @@
                 </ul>
             </div>
         </div>
-        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}"/>
+        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}" action="PersonalCenter"/>
     </h:form>
 
     <a class="login-open" href="javascript:">Sign in</a>
@@ -183,12 +185,28 @@
 
     <div class="login-mask"/>
 
+    <div class="search-title">
+        <div class="iTest-div">
+            <span>iTest</span>
+        </div>
+        <div>
+            <p>ONLINE</p>
+        </div>
+    </div>
+
     <div class="course-content">
         <div class="button-div">
+            <p>Learn Java</p>
+            <ul>
+                <li>9 hours</li>
+                <li>Dr.Johnson</li>
+            </ul>
             <h:form>
+                <center>
                 <h:commandButton styleClass="participate-button" action="#{coursePageBean.ParticipateClick}" value="PARTICIPATE IN"/>
+                </center>
             </h:form>
-            <h:outputText id="click-flag" value="#{coursePageBean.click_flag}"/>
+            <h:outputText style="display: none;" id="click-flag" value="#{coursePageBean.click_flag}"/>
         </div>
     </div>
 
