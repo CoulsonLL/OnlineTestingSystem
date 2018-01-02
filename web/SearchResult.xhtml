@@ -110,9 +110,10 @@
             <h:form prependId="false">
                 <div>
                     <h:outputLabel styleClass="login-phoneno-label" for="login-phoneno">Phone No</h:outputLabel>
-                    <h:inputText styleClass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}"
-                                 pt:autofocus="true"/>
-                    <h:message id="login-message1" for="login-phoneno"/>
+                    <h:inputText styleClass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}" validator="#{validator.validatePhoneNo}" pt:autofocus="true">
+                        <f:ajax render="login-message1" event="keyup"/>
+                    </h:inputText>
+                    <h:message id="login-message1" for="login-phoneno" styleClass="login-phoneno-message"/>
                 </div>
                 <br/>
 
@@ -144,16 +145,19 @@
 
         <div id="signup"> <!-- 注册表单 -->
             <h:form>
+                <h:message for="signup-phoneno" id="signup-message-phoneno" styleClass="signup-phoneno-message"/>
+                <h:message for="signup-email" id="signup-message-email" styleClass="signup-email-message"/>
                 <h:panelGrid columns="2" cellspacing="30px" styleClass="signup-form">
 
                     <h:outputLabel styleClass="signup-phoneno-label" for="signup-phoneno">Phone No</h:outputLabel>
-                    <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}"
-                                 pt:autofocus="true"/>
-
+                    <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}" validator="#{validator.validatePhoneNo}" pt:autofocus="true">
+                        <f:ajax event="keyup" render="signup-message-phoneno"/>
+                    </h:inputText>
 
                     <h:outputLabel styleClass="signup-email-label" for="signup-email">E-mail</h:outputLabel>
-                    <h:inputText styleClass="signup-email-input" id="signup-email" value="#{login_Signup.email}"/>
-
+                    <h:inputText styleClass="signup-email-input" id="signup-email" value="#{login_Signup.email}" validator="#{validator.validateEmail}">
+                        <f:ajax event="keyup" render="signup-message-email"/>
+                    </h:inputText>
 
                     <h:outputLabel styleClass="signup-password-label" for="signup-password">Password</h:outputLabel>
                     <h:inputSecret styleClass="signup-password-input" id="signup-password"
@@ -172,10 +176,9 @@
                     </h:outputLabel>
                     <h:commandButton id="signup-button" styleClass="button-signup" value="#{ajaxBean.buttonval}"
                                      action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
+                    <!--<h:outputText style="display: none" id="agree-text" value="#{ajaxBean.agree}"/>-->
                 </div>
                 <br/>
-
-
             </h:form>
             <h:outputText style="display: none" id="agree-text" value="#{ajaxBean.agree}"/>
             <h:outputText style="display: none" id="signup_error" value="#{login_Signup.error2}"/>

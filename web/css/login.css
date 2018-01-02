@@ -110,7 +110,7 @@
 	padding-top: 20px;
 }
 #login div {
-	padding-top: 20px;
+	padding-top: 15px;
 	padding-left: 13%;
 }
 .login-phoneno-label, .login-password-label {
@@ -128,6 +128,13 @@
 	padding: 3px;
 	margin-left: 60px;
 	-webkit-box-shadow: 0 0 0 1000px white inset;
+}
+.login-phoneno-message {
+	display: block;
+	color: wheat;
+	font-size: 20px;
+	padding-left: 35%;
+	padding-top: 5px;
 }
 .login-password-input {
 	font-size: 20px;
@@ -168,6 +175,20 @@
 
 .signup-form {
 	padding-left: 13%;
+}
+.signup-phoneno-message {
+	position: absolute;
+	top: 42%;
+	left: 50%;
+	color: wheat;
+	font-size: 17px;
+}
+.signup-email-message {
+	position: absolute;
+	top: 61%;
+	left: 50%;
+	color: wheat;
+	font-size: 17px;
 }
 /*#signup div {*/
 	/*padding-top: 15px;*/
