@@ -255,7 +255,7 @@ body {
 .content-mid-article {
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 100px;
+    /*padding-bottom: 100px;*/
 }
 .first-hr {
     border-left: 0;
@@ -357,24 +357,62 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
 .content-bot {
     width: 100%;
-    height: 500px;
+    height: 550px;
     /*background-color: #2f2424;*/
     background-image: url("../img/homepage/Stanford.jpg");
     background-size: 100%;
 }
-
+.content-bot p {
+    margin: 0;
+    padding-top: 260px;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    /*line-height: 580px;*/
+    text-align: center;
+}
+.bot-nav {
+    padding-top: 20px;
+}
+.bot-nav-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.bot-nav-ul-li {
+    display: inline-block;
+    line-height: 20px;
+    border-right: 2px solid white;
+}
+.bot-nav-ul-lastli {
+    display: inline-block;
+}
+.bot-item-link {
+    color: white;
+    font-size: 27px;
+    /*font-weight: bold;*/
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 15px;
+    text-decoration: none;
+}
+.bot-item-link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    border-bottom: solid 3px;
+    left: 50%;
+    transition: all .2s ease-in-out;
+}
+.bot-item-link:hover:after {
+    left: 0;
+    width: 100%;
+}
 
 .footer-top {
     width: 100%;
@@ -386,6 +424,138 @@ body {
     height: 300px;
     background-color: white;
 }
+
+
+#left {
+    width: 750px;
+    height: 300px;
+    /*border-right: 2px solid darkgray;*/
+    float: left;
+    margin-top: 30px;
+    margin-left: 70px;
+}
+#right {
+    width: 390px;
+    height: 300px;
+    float: right;
+    margin-top: 30px;
+    margin-right: 100px;
+}
+#section1 {
+    float: left;
+    margin-left: 30px;
+    margin-right: 50px;
+}
+#section1 a{
+    font-size: 15px;
+}
+#section2 {
+    float: left;
+    margin-right: 50px;
+}
+#section3 {
+    float: left;
+    margin-right: 50px;
+}
+.menu {
+    text-align: left;
+    padding: 0px;
+    margin-top: 0px;
+}
+.leaf {
+    list-style: none;
+    margin-bottom: 5px;
+}
+#section-followus li {
+    float: left;
+    margin-right: 5px;
+}
+.menu a {
+    color: dimgray;
+    text-decoration: none;
+    font-size: 17px;
+}
+h3 {
+    color: dimgray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+#section-language span {
+    color: orange;
+}
+#section-language {
+    width: 180px;
+    /*height: 100px;*/
+    float: left;
+}
+#select-language{
+    background-image: url(../img/homepage/triangle2.png);
+    background-repeat: no-repeat;
+    background-position-x: 150px;
+    background-position-y: 13px;
+    background-position: top 1px;
+    background-color: dimgray;
+}
+#select-language p{
+    color: orange;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+#select-language ul{
+    display: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 9px;
+    margin-top: 0px;
+    list-style: none;
+    text-align: left;
+    background-color: dimgray;
+    z-index: 1;
+}
+#select-language li{
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+#select-language img{
+    float: right;
+    padding-right: 10px;
+}
+#select-language a{
+    color: beige;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.1s;
+}
+#select-language a:hover{
+    color: orange;
+}
+#section-followus {
+    height: 120px;
+    float: right;
+}
+#copyright {
+    clear: both;
+    width: 400px;
+
+}
+#copyright p{
+    color: dimgray;
+    text-align: justify;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
 .footer-bot {
     width: 100%;
     height: 200px;

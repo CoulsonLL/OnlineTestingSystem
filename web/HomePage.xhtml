@@ -196,6 +196,7 @@
 
 
     <div class="content">
+        <!--Popular Today-->
         <div class="content-top">
             <div class="content-top-title">
                 <h2>Popular Today</h2>
@@ -319,6 +320,7 @@
                 </h:form>
             </div>
         </div>
+        <!--About iTest-->
         <div class="content-mid">
             <div class="content-mid-title">
                 <h2>About iTest</h2>
@@ -349,12 +351,178 @@
                 <hr class="second-hr"/>
             </div>
         </div>
-        <div class="content-bot"></div>
+        <!--Explore iTest-->
+        <div class="content-bot">
+            <p>Explore iTest</p>
+            <center>
+                <div class="bot-nav">
+                    <ul class="bot-nav-ul">
+                        <li class="bot-nav-ul-li">
+                            <a class="bot-item-link" href="">Developer</a>
+                        </li>
+                        <li class="bot-nav-ul-li">
+                            <a class="bot-item-link" href="">Update</a>
+                        </li>
+                        <li class="bot-nav-ul-li">
+                            <a class="bot-item-link" href="">Version</a>
+                        </li>
+                        <li class="bot-nav-ul-lastli">
+                            <a class="bot-item-link" href="">Cooperation</a>
+                        </li>
+                    </ul>
+                </div>
+            </center>
+        </div>
     </div>
+
     <div class="footer">
         <div class="footer-top"></div>
-        <div class="footer-mid"></div>
+        <div class="footer-mid">
+            <div id="left">
+                <section id="section1">
+                    <div>
+                        <h3>Company</h3>
+                        <div>
+                            <ul class="menu">
+                                <li class="leaf">
+                                    <a href="#">FISHER PRICE</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">HASBRO</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">MATTEL</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">DISNEY</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">LEGO</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">BRIO</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="section2">
+                    <div>
+                        <h3>Support</h3>
+                        <div>
+                            <ul class="menu">
+                                <li class="leaf">
+                                    <a href="#">Customer-service</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">Before-sale</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">During-sale</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">After-sale</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="section3">
+                    <div>
+                        <h3>Contact</h3>
+                        <div>
+                            <ul class="menu">
+                                <li class="leaf">
+                                    <a href="#">Salesperson Phone Numbers</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">Maintainer Phone Numbers</a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#">Group Phone Numbers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="right">
+                <section id="section-language">
+                    <div>
+                        <h3>Read <span>iTest</span> In:</h3>
+                        <div id="select-language">
+                            <p>Select</p>
+                            <ul>
+                                <li id="flag1" onclick="translate();">
+                                    <a href="#">Chinese</a>
+                                    <img src="img/homepage/china2.png" alt="Error"/>
+                                </li>
+                                <li id="flag2" onclick="translate()">
+                                    <a href="HomePage.xhtml">English</a>
+                                    <img src="img/homepage/english2.png" alt="Error"/>
+                                </li>
+                                <li id="flag3" onclick="translate()">
+                                    <a href="#">French</a>
+                                    <img src="img/homepage/france2.png" alt="Error"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="section-followus">
+                    <div>
+                        <h3>Follow Us:</h3>
+                        <div>
+                            <ul class="menu">
+                                <li class="leaf">
+                                    <a href="#"><img src="img/homepage/Twitter.png" alt=""/></a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#"><img src="img/homepage/facebook.png" alt=""/></a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#"><img src="img/homepage/instagram1.ico" alt=""/></a>
+                                </li>
+                                <li class="leaf">
+                                    <a href="#"><img src="img/homepage/YouTube.png" alt=""/></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <div id="copyright">
+                    <p>Copyright ©2017 302-4 All rights reserved.
+                        Address: Building One of Fushan Apartment.
+                        Group member: Coulson, David, Frank, Nick.
+                    </p>
+                </div>
+        </div>
+        </div>
         <div class="footer-bot"></div>
     </div>
+
+    <script type="text/javascript">
+        $("#select-language p").click(function(){
+            $("#select-language ul").toggle(300);
+        });
+        $("#flag1").mouseover(function(){
+            $("#flag1 a").css("color","orange");
+            $("#flag1").mouseout(function(){
+                $("#flag1 a").css("color","beige");
+            });
+        });
+        $("#flag2").mouseover(function(){
+            $("#flag2 a").css("color","orange");
+            $("#flag2").mouseout(function(){
+                $("#flag2 a").css("color","beige");
+            });
+        });
+        $("#flag3").mouseover(function(){
+            $("#flag3 a").css("color","orange");
+            $("#flag3").mouseout(function(){
+                $("#flag3 a").css("color","beige");
+            });
+        });
+    </script>
 </h:body>
 </html>
