@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.Report" table="Report" schema="dbo" catalog="OnlineTest">
+        <id name="reportId">
+            <column name="ReportID" sql-type="int"/>
+            <generator class="native"/>
+        </id>
+        <property name="examLogId">
+            <column name="ExamLogID" sql-type="int" not-null="true"/>
+        </property>
+        <property name="stuId">
+            <column name="StuID" sql-type="int" not-null="true"/>
+        </property>
+        <property name="questionId">
+            <column name="QuestionID" sql-type="int" not-null="true"/>
+        </property>
+        <property name="stem">
+            <column name="Stem" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="a">
+            <column name="A" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="b">
+            <column name="B" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="c">
+            <column name="C" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="d">
+            <column name="D" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="userAnswer">
+            <column name="UserAnswer" sql-type="nchar(1)" length="1" not-null="true"/>
+        </property>
+        <property name="rightAnswer">
+            <column name="RightAnswer" sql-type="nchar(1)" length="1" not-null="true"/>
+        </property>
+        <property name="score">
+            <column name="Score" sql-type="int" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

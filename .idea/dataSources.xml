@@ -10,13 +10,11 @@
         <property name="appName" value="DataGrip" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="67e2f1d9-73ba-4194-b49b-0642ea579e58">
+    <data-source source="LOCAL" name="@123.206.204.252" uuid="ba7529d5-245b-4c50-af20-e5f49ff50951">
       <driver-ref>sqlserver.jtds</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/src/hibernate.cfg.xml</remarks>
       <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:jtds:sqlserver://49.4.11.64:1433</jdbc-url>
+      <jdbc-url>jdbc:jtds:sqlserver://123.206.204.252:1433</jdbc-url>
       <driver-properties>
         <property name="appName" value="DataGrip" />
       </driver-properties>
