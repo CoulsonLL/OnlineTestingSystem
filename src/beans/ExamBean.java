@@ -20,6 +20,15 @@ public class ExamBean implements Serializable
     private List<ExamEntity> examEntityList;
     private ExamEntity examEntity;
     private ExamEntity newExamEntity = new ExamEntity();
+    private int questionNum;
+
+    public int getQuestionNum() {
+        return questionNum;
+    }
+
+    public void setQuestionNum(int questionNum) {
+        this.questionNum = questionNum;
+    }
 
     public String getCourseNameByID(int courseID)
     {

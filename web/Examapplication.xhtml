@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administrator</title>
+    </h:head>
+    <h:body>
+        <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt=" " src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+        <h:form>
+            <h:commandButton value="Exam Logs" action="#{Apply.queryExamLogs()}"/>
+            <h:outputText value="#{Apply.getSessionString()}"/>
+            <div class="container">
+                <h:dataTable border="1" style="border-color:red" bgcolor="#f9f6ef" value="#{Apply.list}" var="ExamLog">
+                    <f:facet name="header">Exam logs</f:facet>
+                    <h:column>
+                        <f:facet name="header">
+                            No
+                        </f:facet>
+                        #{rowCounter.row}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            ExamID
+                        </f:facet>
+                        #{ExamLog.examId}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            StuID
+                        </f:facet>
+                        #{ExamLog.stuId}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Email
+                        </f:facet>
+                        #{ExamLog.email}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            ApplyTime
+                        </f:facet>
+                        #{ExamLog.applyTime}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            ExamStartTime
+                        </f:facet>
+                        #{ExamLog.examStartTime}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            examEndTime
+                        </f:facet>
+                        #{ExamLog.examEndTime}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            Choice
+                        </f:facet>
+                        <h:commandButton value="Approve" action="#{Apply.approveExam(ExamLog)}" rendered="#{ExamLog.approvalResult==0}"></h:commandButton>
+                        <h:commandButton value="Reject" action="#{Apply.rejectExam(ExamLog)}" rendered="#{ExamLog.approvalResult==0}"></h:commandButton>
+                        <h:outputText value="Approved" rendered="#{ExamLog.approvalResult==1}"/>
+                        <h:outputText value="Rejected" rendered="#{ExamLog.approvalResult==-1}"/>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </h:form>
+    </h:body>
+</html>

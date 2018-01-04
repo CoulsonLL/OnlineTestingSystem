@@ -37,8 +37,8 @@
         <mapping class="entity.UserAnswerEntity"/>
         <mapping resource="entity/WebsiteInfoEntity.hbm.xml"/>
         <mapping class="entity.WebsiteInfoEntity"/>
-        <mapping resource="entity/Report.hbm.xml"/>
-        <mapping class="entity.Report"/>
+        <mapping resource="entity/ReportEntity.hbm.xml"/>
+        <mapping class="entity.ReportEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

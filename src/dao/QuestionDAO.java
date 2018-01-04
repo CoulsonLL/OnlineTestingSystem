@@ -88,6 +88,6 @@ public class QuestionDAO
     public static void main(String[] args)
     {
         HibernateUtil.getSessionFactory();
-        System.out.println(new QuestionDAO().queryQuestionsByCourseID(2));
+        System.out.println(new QuestionDAO().queryQuestionsByCourseID(3));
     }
 }

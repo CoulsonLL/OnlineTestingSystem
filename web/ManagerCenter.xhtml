@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Administrator</title>
+    </h:head>
+    <h:body>
+         <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+        <table  bgcolor="#f9f6ef" border="1" align="top" width="70%" style="float:left;margin-top:10px;height:750px;border-color:red;">
+             <tr>
+                    <td bgcolor="#f9f6ef" width="20%" valign="top" align="center"><br/>
+                        <h:form>
+                            <h:commandButton style=" height: 40px; border-color:black; font-size: 20px;text-decoration:blink; color:black;" action="ManagerCenter"  value="Home"></h:commandButton>
+                            <h:commandButton style=" height: 40px; margin-left:80px;border-color: black;font-size:20px;text-decoration:blink; color:black;" action="Examapplication" value="Exam Application"></h:commandButton>
+                            <h:commandButton style=" height: 40px;  margin-left:80px;border-color: black;font-size: 20px;text-decoration:blink; color:black;" action="ManageExamPage" value="Exam"></h:commandButton>
+                            <h:commandButton style=" height: 40px; margin-left:80px;border-color: black;font-size: 20px;text-decoration:blink; color:black;" action="MCourse" value="Modify Course"></h:commandButton> 
+                            <h:commandButton style=" height: 40px; margin-left:80px; border-color: black;font-size: 20px;text-decoration:blink; color:black;" action="Search" value="Search"></h:commandButton>
+                            <hr style="color:red;"/><hr style="color:red;"/>
+                            <img style="margin-top:30px;" alt="" src="Images/b.jpg" width="1000" height="600" align="left"/>
+                        </h:form>  
+                    </td>
+                 <br/><br/>
+             </tr>
+        </table>
+        <table bgcolor="#f9f6ef" border="1" align="right" width="23%" style="float:right;margin-top:10px;height:750px;border-color:red;">
+            <tr>
+                <td>
+                    <h:form>
+                    <h:commandLink style="float:top;margin-left:90px;margin-top: 0px;" action="Modifypass" value="Modify Password" ></h:commandLink>
+                    <img alt="" src="Images/a.png" width="300" height="350" style="margin-bottom:10px;" />
+                    </h:form>
+                </td>
+            </tr>
+        </table>
+    </h:body>
+</html>
+

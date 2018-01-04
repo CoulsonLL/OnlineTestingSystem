@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="css/ApplyExamination.css"/>
+                <script type="text/javascript" src="./js/warning.js"/>
+    </h:head>
+    <h:body>
+        <ui:include src="ReusePage.xhtml"/>
+        <h:form>
+               <h:panelGrid  columns="1" bgcolor="#b1040e" cellpadding="20px" border="1" cellspacing="10px">
+                <f:facet name="header">About Examination</f:facet>
+                <h:commandLink value="Course Selected" action="PersonalCenter" style="font-size: 20px;color: white"/>
+                <h:commandLink value="Apply Examination" action="ApplyExamination" style="font-size: 20px;color: white"/>
+                <h:commandLink value="Examination Applied" action="ExaminationApplied" style="font-size: 20px;color: white"/>
+                <h:commandLink value="Check Grades" action="CheckGrades" style="font-size: 20px;color: white"/>
+                <h:commandLink value="Modify Information" action="ModifyInformation" style="font-size: 20px;color: white"/>
+                <h:commandLink value="Personal Information" action="Stu_information" style="font-size: 20px;color: white"/>                
+                <h:commandLink value="Modify Password" action="ModifyPassword" style="font-size: 20px;color: white"/>                
+            </h:panelGrid> 
+                        <h:panelGrid border="1" columns="2" cellpadding="10px" style="position: absolute;top:260px;left:950px;background-color:aquamarine ">
+                <f:facet name="header">Apply Examination</f:facet>
+                <h:outputText value="Exam ID:"/>
+                <h:inputText value="#{apply_Examination.examID}" pt:placeholder="Enter examID"/>   
+                <h:outputText value="Email:"/>
+                <h:inputText value="#{apply_Examination.email}" pt:placeholder="Enter email"/>
+                <h:outputText value="ApplyTime:"/>
+                <h:inputText value="#{apply_Examination.applyTime}"/>
+                <h:outputText value="ExamStartTime:"/>
+                <h:inputText value="#{apply_Examination.examStartTime}"/>
+                <h:commandButton value="Submit" action="#{apply_Examination.sendMessage()}" onclick="warn()"/>
+            </h:panelGrid>
+    
+
+            <h:dataTable value="#{apply_Examination.list}" var="e" border="1"  style="position: absolute;top:260px;left:300px;background-color: aquamarine">
+                <h:column>
+                    <f:facet name="header">
+                        Exam ID
+                    </f:facet>
+                    <h:outputText value="#{e.examId}"/> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Exam Name
+                    </f:facet>
+                    <h:outputText value="#{e.examName}"/> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Duration
+                    </f:facet>
+                    <h:outputText value="#{e.duration}"/> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Course ID
+                    </f:facet>
+                    <h:outputText value="#{e.courseId}"/> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Exam State
+                    </f:facet>
+                    <h:outputText value="#{e.examState}"/> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Question Number
+                    </f:facet>
+                    <h:outputText value="#{e.questionNum}"/> 
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
+

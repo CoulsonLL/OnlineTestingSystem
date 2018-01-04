@@ -13,20 +13,20 @@ public class Servlet extends HttpServlet
     public void init() throws ServletException
     {
         HibernateUtil.getSessionFactory();
-//        new Thread(() -> {
-//            for (; ; )
-//            {
-//                StudentDAO.updateStudentNum();
-//                ManagerDAO.updateManagerNum();
-//                try
-//                {
-//                    Thread.sleep(1000);
-//                }
-//                catch (InterruptedException e)
-//                {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
+        new Thread(() -> {
+            for (; ; )
+            {
+                StudentDAO.updateStudentNum();
+                ManagerDAO.updateManagerNum();
+                try
+                {
+                    Thread.sleep(1000000);
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

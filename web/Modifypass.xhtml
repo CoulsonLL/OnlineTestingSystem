@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administrator</title>
+        <script type="text/javascript" src="./js/validate.js"/>
+        <script type="text/javascript" src="./js/alert.js"/>
+    </h:head>
+    <h:body>
+         <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+        <img src="Images/sun.jpg" width="100%" height="900px"></img>
+        <h:form  style="margin-top: 10%; margin-left:35%">
+            <h:panelGrid columns="2" border="2" style="position: absolute;top:250px;left:500px">
+                <f:facet name="header">
+                    <h:outputText value="Change your password" />
+                    </f:facet>
+                    <h:outputText value="Previous Password:"/>
+                    <h:inputSecret  id="password" required="true" value="#{modifyPass_manager.password}"/>
+                    <h:outputText value="New Password:"/>
+                    <h:inputSecret styleClass="npsd1"  id="npsd" required="true" value="#{modifyPass_manager.npsd}"/>
+                    <h:outputText value="Confirm Your Password:"/>
+                    <h:inputSecret styleClass="npsd2" onkeyup="validate()" id="npsd1"  value="#{modifyPass_manager.npsd1}" required="true"/>
+                    <h:outputText styleClass="tishi"/>
+                     <h:commandButton styleClass="submit" value="Submit"  action="#{modifyPass_manager.modifyPass()}"  style="posion:absolute;font-size:17px;margin-left:50px;margin-top:5px;background-color: #f9f6ef"></h:commandButton>
+            </h:panelGrid>
+             
+            <br/>
+            <h:outputText value="#{modifyPass_manager.error}" style="position:absolute;top:420px;margin-left:120px;color:red"/>
+        </h:form>
+    </h:body>
+</html>
+

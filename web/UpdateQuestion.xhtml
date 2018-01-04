@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+    <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+   <img src="Images/y.jpg" width="100%" height="900px"></img>
+    <h:form style="margin-top: 10%;margin-left:40%">
+            <h:panelGrid columns="2" border="2" style="position:absolute;top:300px;left:530px">
+                <f:facet name="header">
+                    <h:outputText value="Update Question" />
+                    </f:facet>
+                    
+                    <h:outputText  value="Stem:"/>
+                    <h:inputTextarea style="resize: none;height:100px;width:200px;"   required="true" value="#{questionBean.stem}"/>
+                    <h:outputText  value="A:"/>
+                    <h:inputText   value="#{questionBean.a}" required="true"/>
+                    <h:outputText  value="B:"/>
+                    <h:inputText   value="#{questionBean.b}" required="true"/>
+                    <h:outputText  value="C:"/>
+                    <h:inputText   value="#{questionBean.c}" required="true"/>
+                    <h:outputText  value="D:"/>
+                    <h:inputText   value="#{questionBean.d}" required="true"/>
+                    <h:outputText  value="Answer:"/>
+                    <h:inputText   required="true" value="#{questionBean.answer}"/>
+                    <h:outputText  value="Score:"/>
+                    <h:inputText   required="true" value="#{questionBean.score}"/>
+            </h:panelGrid>
+            <h:outputText/>
+            <h:commandButton styleClass="submit" value="Submit" action="#{questionBean.updateQuestion()}" style="position: absolute;top:630px;font-size:17px;margin-left:40px;background-color: #f9f6ef"></h:commandButton>
+            <h:commandButton value="Cancel"  onclick="history.back()" action="#{questionBean.updateQuestion()}" style="position: absolute;top:630px;font-size:17px;margin-left:165px;background-color: #f9f6ef"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

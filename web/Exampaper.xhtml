@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+         <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+        <h:form>
+            <h:commandButton value="All Questions" action="#{questionBean.queryAllquestion()}"/>
+        <h:commandButton value="Add Question" action="AddQuestion"/>
+
+        <h:outputText value="#{questionBean.getSessionString()}"/>
+        <div class="container">
+            <h:dataTable border="1" style="border-color:red" bgcolor="#f9f6ef" value="#{questionBean.list}" var="question">
+                <f:facet name="header">Question List</f:facet>
+                <h:column>
+                    <f:facet name="header">
+                        No
+                    </f:facet>
+                    #{rowCounter.row}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        CourseID
+                    </f:facet>
+                    #{question.courseId}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Stem
+                    </f:facet>
+                    #{question.stem}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        A
+                    </f:facet>
+                    #{question.a}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        B
+                    </f:facet>
+                    #{question.b}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        C
+                    </f:facet>
+                    #{question.c}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                       D
+                    </f:facet>
+                    #{question.d}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        Answer
+                    </f:facet>
+                    #{question.answer}
+                    
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Score
+                    </f:facet>
+                    #{question.score}
+                    
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Update
+                    </f:facet>
+                    <h:commandLink value="Update" action="#{questionBean.jumpToUpdate(question)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Delete
+                    </f:facet>
+                    <h:commandLink value="Delete" action="#{questionBean.deleteQuestion(question)}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
+        <h:commandLink action="ManageExamPage" value="Back"/>
+    </h:form>
+    </h:body>
+</html>
+

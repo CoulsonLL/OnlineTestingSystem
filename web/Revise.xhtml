@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administrator</title>
+    </h:head>
+    <h:body>
+         <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+   <img src="Images/x.jpg" width="100%" height="900px"></img>
+    <h:form style="margin-top: 10%;margin-left:37%;">
+            <h:panelGrid columns="2" border="2" style="position:absolute;top:300px;left:530px">
+                <f:facet name="header">
+                    <h:outputText value="Revise Courses"/>
+                    </f:facet>
+                    <h:outputText  value="Name:"/>
+                    <h:inputText   required="true" value="#{managerCourse.name}"/>
+                    <h:outputText  value="Module:"/>
+                    <h:inputText   value="#{managerCourse.module}" required="true"/>
+                    <h:outputText  value="Detail:"/>
+                    <h:inputTextarea style="resize: none;height:100px;width:200px;"   required="true" value="#{managerCourse.detail}"/>
+            </h:panelGrid>
+            <h:outputText/>
+            <h:commandButton styleClass="submit" value="Submit" action="#{managerCourse.updateCourse()}" style="position: absolute;top:520px;font-size:17px;margin-left:80px;margin-top:10px;background-color: #f9f6ef"></h:commandButton>
+            <h:commandButton value="Cancel" onclick="history.back()" action="#{managerCourse.updateCourse()}" style="position: absolute;top:530px;font-size:17px;margin-left:200px;background-color: #f9f6ef"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
+

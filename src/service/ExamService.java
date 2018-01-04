@@ -4,20 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ExamDAO;
+import dao.ExamLogDAO;
 import dao.QuestionDAO;
+import dao.ReportDAO;
 import dao.UserAnswerDAO;
 import entity.CourseEntity;
 import entity.ExamEntity;
+import entity.ExamLogEntity;
 import entity.QuestionEntity;
+import entity.ReportEntity;
 import entity.StudentEntity;
 import entity.UserAnswerEntity;
 import util.Algorithm;
+import util.HibernateUtil;
 
 public class ExamService
 {
     private ExamDAO examDAO = new ExamDAO();
     private UserAnswerDAO userAnswerDAO = new UserAnswerDAO();
     private QuestionDAO questionDAO = new QuestionDAO();
+    private ExamLogDAO examLogDAO = new ExamLogDAO();
+    private ReportDAO reportDAO = new ReportDAO();
 
     /**
      * 添加考试
@@ -123,10 +130,52 @@ public class ExamService
         List<QuestionEntity> questions = questionDAO.queryQuestionsByCourseID(examEntity.getCourseId());
         int[] questionIndexes = Algorithm.buildRandomSequence(questions.size());
         List<QuestionEntity> list = new ArrayList<>();
-        for (int i = 0; i < questionNum - 1; i++)
+        for (int i = 0; i < questionNum; i++)
         {
             list.add(questions.get(questionIndexes[i]));
         }
         return list;
+    }
+
+    /**
+     * 获取考试分数
+     *
+     * @param examLogEntity 考试记录实体
+     * @return double 考试分数
+     */
+    public double getScore(ExamLogEntity examLogEntity)
+    {
+        return examLogDAO.getExamLogEntityByID(examLogEntity).getScore().doubleValue();
+    }
+
+    /**
+     * 获取考试报告
+     *
+     * @param examLogEntity 考试记录实体
+     * @return List<ReportEntity> 考试报告列表
+     */
+    public List<ReportEntity> getReport(ExamLogEntity examLogEntity)
+    {
+        return reportDAO.getReportByExamLog(examLogEntity);
+    }
+
+    /**
+     * 提交考试并进行自动批阅
+     *
+     * @param examLogEntity 考试记录实体
+     * @return boolean
+     */
+    public boolean submitExam(ExamLogEntity examLogEntity)
+    {
+        examLogDAO.finishExam(examLogEntity);
+        return examLogDAO.submitExam(examLogEntity);
+    }
+
+    public static void main(String[] args)
+    {
+        HibernateUtil.getSessionFactory();
+        ExamLogEntity examLogEntity = new ExamLogEntity();
+        examLogEntity.setExamLogsId(2);
+        System.out.println(new ReportDAO().getReportByExamLog(examLogEntity));
     }
 }

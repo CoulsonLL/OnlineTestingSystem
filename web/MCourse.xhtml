@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administrator</title>
+        <script type="text/javascript" src="../js/jquery.min.js"/>
+        <script type="text/javascript" src="../js/test.js"/>
+    </h:head>
+    <h:body>
+         <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+    <h:form>
+        <h:commandButton value="Popular List" action="#{managerCourse.queryPopularList}"/>
+        <h:commandButton value="All Courses" action="#{managerCourse.queryAllCourses}"/>
+        <h:commandButton value="Add" action="Add"/>
+               
+        <h:outputText value="#{managerCourse.getSessionString()}"/>
+        <div class="container">
+            <h:dataTable border="1" style="border-color:red" bgcolor="#f9f6ef" value="#{managerCourse.list}" var="course">
+                <f:facet name="header">Courses List</f:facet>
+                <h:column>
+                    <f:facet name="header">
+                        No
+                    </f:facet>
+                    #{rowCounter.row}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ID
+                    </f:facet>
+                    #{course.cCourseId}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Name
+                    </f:facet>
+                    #{course.cName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Module
+                    </f:facet>
+                    #{course.cModule}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Detail
+                    </f:facet>
+                    #{course.cDetail}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        ModifyTime
+                    </f:facet>
+                    #{course.modifyTime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ViewCount
+                    </f:facet>
+                    #{course.viewCount}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Picture
+                    </f:facet>
+                    <h:graphicImage value="#{course.picture}" style="width:150px;height:150px">   </h:graphicImage>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Modify
+                    </f:facet>
+                    <h:commandLink value="Modify" action="#{managerCourse.jumpToModify(course)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Delete
+                    </f:facet>
+                    <h:commandLink value="Delete" action="#{managerCourse.deleteCourse(course)}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </h:form>
+</h:body>
+</html>

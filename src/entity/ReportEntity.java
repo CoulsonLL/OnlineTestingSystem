@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Report
+public class ReportEntity
 {
     private int reportId;
     private Integer examLogId;
@@ -171,32 +171,41 @@ public class Report
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Report report = (Report) o;
+        ReportEntity reportEntity = (ReportEntity) o;
 
-        if (reportId != report.reportId) return false;
-        if (examLogId != null ? !examLogId.equals(report.examLogId) : report.examLogId != null)
+        if (reportId != reportEntity.reportId) return false;
+        if (examLogId != null ? !examLogId.equals(reportEntity.examLogId) : reportEntity.examLogId != null)
         {
             return false;
         }
-        if (stuId != null ? !stuId.equals(report.stuId) : report.stuId != null) return false;
-        if (questionId != null ? !questionId.equals(report.questionId) : report.questionId != null)
+        if (stuId != null ? !stuId.equals(reportEntity.stuId) : reportEntity.stuId != null)
         {
             return false;
         }
-        if (stem != null ? !stem.equals(report.stem) : report.stem != null) return false;
-        if (a != null ? !a.equals(report.a) : report.a != null) return false;
-        if (b != null ? !b.equals(report.b) : report.b != null) return false;
-        if (c != null ? !c.equals(report.c) : report.c != null) return false;
-        if (d != null ? !d.equals(report.d) : report.d != null) return false;
-        if (userAnswer != null ? !userAnswer.equals(report.userAnswer) : report.userAnswer != null)
+        if (questionId != null ? !questionId.equals(reportEntity.questionId) : reportEntity.questionId != null)
         {
             return false;
         }
-        if (rightAnswer != null ? !rightAnswer.equals(report.rightAnswer) : report.rightAnswer != null)
+        if (stem != null ? !stem.equals(reportEntity.stem) : reportEntity.stem != null)
         {
             return false;
         }
-        if (score != null ? !score.equals(report.score) : report.score != null) return false;
+        if (a != null ? !a.equals(reportEntity.a) : reportEntity.a != null) return false;
+        if (b != null ? !b.equals(reportEntity.b) : reportEntity.b != null) return false;
+        if (c != null ? !c.equals(reportEntity.c) : reportEntity.c != null) return false;
+        if (d != null ? !d.equals(reportEntity.d) : reportEntity.d != null) return false;
+        if (userAnswer != null ? !userAnswer.equals(reportEntity.userAnswer) : reportEntity.userAnswer != null)
+        {
+            return false;
+        }
+        if (rightAnswer != null ? !rightAnswer.equals(reportEntity.rightAnswer) : reportEntity.rightAnswer != null)
+        {
+            return false;
+        }
+        if (score != null ? !score.equals(reportEntity.score) : reportEntity.score != null)
+        {
+            return false;
+        }
 
         return true;
     }
@@ -217,5 +226,24 @@ public class Report
         result = 31 * result + (rightAnswer != null ? rightAnswer.hashCode() : 0);
         result = 31 * result + (score != null ? score.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ReportEntity{" +
+                "reportId=" + reportId +
+                ", examLogId=" + examLogId +
+                ", stuId=" + stuId +
+                ", questionId=" + questionId +
+                ", stem='" + stem + '\'' +
+                ", a='" + a + '\'' +
+                ", b='" + b + '\'' +
+                ", c='" + c + '\'' +
+                ", d='" + d + '\'' +
+                ", userAnswer='" + userAnswer + '\'' +
+                ", rightAnswer='" + rightAnswer + '\'' +
+                ", score=" + score +
+                '}';
     }
 }

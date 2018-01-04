@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Facelet Title</title>
+</h:head>
+<h:body>
+    <center>
+        <h1>Your score is <h:outputText value="#{scorePage.score}"/></h1>
+        <h:dataTable border="1" value="#{scorePage.reportList}" var="report">
+            <f:facet name="header">ReportList</f:facet>
+            <h:column>
+                <f:facet name="header">
+                    No
+                </f:facet>
+                <h:outputText value="#{rowCounter.row}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{rowCounter.row}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    Stem
+                </f:facet>
+                <h:outputText value="#{report.stem}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.stem}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    A
+                </f:facet>
+                <h:outputText value="#{report.a}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.a}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    B
+                </f:facet>
+                <h:outputText value="#{report.b}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.b}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    C
+                </f:facet>
+                <h:outputText value="#{report.c}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.c}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    D
+                </f:facet>
+                <h:outputText value="#{report.d}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.d}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    Your Answer
+                </f:facet>
+                <h:outputText value="#{report.userAnswer}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.userAnswer}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    Right Answer
+                </f:facet>
+                <h:outputText value="#{report.rightAnswer}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.rightAnswer}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    Score(weight)
+                </f:facet>
+                <h:outputText value="#{report.score}"
+                              rendered="#{report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:black;"/>
+                <h:outputText value="#{report.score}"
+                              rendered="#{!report.rightAnswer.equals(report.userAnswer)}"
+                              style="color:red;"/>
+            </h:column>
+        </h:dataTable>
+    </center>
+</h:body>
+</html>
+

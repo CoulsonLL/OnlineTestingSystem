@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administrator</title>
+    </h:head>
+    <h:body>
+         <table border="1" bgcolor="#f9f6ef"  align="top" width="100%" style="height:80px;border-color:red">
+            <tr>
+                <td  align="left" width="180">
+                    <a href="ManagerCenter.xhtml">
+                    <img alt="" src="Images/Book2.jpg"  width="180" height="120" align="left"/>
+                    </a>
+                </td>
+                <td bgcolor="#f9f6ef" align="center">
+                    <font style="font-family:'Arial Rounded MT Bold','Gadget','sans-serif'; " size="+3" color="#000000">Administrator Center</font>
+                </td>
+                <td bgcolor="666666" align="left" width="180">
+                    <img alt="" src="Images/Book.jpg" width="180" height="120" align="right"/>
+                </td></tr>
+        </table>
+        <h:form>
+            <h:selectOneMenu  value="#{searchBean.moduleID}" style="height:20px;width:85px;font-size:15px;" title="Module">
+                <f:selectItem itemLabel="Module1" itemValue="1"></f:selectItem>
+                <f:selectItem itemLabel="Module2" itemValue="2"></f:selectItem>
+                <f:selectItem itemLabel="Module3" itemValue="3"></f:selectItem>
+            </h:selectOneMenu>
+            <h:commandButton value="search" style="font-size:15px;margin-left:10px;" action="#{searchBean.searchCourserByModule()}"/>
+            <h:selectOneMenu  value="#{searchBean.moduleName}" style="height:20px;width:95px;font-size:15px;margin-left:15px;" title="Module">
+                <f:selectItem itemLabel="Java" itemValue="Java"></f:selectItem>
+                <f:selectItem itemLabel="SQL" itemValue="SQL"></f:selectItem>
+                <f:selectItem itemLabel="HTML" itemValue="HTML"></f:selectItem>
+                <f:selectItem itemLabel="Algorithm" itemValue="Algorithm"></f:selectItem>
+                <f:selectItem itemLabel="Equation" itemValue="Equation"></f:selectItem>
+                <f:selectItem itemLabel="Grammar" itemValue="Grammar"></f:selectItem>
+                <f:selectItem itemLabel="Android" itemValue="Android"></f:selectItem>
+                <f:selectItem itemLabel="JavaScript" itemValue="JavaScript"></f:selectItem>
+                <f:selectItem itemLabel="CSS" itemValue="CSS"></f:selectItem>
+                <f:selectItem itemLabel="Hibernate" itemValue="Hibernate"></f:selectItem>
+            </h:selectOneMenu>
+            <h:commandButton value="search" style="font-size:15px;margin-left:10px;" action="#{searchBean.searchCourserByIdAndName()}"/>  
+        </h:form>
+        <h:dataTable border="1" style="border-color:red" bgcolor="#f9f6ef" value="#{searchBean.moduleCourse}" var="course">
+                <f:facet name="header">Courses List</f:facet>
+                <h:column>
+                    <f:facet name="header">
+                        No
+                    </f:facet>
+                    #{rowCounter.row}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ID
+                    </f:facet>
+                    #{course.cCourseId}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Name
+                    </f:facet>
+                    #{course.cName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Module
+                    </f:facet>
+                    #{course.cModule}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Detail
+                    </f:facet>
+                    #{course.cDetail}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        ModifyTime
+                    </f:facet>
+                    #{course.modifyTime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        ViewCount
+                    </f:facet>
+                    #{course.viewCount}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Picture
+                    </f:facet>
+                    <h:graphicImage value="#{course.picture}" style="width:150px;height:150px">   </h:graphicImage>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Modify
+                    </f:facet>
+                    <h:commandLink value="Modify" action="#{managerCourse.jumpToModify(course)}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Delete
+                    </f:facet>
+                    <h:commandLink value="Delete" action="#{managerCourse.deleteCourse(course)}"/>
+                </h:column>
+            </h:dataTable>
+    </h:body>
+</html>
+

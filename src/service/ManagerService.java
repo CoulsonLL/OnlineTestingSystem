@@ -5,6 +5,7 @@ import java.util.List;
 import dao.ExamLogDAO;
 import dao.ManagerDAO;
 import dao.ScDAO;
+import entity.CourseEntity;
 import entity.ExamLogEntity;
 import entity.ManagerEntity;
 import entity.ScEntity;
@@ -170,6 +171,29 @@ public class ManagerService
     public int getManagerNum()
     {
         return managerDAO.getManagerNum();
+    }
+
+    /**
+     * 查询指定日期或日期范围内给定课程的考试成绩列表
+     *
+     * @param courseEntity
+     * @return List<ExamLogEntity>
+     */
+    public List<ExamLogEntity> getCourseRanking(CourseEntity courseEntity, String startDate, String endDate)
+    {
+        return examLogDAO.getCourseRanking(courseEntity);
+    }
+
+    /**
+     * 根据时间查询考试列表
+     *
+     * @param startDate 开始时间 yyyy-MM-dd HH:mm:ss
+     * @param endDate   结束时间 yyyy-MM-dd HH:mm:ss
+     * @return List<ExamLogEntity>
+     */
+    public List<ExamLogEntity> queryExamLogsWithDate(CourseEntity courseEntity, String startDate, String endDate)
+    {
+        return examLogDAO.getCourseRankingWithDate(courseEntity, startDate, endDate);
     }
 
 }

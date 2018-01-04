@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="entity.Report" table="Report" schema="dbo" catalog="OnlineTest">
+    <class name="entity.ReportEntity" table="Report" schema="dbo" catalog="OnlineTest">
         <id name="reportId">
             <column name="ReportID" sql-type="int"/>
             <generator class="native"/>

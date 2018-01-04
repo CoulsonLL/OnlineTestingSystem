@@ -1,4 +1,5 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,11 +11,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
 
 import entity.ExamEntity;
 import entity.QuestionEntity;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import service.QuestionService;
 import util.FacesUtil;
 
@@ -26,7 +28,7 @@ import util.FacesUtil;
 @SessionScoped
 public class QuestionBean implements Serializable
 {
-
+    private int QuestionID;
     private int CourseID;
     private String A;
     private String B;
@@ -37,6 +39,16 @@ public class QuestionBean implements Serializable
     private BigDecimal score;
     private List<QuestionEntity> list = null;
     private HttpSession session = FacesUtil.getSession();
+    
+    
+
+    public int getQuestionID() {
+        return QuestionID;
+    }
+
+    public void setQuestionID(int QuestionID) {
+        this.QuestionID = QuestionID;
+    }
 
     public HttpSession getSession()
     {
@@ -60,7 +72,7 @@ public class QuestionBean implements Serializable
 
     public QuestionBean()
     {
-        session.setAttribute("question", this);
+        queryAllquestion();
     }
 
     public String getSessionString()
@@ -151,9 +163,8 @@ public class QuestionBean implements Serializable
     }
 
 
-    public void addQUestion()
+    public String addQUestion()
     {
-
         QuestionService s = new QuestionService();
         QuestionEntity ce = new QuestionEntity();
         ce.setCourseId(CourseID);
@@ -165,20 +176,35 @@ public class QuestionBean implements Serializable
         ce.setAnswer(Answer);
         ce.setScore(score);
         s.addQuestion(ce);
+        queryAllquestion();
+        return "Exampaper";
     }
 
     public void deleteQuestion(QuestionEntity questionEntity)
     {
-
-
+        
         QuestionService ss = new QuestionService();
         ss.deleteQuestion(questionEntity);
-
+        
+        queryAllquestion();
     }
 
-    public void updateQuestion()
+    public String updateQuestion()
     {
-
+        QuestionService s = new QuestionService();
+        QuestionEntity ce = new QuestionEntity();
+        ce.setCourseId(CourseID);
+        ce.setQuestionId(QuestionID);
+        ce.setStem(Stem);
+        ce.setA(A);
+        ce.setB(B);
+        ce.setC(C);
+        ce.setD(D);
+        ce.setAnswer(Answer);
+        ce.setScore(score);
+        s.updateQuestion(ce);
+        queryAllquestion();
+        return "Exampaper";
     }
 
     public void queryAllquestion()
@@ -189,7 +215,24 @@ public class QuestionBean implements Serializable
 
     public String jumpToQuestionPage(ExamEntity examEntity)
     {
+        System.out.println("before getID");
         CourseID = examEntity.getCourseId();
+        System.out.println("after getID id="+CourseID);
+        queryAllquestion();
         return "Exampaper";
+    }
+    
+    public String jumpToUpdate(QuestionEntity c)
+    {
+        this.CourseID=c.getCourseId();
+        this.QuestionID = c.getQuestionId();
+        this.Stem = c.getStem();
+        this.A = c.getA();
+        this.B = c.getB();
+        this.C = c.getC();
+        this.D = c.getD();
+        this.Answer = c.getAnswer();
+        this.score = c.getScore();
+        return "UpdateQuestion";
     }
 }
