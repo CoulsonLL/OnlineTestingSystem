@@ -112,7 +112,7 @@ public class Apply_Examination
     public void sendMessage()
     {
         StudentEntity se = (StudentEntity) FacesUtil.getSession().getAttribute("userInfo");
-        sendHtmlMail("1126624319@qq.com", "aaa", "Email ID:" + getEmail() + "<br/>" + "<hr/>" + "Student ID:" + getStuID() + "<br/>" + "<hr/>" + "Apply Time:" + getApplyTime() + "<br/>" + "<hr/>"
+        sendHtmlMail("756572145@qq.com", "aaa", "Email ID:" + getEmail() + "<br/>" + "<hr/>" + "Student ID:" + se.getStuId() + "<br/>" + "<hr/>" + "Apply Time:" + getApplyTime() + "<br/>" + "<hr/>"
                 + "Exam Start Time:" + getExamStartTime() + "<br/>" + "<hr/>" + "Exam End Time:" + getExamEndTime());
         StudentService ss = new StudentService();
         ExamLogEntity ele = new ExamLogEntity();

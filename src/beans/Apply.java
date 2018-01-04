@@ -162,7 +162,7 @@ public class Apply {
         ManagerEntity ssEntity = (ManagerEntity) FacesUtil.getSession().getAttribute("mgrInfo");
         System.out.println(ssEntity);
         ManagerService c = new ManagerService();
-        sendHtmlMail("756572145@qq.com", "Result", "You can take an exam");
+        sendHtmlMail(ele.getEmail(), "Result", "You can take an exam");
         c.approveExam(ele, ssEntity);
         queryExamLogs();
     }
@@ -172,7 +172,7 @@ public class Apply {
         ManagerEntity ssEntity = (ManagerEntity) FacesUtil.getSession().getAttribute("mgrInfo");
         ManagerService c = new ManagerService();
         System.out.println(ssEntity);
-        sendHtmlMail("756572145@qq.com", "Result", "You can't take an exam");
+        sendHtmlMail(ele.getEmail(), "Result", "You can't take an exam");
         c.rejectExam(ele, ssEntity);
         queryExamLogs();
     }

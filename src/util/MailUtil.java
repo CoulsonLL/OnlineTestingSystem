@@ -65,7 +65,7 @@ public class MailUtil
 
     private static boolean sendMail(String to, String subject, String text, int type)
     {
-        Session session = Session.getDefaultInstance(prop, new MyAuthenticator(user, pass));
+        Session session = Session.getInstance(prop, new MyAuthenticator(user, pass));//Edit by Coulson; getDefaultInstance(prop, new MyAuthenticator(user, pass))
         session.setDebug(true);
         try
         {

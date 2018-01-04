@@ -74,8 +74,8 @@
                         <f:facet name="header">
                             Choice
                         </f:facet>
-                        <h:commandButton value="Approve" action="#{Apply.approveExam(ExamLog)}" rendered="#{ExamLog.approvalResult==0}"></h:commandButton>
-                        <h:commandButton value="Reject" action="#{Apply.rejectExam(ExamLog)}" rendered="#{ExamLog.approvalResult==0}"></h:commandButton>
+                        <h:commandButton value="Approve" action="#{Apply.approveExam(ExamLog)}" rendered="#{ExamLog.approvalResult==0}"/>
+                        <h:commandButton value="Reject" action="#{Apply.rejectExam(ExamLog)}" rendered="#{ExamLog.approvalResult==0}"/>
                         <h:outputText value="Approved" rendered="#{ExamLog.approvalResult==1}"/>
                         <h:outputText value="Rejected" rendered="#{ExamLog.approvalResult==-1}"/>
                     </h:column>
