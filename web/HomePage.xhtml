@@ -3,9 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+>
 <h:head>
     <title>iTest</title>
     <link rel="shortcut icon" href="img/homepage/favicon.ico"/>
@@ -20,23 +19,27 @@
     <script>
         //页面加载是从localstorage查看之前有无记住账号密码，若有则自动填充登陆输入框
         //登陆成功后remove掉登陆按钮
-        function loading() {
+        function loading()
+        {
             var storage = window.localStorage;
             var success_info = document.getElementById("login_success").innerHTML;
             var $login_button = $('.login-open');
-            if (storage.getItem("isremembered") === "true") {
+            if (storage.getItem("isremembered") === "true")
+            {
                 var $login_input1 = $('#login-phoneno');
                 var $login_input2 = $('#login-password');
                 $login_input1.val(storage.getItem("phoneno"));
                 $login_input2.val(storage.getItem("password"));
             }
-            if (success_info === "success") {
+            if (success_info === "success")
+            {
                 $login_button.remove();
             }
         }
 
         //若登陆成功并选择remember me，则存储到localstorage
-        function remember() {
+        function remember()
+        {
 //            var null_error1 = document.getElementById("login_null_error").innerHTML;
 //            var error1 = document.getElementById("login_error").innerHTML;
             var remember = document.getElementById("login_remember_text").innerHTML;
@@ -45,7 +48,8 @@
             var local_phoneno = $login_input1.val();
             var local_password = $login_input2.val();
             var storage = window.localStorage;
-            if (remember === "true") {
+            if (remember === "true")
+            {
                 storage.setItem("phoneno", local_phoneno);
                 storage.setItem("password", local_password);
                 storage.setItem("isremembered", remember);
@@ -77,7 +81,8 @@
                 </ul>
             </div>
         </div>
-        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}" action="PersonalCenter"/>
+        <h:commandLink id="user_info" styleClass="UserInfo" value="#{authentication.phoneno}"
+                       action="PersonalCenter"/>
     </h:form>
 
     <form onsubmit="submitFn(this, event);">
@@ -107,17 +112,21 @@
         <div id="login"> <!-- 登录表单 -->
             <h:form prependId="false">
                 <div>
-                    <h:outputLabel styleClass="login-phoneno-label" for="login-phoneno">Phone No</h:outputLabel>
-                    <h:inputText styleClass="login-phoneno-input" id="login-phoneno" value="#{login_Signup.phoneno}"
-                                  pt:autofocus="true">
+                    <h:outputLabel styleClass="login-phoneno-label"
+                                   for="login-phoneno">Phone No</h:outputLabel>
+                    <h:inputText styleClass="login-phoneno-input" id="login-phoneno"
+                                 value="#{login_Signup.phoneno}"
+                                 pt:autofocus="true">
                         <!--<f:ajax render="login-message1" event="keyup"/>-->
                     </h:inputText>
-                    <h:message id="login-message1" for="login-phoneno" styleClass="login-phoneno-message"/>
+                    <h:message id="login-message1" for="login-phoneno"
+                               styleClass="login-phoneno-message"/>
                 </div>
                 <br/>
 
                 <div>
-                    <h:outputLabel styleClass="login-password-label" for="login-password">Password</h:outputLabel>
+                    <h:outputLabel styleClass="login-password-label"
+                                   for="login-password">Password</h:outputLabel>
                     <h:inputSecret styleClass="login-password-input" id="login-password"
                                    value="#{login_Signup.password}"/>
                     <h:message id="login-message2" for="login-password"/>
@@ -125,11 +134,13 @@
                 <br/>
 
                 <div>
-                    <h:selectBooleanCheckbox styleClass="login-remember-checkbox" id="login-remember"
+                    <h:selectBooleanCheckbox styleClass="login-remember-checkbox"
+                                             id="login-remember"
                                              value="#{login_Signup.remember}">
-                        <!--<f:ajax execute="login-remember" render="login_remember_text" event="change"/>-->
+                        <f:ajax execute="login-remember" render="login_remember_text" event="change"/>
                     </h:selectBooleanCheckbox>
-                    <h:outputLabel styleClass="login-remember-label" for="login-remember">Remember me</h:outputLabel>
+                    <h:outputLabel styleClass="login-remember-label"
+                                   for="login-remember">Remember me</h:outputLabel>
                     <h:commandButton id="login-button" styleClass="button-login" value="Login"
                                      action="#{login_Signup.login}" onclick="remember()"/>
                 </div>
@@ -137,28 +148,39 @@
 
             </h:form>
             <h:outputText style="display: none" id="login_error" value="#{login_Signup.error1}"/>
-            <h:outputText style="display: none" id="login_null_error" value="#{login_Signup.login_null_error}"/>
-            <h:outputText style="display: none" id="login_remember_text" value="#{login_Signup.remember}"/>
-            <h:outputText style="display: none" id="login_success" value="#{authentication.hiddeninput}"/>
+            <h:outputText style="display: none" id="login_null_error"
+                          value="#{login_Signup.login_null_error}"/>
+            <h:outputText style="display: none" id="login_remember_text"
+                          value="#{login_Signup.remember}"/>
+            <h:outputText style="display: none" id="login_success"
+                          value="#{authentication.hiddeninput}"/>
         </div>
 
         <div id="signup"> <!-- 注册表单 -->
             <h:form>
-                <h:message for="signup-phoneno" id="signup-message-phoneno" styleClass="signup-phoneno-message"/>
-                <h:message for="signup-email" id="signup-message-email" styleClass="signup-email-message"/>
+                <h:message for="signup-phoneno" id="signup-message-phoneno"
+                           styleClass="signup-phoneno-message"/>
+                <h:message for="signup-email" id="signup-message-email"
+                           styleClass="signup-email-message"/>
                 <h:panelGrid columns="2" cellspacing="30px" styleClass="signup-form">
 
-                    <h:outputLabel styleClass="signup-phoneno-label" for="signup-phoneno">Phone No</h:outputLabel>
-                    <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno" value="#{login_Signup.phoneno}" pt:autofocus="true">
+                    <h:outputLabel styleClass="signup-phoneno-label"
+                                   for="signup-phoneno">Phone No</h:outputLabel>
+                    <h:inputText styleClass="signup-phoneno-input" id="signup-phoneno"
+                                 value="#{login_Signup.phoneno}" pt:autofocus="true">
                         <!--<f:ajax event="keyup" render="signup-message-phoneno"/>-->
                     </h:inputText>
 
-                    <h:outputLabel styleClass="signup-email-label" for="signup-email">E-mail</h:outputLabel>
-                    <h:inputText styleClass="signup-email-input" id="signup-email" value="#{login_Signup.email}" validator="#{validator.validateEmail}">
-                        <f:ajax event="keyup" render="signup-message-email"/>
+                    <h:outputLabel styleClass="signup-email-label"
+                                   for="signup-email">E-mail</h:outputLabel>
+                    <h:inputText styleClass="signup-email-input" id="signup-email"
+                                 value="#{login_Signup.email}"
+                                 >
+                        <!--<f:ajax event="keyup" render="signup-message-email"/>-->
                     </h:inputText>
 
-                    <h:outputLabel styleClass="signup-password-label" for="signup-password">Password</h:outputLabel>
+                    <h:outputLabel styleClass="signup-password-label"
+                                   for="signup-password">Password</h:outputLabel>
                     <h:inputSecret styleClass="signup-password-input" id="signup-password"
                                    value="#{login_Signup.password}"/>
 
@@ -167,13 +189,16 @@
                 <div class="protocol-div">
                     <h:selectBooleanCheckbox styleClass="protocol-checkbox" id="user-protocol"
                                              value="#{ajaxBean.agree}">
-                        <f:ajax execute="user-protocol" render="signup-button agree-text" event="change"
+                        <f:ajax execute="user-protocol" render="signup-button agree-text"
+                                event="change"
                                 listener="#{ajaxBean.buttonvalue}"/>
                     </h:selectBooleanCheckbox>
-                    <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a href="#"
-                                                                                                     style="color: white">User protocol</a>
+                    <h:outputLabel styleClass="signup-protocol-label" for="user-protocol">I agree <a
+                            href="#"
+                            style="color: white">User protocol</a>
                     </h:outputLabel>
-                    <h:commandButton id="signup-button" styleClass="button-signup" value="#{ajaxBean.buttonval}"
+                    <h:commandButton id="signup-button" styleClass="button-signup"
+                                     value="#{ajaxBean.buttonval}"
                                      action="#{login_Signup.signup}" disabled="#{!ajaxBean.agree}"/>
                     <!--<h:outputText style="display: none" id="agree-text" value="#{ajaxBean.agree}"/>-->
                 </div>
@@ -181,8 +206,10 @@
             </h:form>
             <h:outputText style="display: none" id="agree-text" value="#{ajaxBean.agree}"/>
             <h:outputText style="display: none" id="signup_error" value="#{login_Signup.error2}"/>
-            <h:outputText style="display: none" id="signup_null_error" value="#{login_Signup.signup_null_error}"/>
-            <h:outputText style="display: none" id="signup_success" value="#{login_Signup.signup_success}"/>
+            <h:outputText style="display: none" id="signup_null_error"
+                          value="#{login_Signup.signup_null_error}"/>
+            <h:outputText style="display: none" id="signup_success"
+                          value="#{login_Signup.signup_success}"/>
         </div>
     </div>
 
@@ -200,14 +227,16 @@
         <div class="content-top">
             <div class="content-top-title">
                 <h2>Popular Today</h2>
-                <p>The most popular cources from iTest</p>
+                <p>The most popular courses from iTest</p>
             </div>
             <div class="content-top-article">
                 <div class="content-top-article1">
                     <article class="biggest">
                         <h:form>
-                            <h:commandLink styleClass="biggest-img-a" action="#{popularCourseBean.course1}">
-                                <h:graphicImage styleClass="biggest-img" value="#{popularCourseBean.image1}"/>
+                            <h:commandLink styleClass="biggest-img-a"
+                                           action="#{popularCourseBean.course1}">
+                                <h:graphicImage styleClass="biggest-img"
+                                                value="#{popularCourseBean.image1}"/>
                             </h:commandLink>
                             <div class="biggest-script">
                                 <div>
@@ -230,8 +259,10 @@
                 <div class="content-top-article2">
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course2}">
-                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image2}"/>
+                            <h:commandLink styleClass="small-img-a"
+                                           action="#{popularCourseBean.course2}">
+                                <h:graphicImage styleClass="small-img"
+                                                value="#{popularCourseBean.image2}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
@@ -251,8 +282,10 @@
                     </article>
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course3}">
-                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image3}"/>
+                            <h:commandLink styleClass="small-img-a"
+                                           action="#{popularCourseBean.course3}">
+                                <h:graphicImage styleClass="small-img"
+                                                value="#{popularCourseBean.image3}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
@@ -272,8 +305,10 @@
                     </article>
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course4}">
-                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image4}"/>
+                            <h:commandLink styleClass="small-img-a"
+                                           action="#{popularCourseBean.course4}">
+                                <h:graphicImage styleClass="small-img"
+                                                value="#{popularCourseBean.image4}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
@@ -293,8 +328,10 @@
                     </article>
                     <article class="small">
                         <h:form>
-                            <h:commandLink styleClass="small-img-a" action="#{popularCourseBean.course5}">
-                                <h:graphicImage styleClass="small-img" value="#{popularCourseBean.image5}"/>
+                            <h:commandLink styleClass="small-img-a"
+                                           action="#{popularCourseBean.course5}">
+                                <h:graphicImage styleClass="small-img"
+                                                value="#{popularCourseBean.image5}"/>
                             </h:commandLink>
                             <div class="small-script">
                                 <div>
@@ -316,7 +353,8 @@
             </div>
             <div class="content-top-button">
                 <h:form>
-                    <h:commandButton styleClass="content-top-button-script" value="More Hot Courses" action="test"/>
+                    <h:commandButton styleClass="content-top-button-script" value="More Hot Courses"
+                                     action="test"/>
                 </h:form>
             </div>
         </div>
@@ -361,7 +399,7 @@
                             <a class="bot-item-link" href="">Developer</a>
                         </li>
                         <li class="bot-nav-ul-li">
-                            <a class="bot-item-link" href="">Update</a>
+                            <a class="bot-item-link" href="ManagerLogin.xhtml">Manager</a>
                         </li>
                         <li class="bot-nav-ul-li">
                             <a class="bot-item-link" href="">Version</a>
@@ -496,31 +534,31 @@
                         Group member: Coulson, David, Frank, Nick.
                     </p>
                 </div>
-        </div>
+            </div>
         </div>
         <!--<div class="footer-bot"></div>-->
     </div>
 
     <script type="text/javascript">
-        $("#select-language p").click(function(){
+        $("#select-language p").click(function () {
             $("#select-language ul").toggle(300);
         });
-        $("#flag1").mouseover(function(){
-            $("#flag1 a").css("color","orange");
-            $("#flag1").mouseout(function(){
-                $("#flag1 a").css("color","beige");
+        $("#flag1").mouseover(function () {
+            $("#flag1 a").css("color", "orange");
+            $("#flag1").mouseout(function () {
+                $("#flag1 a").css("color", "beige");
             });
         });
-        $("#flag2").mouseover(function(){
-            $("#flag2 a").css("color","orange");
-            $("#flag2").mouseout(function(){
-                $("#flag2 a").css("color","beige");
+        $("#flag2").mouseover(function () {
+            $("#flag2 a").css("color", "orange");
+            $("#flag2").mouseout(function () {
+                $("#flag2 a").css("color", "beige");
             });
         });
-        $("#flag3").mouseover(function(){
-            $("#flag3 a").css("color","orange");
-            $("#flag3").mouseout(function(){
-                $("#flag3 a").css("color","beige");
+        $("#flag3").mouseover(function () {
+            $("#flag3 a").css("color", "orange");
+            $("#flag3").mouseout(function () {
+                $("#flag3 a").css("color", "beige");
             });
         });
     </script>
