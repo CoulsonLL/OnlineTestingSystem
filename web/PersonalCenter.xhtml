@@ -8,12 +8,7 @@
         <title>Facelet Title</title>
         <link rel="stylesheet" type="text/css" href="css/PersonalCenter.css"/>
 <!--        <script type="text/javascript" src="./js/warning.js"/>-->
-    <script>
-        function click(){
-            alert("dddd");
-            window.location.href="../HomePage.xhtml";
-        }
-    </script>
+
     </h:head>
     <h:body>
         <h:form>
@@ -21,7 +16,7 @@
             <div id="div1">
                 <ul>                    
                     <li><h:commandLink id="homepage-link" value="Home" style="color: white" action="HomePage"/></li>
-                    <li><h:commandLink value="Layout" action="index" style="color: white"/></li>
+                    <li><h:commandLink value="Logout" action="#{logout.logout}" style="color: white"/></li>
                 </ul>
             </div>
             <h:panelGrid  columns="1" bgcolor="#b1040e" cellpadding="20px" border="1" cellspacing="10px">
@@ -46,7 +41,7 @@
                     <f:facet name="header">
                         Course Name
                     </f:facet>
-                    <h:outputText value="#{personalCenter.getCourseName(sc)}"/> 
+                    <h:outputText value="#{personalCenter.getCourseName(sc.cCourseId)}"/>
                 </h:column>
                 
         </h:dataTable>

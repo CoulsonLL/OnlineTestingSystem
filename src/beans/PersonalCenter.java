@@ -13,6 +13,8 @@ import entity.StudentEntity;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+
+import service.CourseService;
 import service.StudentService;
 import util.FacesUtil;
 
@@ -36,7 +38,9 @@ public class PersonalCenter {
         this.scID = scID;
     }
 
-    public String getCourseName() {
+    public String getCourseName(int courseid) {
+        CourseService courSer = new CourseService();
+        courseName = courSer.queryCourseNameById(courseid);
         return courseName;
     }
 
